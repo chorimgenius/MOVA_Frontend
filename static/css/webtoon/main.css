@@ -108,14 +108,11 @@ input[type=text] {
 }
 
 .app-header {
-  font-size: 20px;
-  font-weight: 500;
-  color: #232428;
   background-repeat: no-repeat;
-  background-size: 24px;
-  background-position: center left 20px;
-  padding: 20px 20px 20px 44px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='https://velog.velcdn.com/images/marinred/post/5fe107e4-f7c9-4056-9520-3b664bf8994f/image.png' width='24' height='24' viewBox='0 0 24 24' fill='%23499d77' stroke='%23499d77' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-play'%3E%3Cpolygon points='5 3 19 12 5 21 5 3'/%3E%3C/svg%3E");
+  background-size: 150px;
+  background-position: center;
+  padding: 43px 20px 20px 44px;
+  background-image: url('https://velog.velcdn.com/images/marinred/post/5fe107e4-f7c9-4056-9520-3b664bf8994f/image.png');
   border-bottom: 1px solid #ddd;
   position: relative;
 }
@@ -220,7 +217,7 @@ input[type=text] {
   background-color: #fafafa;
 }
 
-.list-header svg {
+.list-header img {
   transition: all 0.2s ease-in;
 }
 
@@ -229,12 +226,12 @@ input[type=text] {
   font-weight: 500;
 }
 
-.list-header:hover svg {
+.list-header:hover img {
   transition: all 0.2s ease-in;
   fill: #adadad;
 }
 
-.list-header:hover svg line {
+.list-header:hover img line {
   stroke: #fff;
 }
 
@@ -642,21 +639,6 @@ input[type=text] {
 .video-description-info span {
   border-left: 1px solid #cdcdcd;
   padding-left: 4px;
-}
-
-.btn-play {
-  position: absolute;
-  top: -16px;
-  right: 8px;
-  background-color: #fff;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  background-size: 14px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2311a074' stroke='%2311a074' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-play'%3E%3Cpath d='M5 3l14 9-14 9V3z' /%3E%3C/svg%3E");
-  box-shadow: 0px 2px 4px 2px rgba(209, 209, 209, 0.4);
 }
 
 .more-button {
