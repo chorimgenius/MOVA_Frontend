@@ -159,11 +159,15 @@
             </div>
             </div>
             </div>
-            <button type="submit" class="btn btn-dark-write" style="margin-top: 10px; float: right; margin-right: 100px;">작성</button>
+            <button type="button" onclick="moveWrite()" class="btn btn-dark-write" style="margin-top: 10px; float: right; margin-right: 100px;">작성</button>
           </div>
         </div>
       </div>
     </div>
 </body>
 </html>
-<script src="../../static/js/board/board.js></script>
+<script>function moveWrite(){
+    location.href = "../../templates/board/boardwrite.html";
+}
+</script>
+<script src="../../static/js/board/board.js"></script>
