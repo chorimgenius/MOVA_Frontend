@@ -401,6 +401,10 @@
     flex: 1;
     padding: 20px;
     overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
   }
   
   .content-line {

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="owlcarosel/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarosel/owl.theme.default.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../static/css/colorization/fanartboard.css" rel="stylesheet" type="text/css"/>
+    <title>Document</title>
+    <script defer type="module" src="../../static/js/colorization/fanartboard.js"></script>
+    <script defer>console.log(2,"두번째")</script>
+    <!-- <script defer src="../../static/js/default/owl.carousel.js"></script> -->
+    <script defer>console.log(4,"4번째")</script>
+</head>
+<body>
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+<div class="app-wrapper">
+  <div class="left-area hide-on-mobile">
+    <div class="app-header">MOVA.
+      <span class="inner-text">toon</span>
+      <button class="close-menu">
+        <svg width="24" height="24" fill="none" stroke="#51a380" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-x">
+          <defs />
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="left-area-content">
+      <div class="profile">
+        <img src="https://images.unsplash.com/photo-1496340672773-0b29c9b17ed2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="">
+        <div class="profile-info">
+          <span class="profile-name">{user}님</span>
+          <span class="country">환영합니다!</span>
+        </div>
+      </div>
+      <div class="page-link-list">
+        <a href="#" class="item-link active" id="pageLink">
+          <svg class="link-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-home" viewBox="0 0 24 24">
+            <defs />
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            <path d="M9 22V12h6v10" /></svg>
+          홈</a>  
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+          </svg>
+          공지사항</a>
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play">
+            <path d="M5 3l14 9-14 9V3z" />
+          </svg>
+          팬 게시판</a>
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+          </svg>
+          관심 웹툰</a>
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" /></svg>
+          토론방</a>
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" /></svg>
+          깊은배움</a>
+      </div>
+    </div>
+    <button class="btn-invite">Invite Team</button>
+  </div>
+  <div class="right-area">
+    <div class="right-area-upper">
+      <button class="menu-button">
+        <svg width="24" height="24" fill="none" stroke="#51a380" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <defs />
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+      </button>
+      <div class="search-part-wrapper">
+        <input class="search-input" type="text" placeholder="Search videos...">
+        <a class="menu-links" href="#">Explore</a>
+        <a class="menu-links" href="#">Events</a>
+        <button class="more-button">
+          <svg width="24" height="24" fill="none" stroke="#51a380" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-more-vertical">
+            <defs />
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="12" cy="5" r="1" />
+            <circle cx="12" cy="19" r="1" />
+          </svg>
+        </button>
+        <ul class="more-menu-list hide">
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">Events</a></li>
+          <li> <button class="action-buttons btn-record">Record</button></li>
+          <li><button class="action-buttons btn-upload">Upload</button></li>
+        </ul>
+      </div>
+      <button class="btn-notification">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#232428" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
+        </svg>
+        <span>3</span>
+      </button>
+      <div class="action-buttons-wrapper">
+        <button class="action-buttons btn-record">Record</button>
+        <button class="action-buttons btn-upload">Upload</button>
+      </div>
+    </div>
+    <div class="page-right-content">
+      <div class="content-line content-line-hero">
+        <div class="line-header">
+          <span class="header-text">New Uploads</span>
+        </div>
+        <div class="slider-wrapper owl-carousel owl-theme" id="owl-slider-1">
+          <div class="item hero-img-wrapper img-1">
+            <div class="upload-text-wrapper">
+              <p class="upload-text-header">The </p>
+              <p class="upload-text-info">By Pravin <span> 20 minutes ago</span></p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2240&q=80" alt="SlideShow">
+          </div>
+          <div class="item hero-img-wrapper img-2">
+            <div class="upload-text-wrapper">
+              <p class="upload-text-header">History of Art</p>
+              <p class="upload-text-info">By Pravin <span> 10 minutes ago</span></p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1485518994577-6cd6324ade8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2144&q=80" alt="SlideShow">
+          </div>
+          <div class="item hero-img-wrapper img-3">
+            <div class="upload-text-wrapper">
+              <p class="upload-text-header">Van Life</p>
+              <p class="upload-text-info">By Tess <span> 3 days ago</span></p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2208&q=80" alt="SlideShow">
+          </div>
+        </div>
+      </div>
+      <div class="content-line content-line-list">
+        <div class="line-header">
+          <span class="header-text">Trending</span>
+        </div>
+        <div id="owl-slider-2" class="slider-wrapper owl-carousel">
+          <!--<div class="item video-box-wrapper" style="background-color:black">
+            <figure class="snip1477">
+                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
+                <div class="title">
+                  <div>
+                    <h2>Penny</h2>
+                    <h4>Tool</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+          </div>
+           <div class="item video-box-wrapper" style="background-color:black">
+            <figure class="snip1477">
+                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
+                <div class="title">
+                  <div>
+                    <h2>Penny</h2>
+                    <h4>Tool</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+          </div>
+          <div class="item video-box-wrapper" style="background-color:black">
+            <figure class="snip1477">
+                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
+                <div class="title">
+                  <div>
+                    <h2>Penny</h2>
+                    <h4>Tool</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+          </div>
+          <div class="item video-box-wrapper" style="background-color:black">
+            <figure class="snip1477">
+                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
+                <div class="title">
+                  <div>
+                    <h2>Penny</h2>
+                    <h4>Tool</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+          </div>
+          <div class="item video-box-wrapper" style="background-color:black">
+            <figure class="snip1477">
+                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
+                <div class="title">
+                  <div>
+                    <h2>Penny</h2>
+                    <h4>Tool</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+          </div>
+          <div class="item video-box-wrapper" style="background-color:black">
+            <figure class="snip1477">
+                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
+                <div class="title">
+                  <div>
+                    <h2>Penny</h2>
+                    <h4>Tool</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+          </div>
+          <div class="item video-box-wrapper" style="background-color:black">
+            <figure class="snip1477">
+                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
+                <div class="title">
+                  <div>
+                    <h2>Penny</h2>
+                    <h4>Tool</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+          </div> -->
+        </div>
+      </div>
+      <div class="content-line content-line-list">
+        <div class="line-header">
+          <span class="header-text">Public</span>
+        </div>
+        <div id="owl-slider-3" class="slider-wrapper owl-carousel">
+          <div class="item video-box-wrapper">
+            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
+                <div class="title">
+                  <div>
+                    <h2>Ingredia</h2>
+                    <h4>Nutrisha</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
+                </figcaption>
+                <a href="#"></a>
+              </figure>
+          </div>
+          <div class="item video-box-wrapper">
+            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
+                <div class="title">
+                  <div>
+                    <h2>Ingredia</h2>
+                    <h4>Nutrisha</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
+                </figcaption>
+                <a href="#"></a>
+              </figure>
+          </div>
+          <div class="item video-box-wrapper">
+            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
+                <div class="title">
+                  <div>
+                    <h2>Ingredia</h2>
+                    <h4>Nutrisha</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
+                </figcaption>
+                <a href="#"></a>
+              </figure>
+          </div>
+          <div class="item video-box-wrapper">
+            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
+                <div class="title">
+                  <div>
+                    <h2>Ingredia</h2>
+                    <h4>Nutrisha</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
+                </figcaption>
+                <a href="#"></a>
+              </figure>
+          </div>
+          <div class="item video-box-wrapper">
+            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
+                <div class="title">
+                  <div>
+                    <h2>Ingredia</h2>
+                    <h4>Nutrisha</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
+                </figcaption>
+                <a href="#"></a>
+              </figure>
+          </div>
+          <div class="item video-box-wrapper">
+            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
+                <div class="title">
+                  <div>
+                    <h2>Ingredia</h2>
+                    <h4>Nutrisha</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
+                </figcaption>
+                <a href="#"></a>
+              </figure>
+            </div>
+            <div class="item video-box-wrapper">
+              <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
+                <div class="title">
+                  <div>
+                    <h2>Ingredia</h2>
+                    <h4>Nutrisha</h4>
+                  </div>
+                </div>
+                <figcaption>
+                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
+                </figcaption>
+                <a href="#"></a>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
