@@ -641,10 +641,6 @@ input[type=text] {
   padding-left: 4px;
 }
 
-.more-button {
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
   .menu-links {
     display: none;
