@@ -16,7 +16,6 @@
         href="https://uicdn.toast.com/editor-plugin-color-syntax/latest/toastui-editor-plugin-color-syntax.min.css" />
     <script
         src="https://uicdn.toast.com/editor-plugin-color-syntax/latest/toastui-editor-plugin-color-syntax.min.js"></script>
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>게시판</title>
 </head>
@@ -166,7 +165,26 @@
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" id="category1" href="#">팬 게시판</a></li>
-                                                <li><a class="dropdown-item" id="category2" href="#">기타</a></li>
+                                                <li><a class="dropdown-item" id="category2" href="#">토론방</a></li>
+                                            </ul>
+                                        </div>
+                                    </dl>
+                                    <dl>
+                                        <dt>웹툰</dt>
+                                        <div>
+                                            <button type='button' id="modal_btn">모달창 키기</button>
+                                        </div>
+                                    </dl>
+                                    <dl>
+                                        <dt>웹툰 카테고리</dt>
+                                        <div class="dropdown">
+                                            <button type="button" id="category_button" class="btn dropdown-toggle"
+                                                data-bs-toggle="dropdown">
+                                                카테고리
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" id="category1" href="#">팬 게시판</a></li>
+                                                <li><a class="dropdown-item" id="category2" href="#">토론방</a></li>
                                             </ul>
                                         </div>
                                     </dl>
@@ -179,10 +197,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Modal" aria-hidden="true">
+        <div class="modal_background"></div>
+        <div class="modal_wrap">
+            <div class="modal_close"><img class="closeImg" src="" alt="x버튼"></div>
+            <div class="text">
             </div>
         </div>
     </div>
 </body>
 <script src="../../static/js/board/boardwrite.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>
