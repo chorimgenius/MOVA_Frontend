@@ -116,7 +116,7 @@
                                 <!-- <div class="img-wrapper card-item" style="background-image: url('resize1.png')">
                                 </div> -->
                                 <div>
-                                    <img src="resize1.png" style="object-fit: contain; width: 100%;"></img>
+                                    <img src="resize1.png" id="fanart-image" style="object-fit: contain; width: 100%;"></img>
                                 </div>
                                 <div class="card-content card-item">
                                     <div class="liked-wrapper">
@@ -126,7 +126,7 @@
                                             <img src="https://randomuser.me/api/portraits/women/8.jpg" alt="">
                                         </div>
                                         <div class="liked-tagline">
-                                            <p>and 256 more</p>
+                                            <p id="likes-count"></p>
                                         </div>
                                         <button class="like-btn">
                                                 <?xml version="1.0" encoding="iso-8859-1"?>
@@ -147,8 +147,8 @@
                                     </div>
                                     <div class="comments-wrapper">
                                         <div class="submit-comment">
-                                            <input type="text" placeholder="Write  comment...">
-                                            <button class="submit-comment">
+                                            <input type="text" placeholder="Write  comment..." id="write-comment">
+                                            <button class="submit-comment" onclick="write_comment()">
                                                     <?xml version="1.0" encoding="iso-8859-1"?>
                                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                         viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">                                    
@@ -181,48 +181,6 @@
                 <h1>Comments</h1>
                 <div class='comment-list'>
             
-                    <div class='comment-node'>
-                        <div class='print-author'>
-                            작성자는 여기
-                        </div> 
-                        코멘트
-                    </div>
-                    <div class='comment-node'>
-                        <div class='print-author'>
-                            작성자는 여기
-                        </div> 
-                        코멘트
-                    </div>
-                    <div class='comment-node'>
-                        <div class='print-author'>
-                            작성자는 여기
-                        </div> 
-                        코멘트
-                    </div>
-                    <div class='comment-node'>
-                        <div class='print-author'>
-                            작성자는 여기
-                        </div> 
-                        코멘트
-                    </div>
-                    <div class='comment-node'>
-                        <div class='print-author'>
-                            작성자는 여기
-                        </div> 
-                        코멘트
-                    </div>
-                    <div class='comment-node'>
-                        <div class='print-author'>
-                            작성자는 여기
-                        </div> 
-                        코멘트
-                    </div>
-                    <div class='comment-node'>
-                        <div class='print-author'>
-                            작성자는 여기
-                        </div> 
-                        코멘트
-                    </div>
                     
                 </div>
                 
@@ -232,6 +190,8 @@
     </div>
   </div>
 </div>
+
+
 </body>
 </html>
 <script src="../../static/js/colorization/fanart-detail.js"></script>

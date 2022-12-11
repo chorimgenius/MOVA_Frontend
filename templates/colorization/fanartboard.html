@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../static/css/colorization/fanartboard.css" rel="stylesheet" type="text/css"/>
     <title>Document</title>
-    <script defer type="module" src="../../static/js/colorization/fanartboard.js"></script>
+
     <script defer>console.log(2,"두번째")</script>
     <!-- <script defer src="../../static/js/default/owl.carousel.js"></script> -->
     <script defer>console.log(4,"4번째")</script>
@@ -112,142 +112,33 @@
     <div class="page-right-content">
       <div class="content-line content-line-hero">
         <div class="line-header">
-          <span class="header-text">New Uploads</span>
+          <span class="header-text">Hot MOVA</span>
         </div>
-        <div class="slider-wrapper owl-carousel owl-theme" id="owl-slider-1">
-          <div class="item hero-img-wrapper img-1">
-            <div class="upload-text-wrapper">
-              <p class="upload-text-header">The </p>
-              <p class="upload-text-info">By Pravin <span> 20 minutes ago</span></p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2240&q=80" alt="SlideShow">
+        <div id="drag-container">
+          <div id="spin-container">
+            <!-- Add your images (or video) here -->
+            <img src="https://shared-comic.pstatic.net/thumb/webtoon/641253/thumbnail/thumbnail_IMAG21_01672165-03c8-44b1-ba0e-ef82c9cfcd10.jpg" alt="">
+            <img src="https://shared-comic.pstatic.net/thumb/webtoon/783053/thumbnail/thumbnail_IMAG21_d7732f14-26da-4e35-8762-660cc87b53f1.jpg" alt="">
+            <img src="https://shared-comic.pstatic.net/thumb/webtoon/800770/thumbnail/thumbnail_IMAG21_d2e1e7ee-fc83-4030-a1e7-200378bc088f.jpg" alt="">
+            <img src="https://shared-comic.pstatic.net/thumb/webtoon/792651/thumbnail/thumbnail_IMAG21_218f18ef-7f68-4d6a-972c-686a3e9f6138.jpg" alt="">
+            <img src="https://shared-comic.pstatic.net/thumb/webtoon/710751/thumbnail/thumbnail_IMAG21_53aefc06-6bdf-40fb-93ac-fab7242146c6.jpg" alt="">
+            <img src="https://shared-comic.pstatic.net/thumb/webtoon/783769/thumbnail/thumbnail_IMAG21_fc14e4e2-e62f-4d77-8f46-9fb05cffa77a.jpeg" alt="">
+            <img src="https://shared-comic.pstatic.net/thumb/webtoon/736277/thumbnail/thumbnail_IMAG21_bbbe3f76-021e-4dbc-830a-4358c1abec0c.jpg" alt="">
+            <img src="https://shared-comic.pstatic.net/thumb/webtoon/570503/thumbnail/thumbnail_IMAG21_85e39ba0-3fc6-4ddb-9e78-5e8879b7d3d9.jpg" alt="">
+            <img src="https://shared-comic.pstatic.net/thumb/webtoon/670143/thumbnail/thumbnail_IMAG21_12d5d293-d54d-4022-8e00-c97c5779c701.jpg" alt="">
+            <!-- Text at center of ground -->
+            <p>MOVA</p>
           </div>
-          <div class="item hero-img-wrapper img-2">
-            <div class="upload-text-wrapper">
-              <p class="upload-text-header">History of Art</p>
-              <p class="upload-text-info">By Pravin <span> 10 minutes ago</span></p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1485518994577-6cd6324ade8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2144&q=80" alt="SlideShow">
-          </div>
-          <div class="item hero-img-wrapper img-3">
-            <div class="upload-text-wrapper">
-              <p class="upload-text-header">Van Life</p>
-              <p class="upload-text-info">By Tess <span> 3 days ago</span></p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2208&q=80" alt="SlideShow">
-          </div>
+          <div id="ground"></div>
         </div>
+        <div id="music-container"></div>
       </div>
       <div class="content-line content-line-list">
         <div class="line-header">
           <span class="header-text">Trending</span>
         </div>
         <div id="owl-slider-2" class="slider-wrapper owl-carousel">
-          <!--<div class="item video-box-wrapper" style="background-color:black">
-            <figure class="snip1477">
-                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
-                <div class="title">
-                  <div>
-                    <h2>Penny</h2>
-                    <h4>Tool</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-          </div>
-           <div class="item video-box-wrapper" style="background-color:black">
-            <figure class="snip1477">
-                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
-                <div class="title">
-                  <div>
-                    <h2>Penny</h2>
-                    <h4>Tool</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-          </div>
-          <div class="item video-box-wrapper" style="background-color:black">
-            <figure class="snip1477">
-                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
-                <div class="title">
-                  <div>
-                    <h2>Penny</h2>
-                    <h4>Tool</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-          </div>
-          <div class="item video-box-wrapper" style="background-color:black">
-            <figure class="snip1477">
-                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
-                <div class="title">
-                  <div>
-                    <h2>Penny</h2>
-                    <h4>Tool</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-          </div>
-          <div class="item video-box-wrapper" style="background-color:black">
-            <figure class="snip1477">
-                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
-                <div class="title">
-                  <div>
-                    <h2>Penny</h2>
-                    <h4>Tool</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-          </div>
-          <div class="item video-box-wrapper" style="background-color:black">
-            <figure class="snip1477">
-                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
-                <div class="title">
-                  <div>
-                    <h2>Penny</h2>
-                    <h4>Tool</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-          </div>
-          <div class="item video-box-wrapper" style="background-color:black">
-            <figure class="snip1477">
-                <img src="http://127.0.0.1:8000/media/fanart/result/5e193d26baca4001adac8f0d3dbe6dfe.png" alt="sample38" />
-                <div class="title">
-                  <div>
-                    <h2>Penny</h2>
-                    <h4>Tool</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-          </div> -->
+          
         </div>
       </div>
       <div class="content-line content-line-list">
@@ -359,3 +250,4 @@
     </div>
   </body>
 </html>
+<script defer type="module" src="../../static/js/colorization/fanartboard.js"></script>
