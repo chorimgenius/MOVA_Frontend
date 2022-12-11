@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="owlcarosel/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarosel/owl.theme.default.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../static/css/colorization/fanart-detail.css" rel="stylesheet" type="text/css"/>
+    <title>Document</title>
+</head>
+<body>
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+<div class="app-wrapper">
+  <div class="left-area hide-on-mobile">
+    <div class="app-header">MOVA.
+      <span class="inner-text">toon</span>
+      <button class="close-menu">
+        <svg width="24" height="24" fill="none" stroke="#51a380" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-x">
+          <defs />
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="left-area-content">
+      <div class="profile">
+        <img src="https://images.unsplash.com/photo-1496340672773-0b29c9b17ed2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="">
+        <div class="profile-info">
+          <span class="profile-name">{user}님</span>
+          <span class="country">환영합니다!</span>
+        </div>
+      </div>
+      <div class="page-link-list">
+        <a href="#" class="item-link active" id="pageLink">
+          <svg class="link-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-home" viewBox="0 0 24 24">
+            <defs />
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            <path d="M9 22V12h6v10" /></svg>
+          홈</a>  
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+          </svg>
+          공지사항</a>
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play">
+            <path d="M5 3l14 9-14 9V3z" />
+          </svg>
+          팬 게시판</a>
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+          </svg>
+          관심 웹툰</a>
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" /></svg>
+          토론방</a>
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" /></svg>
+          깊은배움</a>
+      </div>
+    </div>
+    <button class="btn-invite">Invite Team</button>
+  </div>
+  <div class="right-area">
+    <div class="right-area-upper">
+      <button class="menu-button">
+        <svg width="24" height="24" fill="none" stroke="#51a380" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <defs />
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+      </button>
+      <div class="search-part-wrapper">
+        <input class="search-input" type="text" placeholder="Search videos...">
+        <a class="menu-links" href="#">Explore</a>
+        <a class="menu-links" href="#">Events</a>
+        <button class="more-button">
+          <svg width="24" height="24" fill="none" stroke="#51a380" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-more-vertical">
+            <defs />
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="12" cy="5" r="1" />
+            <circle cx="12" cy="19" r="1" />
+          </svg>
+        </button>
+        <ul class="more-menu-list hide">
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">Events</a></li>
+          <li> <button class="action-buttons btn-record">Record</button></li>
+          <li><button class="action-buttons btn-upload">Upload</button></li>
+        </ul>
+      </div>
+      <button class="btn-notification">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#232428" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
+        </svg>
+        <span>3</span>
+      </button>
+      <div class="action-buttons-wrapper">
+        <button class="action-buttons btn-record">Record</button>
+        <button class="action-buttons btn-upload">Upload</button>
+      </div>
+    </div>
+    <div class="page-right-content">
+
+        <div class="container-board">
+            <div class="slider-wrapper">
+                <div class="slider-overlay">
+                    <div class="slides-wrapper">
+                        <div class="slides active">
+                            <div class="card-container">
+                                <!-- <div class="img-wrapper card-item" style="background-image: url('resize1.png')">
+                                </div> -->
+                                <div>
+                                    <img src="resize1.png" id="fanart-image" style="object-fit: contain; width: 100%;"></img>
+                                </div>
+                                <div class="card-content card-item">
+                                    <div class="liked-wrapper">
+                                        <div class="liked-users">
+                                            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="">
+                                            <img src="https://randomuser.me/api/portraits/women/6.jpg" alt="">
+                                            <img src="https://randomuser.me/api/portraits/women/8.jpg" alt="">
+                                        </div>
+                                        <div class="liked-tagline">
+                                            <p id="likes-count"></p>
+                                        </div>
+                                        <button class="like-btn">
+                                                <?xml version="1.0" encoding="iso-8859-1"?>
+                                                <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 490.4 490.4" style="enable-background:new 0 0 490.4 490.4;" xml:space="preserve">
+                                                    <g>
+                                                        <path d="M222.5,453.7c6.1,6.1,14.3,9.5,22.9,9.5c8.5,0,16.9-3.5,22.9-9.5L448,274c27.3-27.3,42.3-63.6,42.4-102.1
+                                                            c0-38.6-15-74.9-42.3-102.2S384.6,27.4,346,27.4c-37.9,0-73.6,14.5-100.7,40.9c-27.2-26.5-63-41.1-101-41.1
+                                                            c-38.5,0-74.7,15-102,42.2C15,96.7,0,133,0,171.6c0,38.5,15.1,74.8,42.4,102.1L222.5,453.7z M59.7,86.8
+                                                            c22.6-22.6,52.7-35.1,84.7-35.1s62.2,12.5,84.9,35.2l7.4,7.4c2.3,2.3,5.4,3.6,8.7,3.6l0,0c3.2,0,6.4-1.3,8.7-3.6l7.2-7.2
+                                                            c22.7-22.7,52.8-35.2,84.9-35.2c32,0,62.1,12.5,84.7,35.1c22.7,22.7,35.1,52.8,35.1,84.8s-12.5,62.1-35.2,84.8L251,436.4
+                                                            c-2.9,2.9-8.2,2.9-11.2,0l-180-180c-22.7-22.7-35.2-52.8-35.2-84.8C24.6,139.6,37.1,109.5,59.7,86.8z"/>
+                                                    </g>
+                                                </svg>
+                                                
+                                        </button>
+                                    </div>
+                                    <div class="comments-wrapper">
+                                        <div class="submit-comment">
+                                            <input type="text" placeholder="Write  comment..." id="write-comment">
+                                            <button class="submit-comment" onclick="write_comment()">
+                                                    <?xml version="1.0" encoding="iso-8859-1"?>
+                                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                        viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">                                    
+                                                        <g>
+                                                            <path d="M509.532,34.999c-2.292-2.233-5.678-2.924-8.658-1.764L5.213,225.734c-2.946,1.144-4.967,3.883-5.192,7.034
+                                                                c-0.225,3.151,1.386,6.149,4.138,7.7l102.719,57.875l35.651,174.259c0.222,1.232,0.723,2.379,1.442,3.364
+                                                                c0.072,0.099,0.131,0.175,0.191,0.251c1.256,1.571,3.037,2.668,5.113,3c0.265,0.042,0.531,0.072,0.795,0.088
+                                                                c0.171,0.011,0.341,0.016,0.511,0.016c1.559,0,3.036-0.445,4.295-1.228c0.426-0.264,0.831-0.569,1.207-0.915
+                                                                c0.117-0.108,0.219-0.205,0.318-0.306l77.323-77.52c3.186-3.195,3.18-8.369-0.015-11.555c-3.198-3.188-8.368-3.18-11.555,0.015
+                                                                l-60.739,60.894l13.124-112.394l185.495,101.814c1.868,1.02,3.944,1.239,5.846,0.78c0.209-0.051,0.4-0.105,0.589-0.166
+                                                                c1.878-0.609,3.526-1.877,4.574-3.697c0.053-0.094,0.1-0.179,0.146-0.264c0.212-0.404,0.382-0.8,0.517-1.202L511.521,43.608
+                                                                C512.6,40.596,511.824,37.23,509.532,34.999z M27.232,234.712L432.364,77.371l-318.521,206.14L27.232,234.712z M162.72,316.936
+                                                                c-0.764,0.613-1.429,1.374-1.949,2.267c-0.068,0.117-0.132,0.235-0.194,0.354c-0.496,0.959-0.784,1.972-0.879,2.986L148.365,419.6
+                                                                l-25.107-122.718l275.105-178.042L162.72,316.936z M359.507,419.195l-177.284-97.307L485.928,66.574L359.507,419.195z"/>
+                                                        </g>                                    
+                                                    </svg>                                    
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <div class="container-board-comment">
+            <div class='comment-box'>
+                <h1>Comments</h1>
+                <div class='comment-list'>
+            
+                    
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
+<script src="../../static/js/colorization/fanart-detail.js"></script>
