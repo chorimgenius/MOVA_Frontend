@@ -1,14 +1,16 @@
-$(document).ready(function () {
-    $("a#pageLink").click(function () {
-      $("a#pageLink").removeClass("active");
-      $(this).addClass("active");
-    });
-    $(".menu-button").click(function () {
-      $(".left-area").removeClass("hide-on-mobile");
-    });
-    $(".close-menu").click(function () {
-      $(".left-area").addClass("hide-on-mobile");
-    });
-    $(".more-button").click(function () {
-      $(".more-menu-list").toggle("hide");
-    });
+const backend_base_url = "http://127.0.0.1:8000/"
+
+window.onload = async function loadBoards() {
+  boards = await getBoards()
+  console.log(boards)
+}
+
+async function getBoards() {
+  const response = await fetch('http://127.0.0.1:8000/all?search=', {
+    headers : {
+      "Authorization" : "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMDE2MzAzLCJpYXQiOjE2NzA2NTYzMDMsImp0aSI6ImJjYzkzNzg0YWJmYzQ0MDI5MTM3MDY5NGNjMGNkYWJhIiwidXNlcl9pZCI6MiwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.Rm8bJR-HKeGGi9MVJC4WsHS7oy8bS8wZsamPFwmLNCM"
+    },
+    method: 'GET',
+  })
+  console.log(response)
+}
