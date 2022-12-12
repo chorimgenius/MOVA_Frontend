@@ -1,3 +1,4 @@
+
 /**
  * Owl Carousel v2.3.4
  * Copyright 2013-2018 David Deutsch
@@ -15,6 +16,8 @@
  * @todo Test Zepto
  * @todo stagePadding calculate wrong active classes
  */
+ // 1 second wait
+export function owl_carousel(){
 ;(function($, window, document, undefined) {
 
 	/**
@@ -24,6 +27,7 @@
 	 * @param {HTMLElement|jQuery} element - The element to create the carousel for.
 	 * @param {Object} [options] - The options
 	 */
+	 
 	function Owl(element, options) {
 
 		/**
@@ -3446,3 +3450,4 @@
 	}
 
 })(window.Zepto || window.jQuery, window, document);
+}
