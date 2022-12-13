@@ -1,4 +1,5 @@
 const backend_base_url = "http://127.0.0.1:8000"
+const frontend_base_url = "http://127.0.0.1:5500"
 
 window.onload= () => {
     MainPage()
@@ -13,7 +14,7 @@ async function MainPage(){
     const response = await fetch(`${backend_base_url}/`, {
         method: 'GET',
         headers:{
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwODI0NDMzLCJpYXQiOjE2NzA0NjQ0MzMsImp0aSI6IjhlNjdlZWU0ZDRhYTRlNThiMjM1NGEzNWY2Yjc1MGUxIiwidXNlcl9pZCI6MSwiZW1haWwiOiJqdUBqdS5jb20ifQ.oagP4_e7sP3hg_rJ8og8Mgz_X34-xJCrhjc86RBZFG8"
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMDIwNTQ3LCJpYXQiOjE2NzA2NjA1NDcsImp0aSI6ImIxZmMyZmZiYTFmZTQ5ZDViMTFkZTNhY2ZkNmJhOWZmIiwidXNlcl9pZCI6MywiZW1haWwiOiJqdUBqdS5jb20ifQ.PcDGAF100PNRSKD_pqJXhzYwiGMn_v2yFeokNb0PbQI"
         }
     })
     response_json = await response.json()
@@ -23,58 +24,63 @@ async function MainPage(){
 
     const naver = document.getElementById("owl-slider-2")
     naver_list.forEach(element => {
-        const naver_web = ` 
-                            <div class="item video-box-wrapper">
-                                <div class="img-preview">
-                                    <img src="${element.image_url}" alt="">
+        const naver_web = ` <a class="a_box" href='webtoondetail.html?id=${element.id}'">
+                                <div class="item video-box-wrapper">
+                                    <div class="img-preview">
+                                        <img src="${element.image_url}" alt="">
+                                    </div>
+                                    <div class="video-description-wrapper">
+                                        <p class="video-description-header">${element.title}</p>
+                                        <p class="video-description-subheader">By ${element.author}</p>
+                                        <p class="video-description-info">${element.genre} <span>${element.likes_count} likes</span></p>
+                                    </div>
                                 </div>
-                                <div class="video-description-wrapper">
-                                    <p class="video-description-header">${element.title}</p>
-                                    <p class="video-description-subheader">By ${element.author}</p>
-                                    <p class="video-description-info">${element.genre} <span>${element.likes_count} likes</span></p>
-                                </div>
-                            </div>
-                        `
+                            </a>`
         naver.insertAdjacentHTML("beforeend",naver_web)
     });
 
     const kakao = document.getElementById("owl-slider-3")
     kakao_list.forEach(element => {
-        const kakao_web = ` 
-                            <div class="item video-box-wrapper">
-                                <div class="img-preview">
-                                    <img src="${element.image_url}" alt="">
+        const kakao_web = ` <a class="a_box" href='webtoondetail.html?id=${element.id}'">
+                                <div class="item video-box-wrapper">
+                                    <div class="img-preview">
+                                        <img src="${element.image_url}" alt="">
+                                    </div>
+                                    <div class="video-description-wrapper">
+                                        <p class="video-description-header">${element.title}</p>
+                                        <p class="video-description-subheader">By ${element.author}</p>
+                                        <p class="video-description-info">${element.genre} <span>${element.likes_count} likes</span></p>
+                                    </div>
                                 </div>
-                                <div class="video-description-wrapper">
-                                    <p class="video-description-header">${element.title}</p>
-                                    <p class="video-description-subheader">By ${element.author}</p>
-                                    <p class="video-description-info">${element.genre} <span>${element.likes_count} likes</span></p>
-                                </div>
-                            </div>
-                        `
+                            </a>`
         kakao.insertAdjacentHTML("beforeend",kakao_web)
     });
 
     const mark = document.getElementById("owl-slider-4")
     bookmark_list.forEach(element => {
-        const mark_web = ` 
-                            <div class="item video-box-wrapper">
-                                <div class="img-preview">
-                                    <img src="${element.image_url}" alt="">
+        const mark_web = `  <a class="a_box" href='webtoondetail.html?id=${element.id}'">
+                                <div class="item video-box-wrapper">
+                                    <div class="img-preview">
+                                        <img src="${element.image_url}" alt="">
+                                    </div>
+                                    <div class="video-description-wrapper">
+                                        <p class="video-description-header">${element.title}</p>
+                                        <p class="video-description-subheader">By ${element.author}</p>
+                                        <p class="video-description-info">${element.genre} <span>${element.likes_count} likes</span></p>
+                                    </div>
                                 </div>
-                                <div class="video-description-wrapper">
-                                    <p class="video-description-header">${element.title}</p>
-                                    <p class="video-description-subheader">By ${element.author}</p>
-                                    <p class="video-description-info">${element.genre} <span>${element.likes_count} likes</span></p>
-                                </div>
-                            </div>
-                        `
+                            </a>`
         mark.insertAdjacentHTML("beforeend",mark_web)
     });
 
     b()
     a()
+}
 
+async function Search(){
+    const search = document.getElementById("search").value
+    console.log(search)
+    location.href= "search_webtoon.html?search=" + search;
 }
 
 function a(){
