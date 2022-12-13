@@ -4,6 +4,10 @@ const url = new URL(urlStr);
 const urlParms = url.searchParams;
 const id = urlParms.get('id')
 
+const payload = localStorage.getItem("payload");
+const payload_parse = JSON.parse(payload)
+const payload_username= payload_parse.username
+
 window.onload = () => {
   getBoardDetail()
   webtooncomment_read()
@@ -43,7 +47,8 @@ async function getBoardDetail() {
 
   const footnote = document.getElementById('board_title')
   console.log(response_json.board_user)
-  if(response_json.board_user=="qwe"){
+  
+  if(response_json.board_user == payload_username){
     del_put_button = `<button style="float: right; font-size: 16px;" onclick="deleteBoard()">삭제</button>
     <button style="float: right; font-size: 16px;" onclick="putBoard()">수정</button>`
     footnote.insertAdjacentHTML("beforeend", del_put_button)
@@ -54,7 +59,7 @@ async function deleteBoard() {
   const response = await fetch(`${backend_base_url}/board/${id}/`, {
     method: 'DELETE',
     headers:{
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTg0MzQwLCJpYXQiOjE2NzA4MjQzNDAsImp0aSI6IjlmNzc3ZTg4YjI0ZjRhNzFhYmIwZTM3YTFkOTE4MDc2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.VjL6PPlDcAzR8GizCJie61UzTRR4LLvekuZiktC8iS0"
+      "Authorization": localStorage.getItem("access"),
     }
   })
   location.href="board.html"
@@ -98,7 +103,6 @@ async function webtooncomment_read() {
       method: 'GET'
   })
   response_json = await response.json()
-  console.log(response_json)
   const comment_container = document.getElementById('comment-contatiner')
   for (let i=0; i < response_json.length; i++){
       let comment_id = response_json[i]['id']
@@ -107,15 +111,15 @@ async function webtooncomment_read() {
       let content = response_json[i]['comment']
       let created_at = response_json[i]['updated_at']
       let time_before = time2str(created_at)
-      if (username == "qwe"){
+      if (username == payload_username){
         let comment_html1 = `<div class="comment">
                                 <div class="comment_user">
-                                    <img class="user_image" style="width: 50px; height: 50px; border-radius: 70%; margin-top: 20px;" src="${backend_base_url}${image}">
+                                    <img class="user_image" style="width: 50px; height: 50px; border-radius: 70%; margin-top: 30px;" src="${backend_base_url}${image}">
                                 </div>
                                 <div class="comment_content">
                                     <div style="display: flex;">
-                                        <h6>${username}</h6>
-                                        <span class="comment_time">${time_before}</span>
+                                        <h6>${username} &nbsp| &nbsp ${time_before}</h6>
+                                        
                                     </div>
                                     <span class="shape ble_left no_drag" id="comment">${content}</span>
                                 </div>
@@ -165,7 +169,7 @@ async function webtooncomment_write(){
   await fetch(`${backend_base_url}/board/${id}/comment/` , {
       method:'POST',
       headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTg0MzQwLCJpYXQiOjE2NzA4MjQzNDAsImp0aSI6IjlmNzc3ZTg4YjI0ZjRhNzFhYmIwZTM3YTFkOTE4MDc2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.VjL6PPlDcAzR8GizCJie61UzTRR4LLvekuZiktC8iS0",
+        "Authorization": localStorage.getItem("access"),
         "content-type" : 'application/json',
       },
       body: JSON.stringify({
@@ -204,7 +208,7 @@ async function webtooncomment_update_read(comment_id) {
     await fetch(`${backend_base_url}/board/${id}/comment/${comment_id}/`, {
         method: 'PUT',
         headers: {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTg0MzQwLCJpYXQiOjE2NzA4MjQzNDAsImp0aSI6IjlmNzc3ZTg4YjI0ZjRhNzFhYmIwZTM3YTFkOTE4MDc2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.VjL6PPlDcAzR8GizCJie61UzTRR4LLvekuZiktC8iS0",
+            "Authorization": localStorage.getItem("access"),
             "content-type" : 'application/json',
         },
         body: JSON.stringify({
@@ -223,7 +227,7 @@ async function handleDeleteComment(comment_id){
   const id = urlParms.get('id')
   const response = await fetch(`${backend_base_url}/board/${id}/comment/${comment_id}/`,{
       headers : {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTg0MzQwLCJpYXQiOjE2NzA4MjQzNDAsImp0aSI6IjlmNzc3ZTg4YjI0ZjRhNzFhYmIwZTM3YTFkOTE4MDc2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.VjL6PPlDcAzR8GizCJie61UzTRR4LLvekuZiktC8iS0",
+        "Authorization": localStorage.getItem("access"),
       },    
       method : 'DELETE',
       body : {}

@@ -3,18 +3,14 @@ const frontend_base_url = "http://127.0.0.1:5500"
 
 window.onload= () => {
     MainPage()
+    Profile()
 }
 
 async function MainPage(){
-    // const payload = localStorage.getItem("payload");
-    // const payload_parse = JSON.parse(payload)
-    // const username = document.getElementById("username")
-    // username.innerText = payload_parse.username
-
     const response = await fetch(`${backend_base_url}/`, {
         method: 'GET',
         headers:{
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMDIwNTQ3LCJpYXQiOjE2NzA2NjA1NDcsImp0aSI6ImIxZmMyZmZiYTFmZTQ5ZDViMTFkZTNhY2ZkNmJhOWZmIiwidXNlcl9pZCI6MywiZW1haWwiOiJqdUBqdS5jb20ifQ.PcDGAF100PNRSKD_pqJXhzYwiGMn_v2yFeokNb0PbQI"
+            "Authorization": localStorage.getItem("access"),
         }
     })
     response_json = await response.json()
@@ -75,6 +71,27 @@ async function MainPage(){
 
     b()
     a()
+}
+
+async function Profile(){
+    const response = await fetch(`${backend_base_url}/user/`, {
+        method: 'GET',
+        headers:{
+          "Authorization": localStorage.getItem("access"),
+        }
+    })
+    response_json = await response.json()
+    document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
+    document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
+}
+
+// 로그아웃
+async function handleLogout(){
+	localStorage.removeItem("access")
+	localStorage.removeItem("refresh")
+	localStorage.removeItem("payload")
+	alert("로그아웃되었습니다.")
+    location.href="../user/signup.html"
 }
 
 async function Search(){

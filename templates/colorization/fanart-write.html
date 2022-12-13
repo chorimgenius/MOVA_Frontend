@@ -402,7 +402,7 @@
     form_data.append('image',file)
     const response = await fetch(`http://127.0.0.1:8000/fanart/baseimage/`,{
       headers: {
-        "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwNzUyNzE1LCJpYXQiOjE2NzAzOTI3MTUsImp0aSI6IjJiZTMzMTQxNzUxNDQxMzI4ZGE3ZDY1MDNlMGI4ZGNmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.1B6_uDlW_8i7becxZVPSXl_cN6jaF1edhX_rLHVeSw8",
+        "Authorization" : localStorage.getItem("access"),
       },
       method:'POST',
       body: form_data
@@ -476,7 +476,7 @@
 
     const response = await fetch(`http://127.0.0.1:8000/fanart/colorization/`,{
       headers: {
-        "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwNzUyNzE1LCJpYXQiOjE2NzAzOTI3MTUsImp0aSI6IjJiZTMzMTQxNzUxNDQxMzI4ZGE3ZDY1MDNlMGI4ZGNmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.1B6_uDlW_8i7becxZVPSXl_cN6jaF1edhX_rLHVeSw8",
+        "Authorization" : localStorage.getItem("access"),
       },
       method:'POST',
       body: form_data
@@ -502,7 +502,7 @@
 
     const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
       headers: {
-        "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwOTI1Njc5LCJpYXQiOjE2NzA1NjU2NzksImp0aSI6IjlhM2ViYTE3YWNiZDRiZDZhZTE0NGI4ZDQyY2I1NmM4IiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.JyYhMKHQ7CzXDsZnlO_Tfpn6Ygx6Fc2d239u9__Wt8U",
+        "Authorization" : localStorage.getItem("access"),
         "content-type" : 'application/json',
       },
       method:'POST',

@@ -2,6 +2,7 @@ const backend_base_url = "http://127.0.0.1:8000"
 
 window.onload= () => {
     SearchPage()
+    Profile()
 }
 
 const urlParams = new URL(location.href).searchParams;
@@ -11,7 +12,7 @@ async function SearchPage(){
     const response = await fetch(`${backend_base_url}/all?search=${search}`, {
         method: 'GET',
         headers:{
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTA3NTk1LCJpYXQiOjE2NzA3NDc1OTUsImp0aSI6IjRiMDQ2YzhiZDQ5ZjRmYjliYzMxMTYxYWZlNGNlZWUwIiwidXNlcl9pZCI6MywiZW1haWwiOiJqdUBqdS5jb20ifQ.KtocYBBUI2k_oS6bo1oB7ci7gDbiF0K9wCB2utxAFo4"
+            "Authorization": localStorage.getItem("access"),
         }
     })
     response_json = await response.json()
@@ -38,8 +39,29 @@ async function SearchPage(){
     });
 }
 
+async function Profile(){
+    const response = await fetch(`${backend_base_url}/user/`, {
+        method: 'GET',
+        headers:{
+          "Authorization": localStorage.getItem("access"),
+        }
+    })
+    response_json = await response.json()
+    document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
+    document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
+}
+
 async function Search(){
     const search = document.getElementById("search").value
     console.log(search)
     location.href= "search_webtoon.html?search=" + search;
+}
+
+// 로그아웃
+async function handleLogout(){
+	localStorage.removeItem("access")
+	localStorage.removeItem("refresh")
+	localStorage.removeItem("payload")
+	alert("로그아웃되었습니다.")
+    location.href="../user/signup.html"
 }

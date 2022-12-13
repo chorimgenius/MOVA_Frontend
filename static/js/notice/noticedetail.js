@@ -43,7 +43,7 @@ async function deleteNotice() {
   const response = await fetch(`${backend_base_url}/notice/${id}/`, {
     method: 'DELETE',
     headers:{
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTg0MzQwLCJpYXQiOjE2NzA4MjQzNDAsImp0aSI6IjlmNzc3ZTg4YjI0ZjRhNzFhYmIwZTM3YTFkOTE4MDc2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.VjL6PPlDcAzR8GizCJie61UzTRR4LLvekuZiktC8iS0"
+      "Authorization": localStorage.getItem("access"),
     }
   })
   location.href="notice.html"
