@@ -57,13 +57,13 @@ if (autoRotate) {
 }
 
 // setup events
-document.onpointerdown = function (e) {
+document.getElementById("drag-container").onpointerdown = function (e) {
   clearInterval(odrag.timer);
   e = e || window.event;
   var sX = e.clientX,
     sY = e.clientY;
 
-  this.onpointermove = function (e) {
+  document.onpointermove = function (e) {
     e = e || window.event;
     var nX = e.clientX,
       nY = e.clientY;
@@ -76,7 +76,7 @@ document.onpointerdown = function (e) {
     sY = nY;
   };
 
-  this.onpointerup = function (e) {
+  document.onpointerup = function (e) {
     odrag.timer = setInterval(function () {
       desX *= 0.95;
       desY *= 0.95;
