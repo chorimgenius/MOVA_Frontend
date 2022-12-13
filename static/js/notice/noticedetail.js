@@ -6,6 +6,7 @@ const id = urlParms.get('id')
 console.log(id)
 window.onload = () => {
   getNoticeDetail()
+  Profile()
 }
 
 async function getNoticeDetail() {
@@ -51,4 +52,30 @@ async function deleteNotice() {
 
 async function putNotice() {
   location.href = `http://127.0.0.1:5500/templates/notice/noticewrite.html?id=${id}`
+}
+
+async function handleLogout(){
+	localStorage.removeItem("access")
+	localStorage.removeItem("refresh")
+	localStorage.removeItem("payload")
+	alert("로그아웃되었습니다.")
+    location.href="../user/signup.html"
+}
+
+async function Search(){
+  const search = document.getElementById("search").value
+  console.log(search)
+  location.href= "../webtoon/search_webtoon.html?search=" + search;
+}
+
+async function Profile(){
+  const response = await fetch(`${backend_base_url}/user/`, {
+      method: 'GET',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+  })
+  response_json = await response.json()
+  document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
+  document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
 }

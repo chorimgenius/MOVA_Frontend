@@ -4,6 +4,7 @@ const frontend_base_url = "http://127.0.0.1:5500"
 
 window.onload = () => {
   getBoard()
+  Profile()
 }
 
 async function getBoard() {
@@ -64,11 +65,35 @@ function boardSearch(){
   location.href = `${frontend_base_url}/templates/board/board.html?search=${board_search}`
 }
 
-
 function postBoard() {
   location.href = "boardwrite.html"
 }
 
+async function Profile(){
+  const response = await fetch(`${backend_base_url}/user/`, {
+      method: 'GET',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+  })
+  response_json = await response.json()
+  document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
+  document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
+}
+
+async function handleLogout(){
+	localStorage.removeItem("access")
+	localStorage.removeItem("refresh")
+	localStorage.removeItem("payload")
+	alert("로그아웃되었습니다.")
+    location.href="../user/signup.html"
+}
+
+async function Search(){
+  const search = document.getElementById("search").value
+  console.log(search)
+  location.href= "../webtoon/search_webtoon.html?search=" + search;
+}
 
 $(document).ready(function () {
   $("a#pageLink").click(function () {
