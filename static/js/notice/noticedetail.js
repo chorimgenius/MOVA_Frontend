@@ -1,41 +1,54 @@
-$(document).ready(function () {
-    $("a#pageLink").click(function () {
-      $("a#pageLink").removeClass("active");
-      $(this).addClass("active");
-    });
-    $(".menu-button").click(function () {
-      $(".left-area").removeClass("hide-on-mobile");
-    });
-    $(".close-menu").click(function () {
-      $(".left-area").addClass("hide-on-mobile");
-    });
-    $(".more-button").click(function () {
-      $(".more-menu-list").toggle("hide");
-    });
+const backend_base_url = "http://127.0.0.1:8000"
+const urlStr = window.location.href;
+const url = new URL(urlStr);
+const urlParms = url.searchParams;
+const id = urlParms.get('id')
+console.log(id)
+window.onload = () => {
+  getNoticeDetail()
+}
 
+async function getNoticeDetail() {
+  console.log("함수실행맨")
+  const response = await fetch(`${backend_base_url}/notice/${id}/`, {
+    method: 'GET',
+  })
+  response_json = await response.json()
+  const notice_title = document.getElementById('notice_title')
+  notice_title.innerText = response_json.title
 
-    var app = new Vue({
-      el: '#app',
-      data: { 
-          progress: 0, 
-          articleText: 'Loading...',
-      }
-  });
-  
-  document.addEventListener('scroll', function(e){
-      app.progress = (window.scrollY/(document.getElementsByClassName('page-container')[0].clientHeight - window.innerHeight))*100;
-  });
-  
-  // AJAX call for the Lorem Ipsum
-  var xmlhttp = new XMLHttpRequest();
-  
-  xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-          if(xmlhttp.status == 200) { app.articleText = xmlhttp.responseText; }
-          else if(xmlhttp.status == 400) { console.log('There was an error 400'); }
-          else { console.log('Aw shucks, the proxy didnt work'); }
-      }
-  };
-  
-  xmlhttp.open("GET", "https://cors-anywhere.herokuapp.com/https://loripsum.net/api/12/long/decorate/link/ul/code/bq/headers", true);
-  xmlhttp.send();
+  const notice_user_image = document.getElementById('notice_user_image')
+  notice_user_image.src=`${backend_base_url}${response_json.notice_user_profile_image}`
+
+  const notice_username = document.getElementById('notice_username')
+  notice_username.innerText = response_json.notice_user
+
+  const notice_content = document.getElementById('notice_content')
+  notice_content.innerHTML = response_json.content
+
+  const notice_created_at = document.getElementById('notice_created_at')
+  const today = new Date(response_json.created_at)
+  notice_created_at.innerText = today.toLocaleDateString()
+
+  const footnote = document.getElementById('article-footnote')
+  console.log(response_json.notice_user)
+  if(response_json.notice_user=="qwe"){
+    del_put_button = `<button style="float: right;" onclick="deleteNotice()">삭제</button>
+    <button style="float: right;" onclick="putNotice()">수정</button>`
+    footnote.insertAdjacentHTML("beforeend", del_put_button)
+  }
+}
+
+async function deleteNotice() {
+  const response = await fetch(`${backend_base_url}/notice/${id}/`, {
+    method: 'DELETE',
+    headers:{
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTg0MzQwLCJpYXQiOjE2NzA4MjQzNDAsImp0aSI6IjlmNzc3ZTg4YjI0ZjRhNzFhYmIwZTM3YTFkOTE4MDc2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.VjL6PPlDcAzR8GizCJie61UzTRR4LLvekuZiktC8iS0"
+    }
+  })
+  location.href="notice.html"
+}
+
+async function putNotice() {
+  location.href = `http://127.0.0.1:5500/templates/notice/noticewrite.html?id=${id}`
+}

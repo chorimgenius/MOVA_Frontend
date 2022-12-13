@@ -154,7 +154,6 @@ input[type=text] {
 
 .profile span {
     display: block;
-    line-height: 20px;
 }
 
 .profile .profile-name {
@@ -808,21 +807,49 @@ a {
     font-size: 0;
 }
 
-.bt_wrap a {
+.button-register {
     display: inline-block;
     min-width: 80px;
     margin-left: 10px;
     padding: 10px;
-    border: 1px solid #000;
-    border-radius: 2px;
+    border: 1px solid #51a380;
+    border-radius: 4px;
     font-size: 1.4rem;
+    background-color: #51a380;
+}
+
+.button-cancel {
+    display: inline-block;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #e6f1ed;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    background-color: #e6f1ed;
 }
 
 .bt_wrap a:first-child {
     margin-left: 0;
 }
+.bt_wrap button.on {
+    color: white;
+    font: bold;
+    font-size: 15px;
+}
+
+.bt_wrap button.exit {
+    color: #51a380;
+    font: bold;
+    font-size: 15px;
+}
 
 .bt_wrap a.on {
+    background: #000;
+    color: #fff;
+}
+
+.bt_wrap a.exit {
     background: #000;
     color: #fff;
 }
@@ -955,7 +982,7 @@ a {
 }
 .board_write .dropdown button,
 .dropdown-item {
-    font-size: 1.4rem;
+    font-size: 2.0rem;
 }
 
 .board_wrtie .info li{

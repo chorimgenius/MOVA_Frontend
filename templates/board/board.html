@@ -146,8 +146,8 @@
                   <form action="">
                     <div class="search-wrap">
                       <label for="search" class="blind">공지사항 내용 검색</label>
-                      <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                      <button type="submit" class="btn btn-dark">검색</button>
+                      <input id="board_search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+                      <button type="button" onclick="boardSearch()" class="btn btn-dark">검색</button>
                     </div>
                   </form>
                 </div>
@@ -164,22 +164,8 @@
                       <th scope="col" class="th-date">등록일</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>3</td>
-                      <th><a href="#!">MOVA를 이용하는 방법!</a></th>
-                      <td>2022.12.02</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <th><a href="#!">갓오하 완결되어서 아쉽지만 재밌었어요 ㅠㅠ</a></th>
-                      <td>2022.12.01</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <th><a href="#!">MOVA 웹툰 팬 게시판 입니다.</a></th>
-                      <td>2022.11.30</td>
-                    </tr>
+                  <tbody id="boardgetlist">
+                    
                   </tbody>
                 </table>
               </div>

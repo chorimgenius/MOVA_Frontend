@@ -692,7 +692,7 @@
   h5,
   h6 {
     color: #999;
-    margin-bottom: 20px;
+    
   }
   b {
     font-weight: 700;
@@ -763,7 +763,8 @@
     padding: 40px;
     background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.15);
+    margin-top: 10px;
   }
   .author-pic {
     height: 54px;
@@ -774,7 +775,7 @@
     vertical-align: top;
   }
   .article-pic {
-    background: url("https://velog.velcdn.com/images/marinred/post/29e142d7-759d-4a05-8b26-0727a731222f/image.png") center no-repeat;
+    background: url("") center no-repeat;
     background-size: cover;
     height: 300px;
     border-radius: 2px;
@@ -803,3 +804,145 @@
     color: #999;
     font-style: italic;
   }
+
+  .profile-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 2;
+  }
+
+  .rela-block > p {
+    margin-bottom: 17px;
+  }
+
+  .rela-block > p > img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .comment{
+    margin-top: 10px;
+    display:flex;
+    justify-content: left;
+    margin-left: 10px;
+    height: 120px;
+    padding-top: 10px;
+}
+
+.comment:first-child{
+    margin-top: 20px;
+    display:flex;
+    justify-content: left;
+    margin-left: 10px;
+    height: 80px;
+}
+
+.comment h6{
+    text-align:left;
+    margin-left: 21px;
+    
+}
+
+.comment_time{
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+.comment-User{
+    display: flex;
+    margin: 0 auto;
+    height: 80px;
+}
+
+.comment_content{
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.update_delete{
+    height:20px;
+    margin-top: 50px;
+}
+.update_delete span{
+    margin-left: 5px;
+}
+
+.form-control{
+    margin-top: 10px;
+}
+
+/* 댓글 말풍선 */
+.ble_left {
+    margin: auto auto auto 20px;
+    height: 40px;
+    padding: 8px 12px;
+    background: #e6f1ed;
+    color: #51a380;
+    position: relative;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.4);
+    font-size: 17px;
+    vertical-align: baseline;
+}
+
+.ble_left:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 8px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 20px solid #e6f1ed;
+    border-bottom: 10px solid transparent;
+
+}
+
+/* modal */
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.modal-window {
+  background: white;
+  box-shadow: 0 8px 32px 0 rgba(11, 11, 12, 0.37);
+  backdrop-filter: blur( 13.5px );
+  -webkit-backdrop-filter: blur( 13.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  width: 1200px;
+  height: 120px;
+  position: relative;
+  top: -100px;
+  padding: 10px;
+  margin-left: 120px;
+}
+
+.modal_comment_id{
+    display:none;
+}
+.title{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: left;
+  text-align: center;
+}
