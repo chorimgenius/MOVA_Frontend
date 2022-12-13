@@ -4,7 +4,7 @@ const backend_base_url = "http://127.0.0.1:8000"
 window.onload = function (){
     loadArticles()
     webtooncomment_read()
-
+    Profile()
 }
 async function loadArticles() {
     const payload = localStorage.getItem("payload");
@@ -274,9 +274,31 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-
-
+async function Profile(){
+    const response = await fetch(`${backend_base_url}/user/`, {
+        method: 'GET',
+        headers:{
+          "Authorization": localStorage.getItem("access"),
+        }
+    })
+    response_json = await response.json()
+    document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
+    document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
+  }
+  
+  async function handleLogout(){
+      localStorage.removeItem("access")
+      localStorage.removeItem("refresh")
+      localStorage.removeItem("payload")
+      alert("로그아웃되었습니다.")
+      location.href="../user/signup.html"
+  }
+  
+  async function Search(){
+    const search = document.getElementById("search").value
+    console.log(search)
+    location.href= "../webtoon/search_webtoon.html?search=" + search;
+  }
 
 // 기본 페이지에 쓰이는 javascript
 $(document).ready(function () {
