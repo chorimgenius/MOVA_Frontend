@@ -1061,48 +1061,107 @@ a {
         width: 100%;
     }
 }
-#modal_btn {
-    width: 100px;
-    height: 10px;
-}
-
-.modal_wrap {
-    display: none;
-    width: 500px;
-    height: 500px;
-    position: absolute;
-    border: 2px solid black;
-    top:50%;
-    left: 50%;
-    margin: -250px 0 0 -250px;
-    background: white;
-    z-index: 2;
-}
-.modal_background {
-    display: none;
-    position: absolute;
+.modal {
     width: 100%;
     height: 100%;
-    background-color:rgba(0, 0,0, 0.5);
-    top:0;
+    position: absolute;
     left: 0;
-    z-index: 1;
-}
-.modal_close {
-    width: 26px;
-    height: 26px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+  }
+
+  .modal_window {
+      background: white;
+      backdrop-filter: blur(13.5px);
+      -webkit-backdrop-filter: blur(13.5px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: 800px;
+      height: 320px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .modal_title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  }
+
+  .modal_title_side {
+      margin: 5px;
+      flex: 0 0 40px;
+      text-align: center;
+  }
+  .feed_name {
+    padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
-.modal_wrap .text {
-    margin-top: 45px;
-    margin-left: 5px;
+.feed_name_txt {
+    font-size: 14px;
+    padding: 0px 10px;
+    font-weight: bold;
 }
 
-.modal_close .closeImg {
-    display: block;
+.profile_box {
+    width: 40px;
+    height: 40px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+.navi_profile_box {
+    width: 30px;
+    height: 30px;
+    border-radius: 70%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.profile_img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+}
+
+.name_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.name_content_txt {
+    font-size: 12px;
+    padding: 0px 10px;
+    font-weight: bold;
+    color: lightgray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 190px;
+}
+
+.big_profile_box {
+    width: 60px;
+    height: 60px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+.link_txt {
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
 }

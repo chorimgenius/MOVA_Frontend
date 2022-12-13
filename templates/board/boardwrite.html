@@ -148,51 +148,37 @@
                                 <div class="title">
                                     <dl>
                                         <dt>제목</dt>
-                                        <dd><input type="text" placeholder="제목 입력"></dd>
+                                        <dd><input type="text" id="title" placeholder="제목 입력"></dd>
                                     </dl>
                                 </div>
                                 <div class="info">
                                     <dl>
                                         <dt>글쓴이</dt>
-                                        <dd><input type="text" placeholder="글쓴이 입력"></dd>
+                                        <dd><span id="board-author"></span></dd>
                                     </dl>
                                     <dl>
                                         <dt>카테고리</dt>
                                         <div class="dropdown">
-                                            <button type="button" id="category_button" class="btn dropdown-toggle"
-                                                data-bs-toggle="dropdown">
-                                                카테고리
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" id="category1" href="#">팬 게시판</a></li>
-                                                <li><a class="dropdown-item" id="category2" href="#">토론방</a></li>
-                                            </ul>
+                                            <select id="dropdown_category" name="dropdown_category">
+                                                <option>팬게시판</option>
+                                                <option>토론방</option>
+                                            </select>
                                         </div>
                                     </dl>
                                     <dl>
-                                        <dt>웹툰</dt>
-                                        <div>
-                                            <button type='button' id="modal_btn">모달창 키기</button>
-                                        </div>
+                                        <dt>웹툰 선택</dt>
+                                        <dd><input type="text" id="board-webtoon" placeholder="웹툰을 입력해주세요!"><button
+                                                id="select-webtoon" onclick="getBoardWebtoon()">검색<button></dd>
                                     </dl>
                                     <dl>
-                                        <dt>웹툰 카테고리</dt>
-                                        <div class="dropdown">
-                                            <button type="button" id="category_button" class="btn dropdown-toggle"
-                                                data-bs-toggle="dropdown">
-                                                카테고리
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" id="category1" href="#">팬 게시판</a></li>
-                                                <li><a class="dropdown-item" id="category2" href="#">토론방</a></li>
-                                            </ul>
-                                        </div>
+                                        <dt>웹툰명</dt>
+                                        <dd><span id="webtoon_name"></span></dd>
                                     </dl>
                                 </div>
                                 <div id="editor"></div>
                             </div>
                             <div class="bt_wrap">
-                                <a href="../board/board.html" class="on">등록</a>
+                                <a href="#" class="on" onclick="writeBoard()">등록</a>
                                 <a href="../board/board.html">취소</a>
                             </div>
                         </div>
@@ -201,11 +187,18 @@
             </div>
         </div>
     </div>
-    <div id="Modal" aria-hidden="true">
-        <div class="modal_background"></div>
-        <div class="modal_wrap">
-            <div class="modal_close"><img class="closeImg" src="" alt="x버튼"></div>
-            <div class="text">
+    <div id="modal_add_feed" class="modal modal_overlay">
+        <div class="modal_window" >
+            <div class="modal_title">
+                <div class="modal_title_side"></div>
+                <div> 웹툰 리스트</div>
+                <div class="modal_title_side">
+                    <span id="close_modal" class="close_modal material-icons-outlined" style="font-size: 30px">
+                        close
+                    </span>
+                </div>
+            </div>
+            <div id="webtoon_box" style="display: flex;flex-wrap: nowrap; padding:10px; overflow-y:scroll;">
             </div>
         </div>
     </div>
