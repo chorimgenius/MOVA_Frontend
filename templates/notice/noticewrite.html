@@ -149,33 +149,30 @@
                                 <div class="title">
                                     <dl>
                                         <dt>제목</dt>
-                                        <dd><input type="text" placeholder="제목 입력"></dd>
+                                        <dd><input type="text" id="title" placeholder="제목을 입력해주세요."></dd>
                                     </dl>
                                 </div>
                                 <div class="info">
                                     <dl>
                                         <dt>글쓴이</dt>
-                                        <dd><input type="text"></dd>
+                                        <dd><p id="notice-author" style="margin-bottom: 0; font-weight: 1000;">asd</p></dd>
                                     </dl>
                                     <dl>
                                         <dt>카테고리</dt>
                                         <div class="dropdown">
-                                            <button type="button" id="category_button" class="btn dropdown-toggle"
-                                                data-bs-toggle="dropdown">
-                                                카테고리
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" id="category1" href="#">공지사항</a></li>
-                                                <li><a class="dropdown-item" id="category2" href="#">이벤트</a></li>
-                                            </ul>
+                                            <select id="dropdown_category" name="dropdown_category">
+                                                <option>공지사항</option>
+                                                <option>이벤트</option>
+                                            </select>
                                         </div>
                                     </dl>
                                 </div>
                                 <div id="editor"></div>
+                                <div id="contents"></div>
                             </div>
                             <div class="bt_wrap">
-                                <a href="../../templates/notice/notice.html" class="on">등록</a>
-                                <a href="../../templates/notice/notice.html">취소</a>
+                                <a class="button-register"><button onclick="writeNotice()" class="on">등록</button></a>
+                                <a class="button-cancel"><button onclick="" class="exit">취소</button></a>
                             </div>
                         </div>
                     </div>
@@ -184,6 +181,7 @@
         </div>
     </div>
 </body>
+
 <script src="../../static/js/notice/noticewrite.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </html>

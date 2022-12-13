@@ -1,89 +1,100 @@
+const backend_base_url = "http://127.0.0.1:8000"
+const frontend_base_url = "http://127.0.0.1:5500"
+const urlStr = window.location.href;
+const url = new URL(urlStr);
+const urlParms = url.searchParams;
+const id = urlParms.get('id')
+
+window.onload = () => {
+    putNoticeDetail()
+}
+
+async function putNoticeDetail() {
+    const get_response = await fetch(`${backend_base_url}/notice/${id}/`,{
+        method: 'GET',
+        headers:{
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTg0MzQwLCJpYXQiOjE2NzA4MjQzNDAsImp0aSI6IjlmNzc3ZTg4YjI0ZjRhNzFhYmIwZTM3YTFkOTE4MDc2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.VjL6PPlDcAzR8GizCJie61UzTRR4LLvekuZiktC8iS0"
+        }
+    })
+    response_json = await get_response.json()
+    console.log(document.getElementById('title').placeholder)
+    document.getElementById('title').value =`${response_json.title}`
+    document.getElementsByClassName('ProseMirror')[1].innerHTML = `${response_json.content}`
+    console.log(response_json.notice_category_name)
+    document.getElementById('dropdown_category').value = `${response_json.notice_category_name}`
+    document.getElementById('notice-author').innerText = `${response_json.notice_user}`
+}
+
 const { Editor } = toastui;
 const { colorSyntax } = Editor.plugin;
 
 const editor = new toastui.Editor({
-    el: document.querySelector("#editor"),
-    height: '400px',
-    placeholder: 'please enter text.',
-    initialValue: '텍스트를 입력해주세요',
-    initialEditType: 'wysiwyg',
-    plugins: [colorSyntax]
+el: document.querySelector("#editor"),
+height: '400px',
+placeholder: 'please enter text.',
+initialValue: '텍스트를 입력해주세요',
+initialEditType: 'wysiwyg',
+plugins: [colorSyntax]
 });
+
+
+
+
 $(document).ready(function () {
-    $("a#pageLink").click(function () {
-        $("a#pageLink").removeClass("active");
-        $(this).addClass("active");
-    });
-    $(".menu-button").click(function () {
-        $(".left-area").removeClass("hide-on-mobile");
-    });
-    $(".close-menu").click(function () {
-        $(".left-area").addClass("hide-on-mobile");
-    });
-    $(".more-button").click(function () {
-        $(".more-menu-list").toggle("hide");
-    });
-    var owl = $("#owl-slider-1");
-    $("#owl-slider-1").owlCarousel({
-        navigation: true,
-        slideSpeed: 400,
-        paginationSpeed: 400,
-        items: 1,
-        itemsDesktop: false,
-        itemsDesktopSmall: false,
-        itemsTablet: false,
-        itemsMobile: false,
-        autoplay: true,
-        autoPlaySpeed: 200,
-        autoPlayTimeout: 100,
-        autoplayHoverPause: true
-    });
-    // Custom Navigation Events
-    $(".owl-next").click(function () {
-        owl.trigger("owl.next");
-    });
-    $(".owl-prev").click(function () { });
-
-    $(".play").click(function () {
-        owl.trigger("owl.play", 100);
-    });
-    $(".stop").click(function () {
-        owl.trigger("owl.stop");
-    });
-
-    var owl = $("#owl-slider-2");
-    owl.owlCarousel({
-        navigation: true,
-        slideSpeed: 400,
-        paginationSpeed: 400,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 4
-            }
-        }
-    });
-
-    var owl = $("#owl-slider-3");
-    owl.owlCarousel({
-        navigation: true,
-        slideSpeed: 400,
-        paginationSpeed: 400,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 4
-            }
-        }
-    });
+$("a#pageLink").click(function () {
+    $("a#pageLink").removeClass("active");
+    $(this).addClass("active");
 });
+$(".menu-button").click(function () {
+    $(".left-area").removeClass("hide-on-mobile");
+});
+$(".close-menu").click(function () {
+    $(".left-area").addClass("hide-on-mobile");
+});
+$(".more-button").click(function () {
+    $(".more-menu-list").toggle("hide");
+});
+})
+
+async function writeNotice() {
+    const title = document.getElementById('title').value
+    const content = editor.getHTML()
+    const category = document.getElementById('dropdown_category').value
+    
+    if (category == "\uacf5\uc9c0\uc0ac\ud56d"){
+        var cate_notice = "1"
+    }
+    else if (category == "\uc774\ubca4\ud2b8"){
+        var cate_notice = "2"
+    }
+    if(id==null) {
+        const response = await fetch(`${backend_base_url}/notice/`, {
+            method: 'POST',
+            headers:{
+                "content-Type": "application/json",
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTg0MzQwLCJpYXQiOjE2NzA4MjQzNDAsImp0aSI6IjlmNzc3ZTg4YjI0ZjRhNzFhYmIwZTM3YTFkOTE4MDc2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.VjL6PPlDcAzR8GizCJie61UzTRR4LLvekuZiktC8iS0"   
+            },
+            body: JSON.stringify({
+                "category_name":cate_notice,
+                "title":title,
+                "content":content
+            })
+        })
+    location.href ="notice.html"
+    }
+    else {
+        const put_response = await fetch (`${backend_base_url}/notice/${id}/`, {
+            method: 'PUT',
+            headers:{
+                "content-Type": "application/json",
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMTg0MzQwLCJpYXQiOjE2NzA4MjQzNDAsImp0aSI6IjlmNzc3ZTg4YjI0ZjRhNzFhYmIwZTM3YTFkOTE4MDc2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJxd2VAcXdlLmNvbSJ9.VjL6PPlDcAzR8GizCJie61UzTRR4LLvekuZiktC8iS0"   
+            },
+            body: JSON.stringify({
+                "category_name":cate_notice,
+                "title":title,
+                "content":content
+            })
+        })
+        location.href = `${frontend_base_url}/templates/notice/noticedetail.html?id=${id}`    
+    }
+}
