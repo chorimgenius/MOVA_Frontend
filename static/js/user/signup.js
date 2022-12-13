@@ -67,7 +67,7 @@ async function handleSignin(){
     }).join(''));
 
     localStorage.setItem("payload", jsonPayload);
-    location.href = "../../templates/user/profile.html";
+    location.href = "../../templates/webtoon/main.html";
 }
 // 회원가입, 로그인페이지 넘어가는 코드
 $('.message a').click(function(){

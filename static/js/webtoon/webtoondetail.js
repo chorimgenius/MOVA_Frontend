@@ -4,12 +4,12 @@ const backend_base_url = "http://127.0.0.1:8000"
 window.onload = function (){
     loadArticles()
     webtooncomment_read()
-    console.log(localStorage.getItem("access"))
+
 }
 async function loadArticles() {
     const payload = localStorage.getItem("payload");
     const payload_parse = JSON.parse(payload)
-    // const payload_userid= payload_parse.user_id
+    const payload_userid = payload_parse.user_id
     const urlStr = window.location.href;
     const url = new URL(urlStr);
     const urlParms = url.searchParams;
@@ -33,16 +33,18 @@ async function loadArticles() {
     webtoon_pic.src = response_json.image_url
     const likeButton = document.getElementById('like_button')
     const webtoon_likes = response_json.webtoon_likes
-    if (webtoon_likes.includes(1)){
+    console.log(webtoon_likes)
+    if (webtoon_likes.includes(payload_userid)){
         likeButton.classList.toggle('like_button_click')
-    }else{
+    }
+    else{
         likeButton.classList.toggle('like_button_click')
         likeButton.classList.toggle('like_button_click')
     }
     const bookmarkButton = document.getElementById('bookmark_button')
     const webtoon_bookmarks = response_json.webtoon_bookmarks
 
-    if (webtoon_bookmarks.includes(1)){
+    if (webtoon_bookmarks.includes(payload_userid)){
         bookmarkButton.classList.toggle('bookmark_button_click')
     }else{
         bookmarkButton.classList.toggle('bookmark_button_click')
@@ -94,16 +96,16 @@ async function webtooncomment_read() {
     response_json = await response.json()
     const payload = localStorage.getItem("payload");
     const payload_parse = JSON.parse(payload)
-    // const payload_username= payload_parse.username
+    const payload_username= payload_parse.username
     const comment_container = document.getElementById('comment-contatiner')
     for (let i=0; i < response_json.length; i++){
         let comment_id = response_json[i]['id']
-        let username = response_json[i]['user']['username']
-        let image = response_json[i]['user']['image']
+        let username = response_json[i]['username']
+        let image = response_json[i]['image']
         let content = response_json[i]['content']
-        let created_at = response_json[i]['updated_at']
+        let created_at = response_json[i]['created_at']
         let time_before = time2str(created_at)
-        if (username == "lemon"){
+        if (username == payload_username){
             let comment_html1 = `<div class="comment">
                                     <div class="comment_user">
                                         <img class="user_image" style="width: 50px; height: 50px; border-radius: 70%; margin-top: 20px;" src="${backend_base_url}${image}">
@@ -204,7 +206,8 @@ async function webtooncomment_update() {
     await fetch(`${backend_base_url}/` + parseInt(id) + '/comment/' + `${comment_id}` + '/', {
         method: 'PUT',
         headers: {
-            "Authorization": localStorage.getItem("access")
+            "Authorization": localStorage.getItem("access"),
+            "content-type" : 'application/json',
         },
         body: JSON.stringify({
             "content": comment_update,
@@ -241,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
     likeButton.addEventListener('click', () => { 
         fetch(`${backend_base_url}/` +parseInt(id) +'/like/',{
             headers:{
-                "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjU0NDQ1LCJpYXQiOjE2NzA4OTQ0NDUsImp0aSI6IjUzY2NlNjVmNmIyNTRlOWZiODU5MzM4ZmY2M2NhNzI4IiwidXNlcl9pZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJ1c2VybmFtZSI6ImxlbW9uIn0.pYUgq63EdRV5U-52U2tNyfS66w6DWMEkVcnjGhIPIfQ"
+                "Authorization" : localStorage.getItem("access")
             },
             method :'POST',
         })
@@ -262,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
     bookmarkButton.addEventListener('click', () => { 
         fetch(`${backend_base_url}/` +parseInt(id) +'/bookmark/',{
             headers:{
-                "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjU0NDQ1LCJpYXQiOjE2NzA4OTQ0NDUsImp0aSI6IjUzY2NlNjVmNmIyNTRlOWZiODU5MzM4ZmY2M2NhNzI4IiwidXNlcl9pZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJ1c2VybmFtZSI6ImxlbW9uIn0.pYUgq63EdRV5U-52U2tNyfS66w6DWMEkVcnjGhIPIfQ",
+                "Authorization" : localStorage.getItem("access")
             },
             method :'POST',
         })
