@@ -15,19 +15,19 @@
       <form class="register-form">
         <h1>SIGN UP</h1>
         <br><br>
-        <input type="text" placeholder="nickname"/>
-        <input type="password1" placeholder="password"/>
-        <input type="password2" placeholder="confirm password"/>
-        <input type="text" placeholder="email address"/>
-        <button>create</button>
+        <input type="text" placeholder="nickname" id="sign-username"/>
+        <input type="password" placeholder="password" id="sign-pass"/>
+        <input type="password" placeholder="confirm password" id="sign-confirm"/>
+        <input type="text" placeholder="email address" id="sign-email"/>
+        <button onclick="handleSignup()">create</button>
         <p class="message">Already registered? <a href="#">Log In</a></p>
       </form>
       <form class="login-form">
         <h1>LOG IN</h1>
         <br><br>
-        <input type="text" placeholder="email"/>
-        <input type="password" placeholder="password"/>
-        <button>login</button>
+        <input type="text" placeholder="email" id="log-email" />
+        <input type="password" placeholder="password" id="log-pass" />
+        <button type="button" onclick="handleSignin()">login</button>
         <p class="message">Not registered? <a href="#">Create an account</a></p>
       </form>
     </div>
