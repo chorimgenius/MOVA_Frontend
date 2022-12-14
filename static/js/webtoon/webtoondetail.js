@@ -408,5 +408,5 @@ $(document).ready(function () {
 
 //fanart 페이지로 이동
 function move_fanart(){
-  location.href="../colorization/fanart-write.html"
+  location.href="../colorization/fanartboard.html"
 }

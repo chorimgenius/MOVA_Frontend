@@ -153,7 +153,6 @@
   .profile .profile-name {
     color: #232428;
     font-weight: 500;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23bebebe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-down'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E%0A");
     padding-right: 16px;
     background-position: center right;
     background-repeat: no-repeat;

@@ -318,7 +318,7 @@ async function loadDesign(){
                       </div>
                     </div>
                     <figcaption>
-                      <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                      <p>${element.content}</p>
                     </figcaption>
                     <a href="http://127.0.0.1:5500/templates/colorization/fanart-detail.html?id=${element.id}"></a>
                 </figure>
@@ -335,12 +335,12 @@ async function loadDesign(){
                     <img src="http://127.0.0.1:8000${element.image.result_image}" alt="sample38"/>
                     <div class="title">
                       <div>
-                        <h2>${element.webtoon}</h2>
-                        <h4>${element.user.username}</h4>
+                        <h2>${element.user.username}</h2>
+                        <h4>${element.webtoon}</h4>
                       </div>
                     </div>
                     <figcaption>
-                      <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                      <p>${element.content}</p>
                     </figcaption>
                     <a href="http://127.0.0.1:5500/templates/colorization/fanart-detail.html?id=${element.id}"></a>
                 </figure>

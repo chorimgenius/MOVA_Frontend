@@ -19,13 +19,11 @@ async function Validator(){
       location.href = "../user/signup.html"
   }
 }
-
 const urlStr = window.location.href;
 const url = new URL(urlStr);
 const urlParms = url.searchParams;
-const search = urlParms.get('search')
+var search = urlParms.get('search')
 const category = urlParms.get('category')
-console.log(category)
 
 async function allbuttonclick(){
   all_button = document.getElementById('all_button')
@@ -45,6 +43,45 @@ async function debatebuttonclick(){
       location.href = `${frontend_base_url}/templates/board/board.html?category=2`
 }
 
+async function pagination(num){
+  console.log("함수실행맨")
+  if(search==null){
+    search=""
+  }
+  const response = await fetch(`${backend_base_url}/board/all?page=${num}&search=${search}`,{
+    method: 'GET',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+  })
+  console.log(1,search)
+  response_json = await response.json()
+  console.log(100,response_json)
+  board_list = response_json["results"]
+
+  //초기화
+  const board_list_remove = document.querySelectorAll(".board-list")
+  board_list_remove.forEach(element => {
+    element.remove()
+  })
+
+
+  const list_html = document.getElementById("boardgetlist")
+  var count = 1
+  board_list.forEach(element => {
+    const today = new Date(element.created_at);
+    const list = `
+    <tr class="board-list">
+        <td id="board_number">${count}</td>
+        <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+        <td id="board_webtoon">${element.webtoon_title}</td>
+        <td id="board_created_at">${today.toLocaleDateString()}</td>
+    </tr>`
+    count += 1
+    list_html.insertAdjacentHTML("afterbegin",list)
+  })
+}
+
 async function getBoard() {
   if(search == null && category == null){
     const response = await fetch(`${backend_base_url}/board/all/`,{
@@ -62,7 +99,7 @@ async function getBoard() {
     board_list.forEach(element => {
       const today = new Date(element.created_at);
       const list = `
-      <tr>
+      <tr class="board-list">
           <td id="board_number">${count}</td>
           <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
@@ -81,13 +118,15 @@ async function getBoard() {
       }
     })
     response_json = await response.json()
+    fan_button = document.getElementById('fan_button')
+    fan_button.classList.toggle("button-wrap-after")
     board_list = response_json["results"]
     const list_html = document.getElementById("boardgetlist")
     var count = 1
     board_list.forEach(element => {
       const today = new Date(element.created_at);
       const list = `
-      <tr>
+      <tr class="board-list">
           <td id="board_number">${count}</td>
           <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
@@ -95,8 +134,6 @@ async function getBoard() {
       </tr>`
       count += 1
       list_html.insertAdjacentHTML("afterbegin",list)
-      fan_button = document.getElementById('fan_button')
-      fan_button.classList.toggle("button-wrap-after")
     })
   }
 
@@ -108,13 +145,15 @@ async function getBoard() {
       }
     })
     response_json = await response.json()
+    debate_button = document.getElementById('debate_button')
+    debate_button.classList.toggle("button-wrap-after")
     board_list = response_json["results"]
     const list_html = document.getElementById("boardgetlist")
     var count = 1
     board_list.forEach(element => {
       const today = new Date(element.created_at);
       const list = `
-      <tr>
+      <tr class="board-list">
           <td id="board_number">${count}</td>
           <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
@@ -122,8 +161,7 @@ async function getBoard() {
       </tr>`
       count += 1
       list_html.insertAdjacentHTML("afterbegin",list)
-      debate_button = document.getElementById('debate_button')
-      debate_button.classList.toggle("button-wrap-after")
+      
     })
   }
 
@@ -141,7 +179,7 @@ async function getBoard() {
     board_list.forEach(element => {
       const today = new Date(element.created_at);
       const list = `
-      <tr>
+      <tr class="board-list">
           <td id="board_number">${count}</td>
           <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
@@ -151,6 +189,21 @@ async function getBoard() {
       list_html.insertAdjacentHTML("afterbegin",list)
       }) 
   }
+
+  page_size = Math.ceil(response_json.count/10)
+  const pagination_list = document.getElementById('pagination_list')
+  const item_prev = `<a href="#!-1" class="cdp_i">prev</a>`
+  pagination_list.insertAdjacentHTML("afterbegin",item_prev)
+  for(i=1;i<=page_size;i++){
+    console.log(i)
+    const item = `<a href="#!${i}" onclick="pagination(${i})" class="cdp_i">${i}</a>`
+    pagination_list.insertAdjacentHTML("beforeend",item)
+    
+  }
+  const item_next = `<a href="#!+1" class="cdp_i">next</a>`
+  pagination_list.insertAdjacentHTML("beforeend",item_next)
+  Pagination()
+
 }
 
 async function getDiscussion() {
@@ -168,7 +221,7 @@ async function getDiscussion() {
       board_list.forEach(element => {
         const today = new Date(element.created_at);
         const list = `
-        <tr>
+        <tr class="board-list">
             <td id="board_number">${count}</td>
             <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
             <td id="board_webtoon">${element.webtoon_title}</td>
@@ -239,22 +292,18 @@ async function Pagination(){
     var go = $(this).attr('href').replace('#!', '');
     if (go === '+1') {
       paginationPage++;
+      pagination(paginationPage)
+
     } else if (go === '-1') {
       paginationPage--;
+      pagination(paginationPage)
     }else{
       paginationPage = parseInt(go, 10);
     }
     $('.cdp').attr('actpage', paginationPage);
   });
 };
-Pagination()
 
 
-function movePaginaion() {
-  const urlStr = window.location.href;
-  const url = new URL(urlStr);
-  const urlParms = url.searchParams;
-  const search = urlParms.get('search')
-  const next = document.getElementById('next')
-  location.href = `${backend_base_url}/board/all/?page=${next}search=${search}`
-}
+
+
