@@ -93,8 +93,41 @@ async function loadBoard(){
   });
   
   const likes_count = document.getElementById('likes-count')
-  likes_count.textContent = "and "+response_json.likes.length+" more"
+  likes_count.textContent = response_json.likes.length
+
+  const likeButton = document.getElementById('like_button')
+  const webtoon_likes = response_json.likes
+  console.log(webtoon_likes)
+  if (webtoon_likes.includes(payload_userid)){
+      likeButton.classList.toggle('like_button_click')
+  }
+  else{
+      likeButton.classList.toggle('like_button_click')
+      likeButton.classList.toggle('like_button_click')
+  }
 }
+
+//likes
+async function fanart_like(){
+  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/like/`,{
+    headers: {
+      "Authorization" : localStorage.getItem("access"),
+      "content-type" : 'application/json',
+    },
+    method:'POST',
+  })
+  response_json = await response.json()
+  console.log(response_json)
+  likeButton = document.getElementById('like_button')
+  likeButton.classList.toggle('like_button_click')
+  const likes_count = document.getElementById('likes-count')
+  if(response_json == "좋아요 등록 완료!"){
+    likes_count.textContent = parseInt(likes_count.textContent)+1
+  }else{
+    likes_count.textContent = parseInt(likes_count.textContent)-1
+  }
+}
+
 function timeForToday(value) {
   const today = new Date();
   const timeValue = new Date(value);

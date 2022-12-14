@@ -971,6 +971,20 @@
     background: #ddd;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.2);
   }
+
+  /* ==== likes ====== */
+  .like_button_click{
+    color: #f05650;
+    background-color: pink;
+  }
+  .like_button{
+    margin: 0 0 0 0px;
+    border-radius: 50px;
+    border: solid 2px #ddd;
+    width: 90px;
+    height: 50px;
+    font-size: 14px;
+  }
   
 
   
