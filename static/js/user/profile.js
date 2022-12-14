@@ -2,6 +2,7 @@ const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
 
 window.onload= () => {
+    UserProfile()
     Profile()
     Likeslist()
 }
@@ -30,7 +31,6 @@ async function Likeslist(){
         }
     })
     response_json = await response.json()
-    console.log(response_json)
     likes_list = response_json[3]
 
     const like = document.getElementById("owl-slider-2")
@@ -102,6 +102,18 @@ async function Search(){
     console.log(search)
     location.href= "http://127.0.0.1:5500/templates/webtoon/search_webtoon.html?search=" + search;
 }
+
+async function UserProfile(){
+    const response = await fetch(`${backend_base_url}/user/`, {
+        method: 'GET',
+        headers:{
+          "Authorization": localStorage.getItem("access"),
+        }
+    })
+    response_json = await response.json()
+    document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
+    document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
+  }
 
 function a(){
     $(document).ready(function () {
