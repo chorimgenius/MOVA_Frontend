@@ -81,7 +81,7 @@
               <button type="button" class="event_button" id ="event_button" onclick ="eventbuttonclick()">이벤트</button>
             </div>
           <!-- board list area -->
-            <div id="board-list">
+            <div id="notice-list">
                 <div class="container">
                     <table class="board-table">
                         <thead>
@@ -92,14 +92,16 @@
                         </tr>
                         </thead>
                         <tbody id="noticegetlist">
-                        </tr>
+                          
                         </tbody>
                     </table>
                 </div>
             </div>
             </div>
+            <div class="content_detail__pagination cdp" id="pagination_list" actpage="1">
             </div>
-            <button type="submit" onclick="postNotice()" class="btn btn-dark-write" style="margin-top: 10px; float: right; margin-right: 100px;">작성</button>
+            </div>
+            <div id="footnotice"></div>
           </div>
         </div>
       </div>

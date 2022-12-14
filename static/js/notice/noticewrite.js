@@ -62,6 +62,7 @@ async function Profile(){
     response_json = await response.json()
     document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
     document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
+    document.getElementById("notice-author").innerText = `${response_json.username}`
   }
   
   async function handleLogout(){
