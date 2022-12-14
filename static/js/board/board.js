@@ -1,38 +1,60 @@
 const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
 
-
 window.onload = () => {
+  Validator()
   getBoard()
   Profile()
 }
 
+async function Validator(){
+  access = localStorage.getItem("access")
+  console.log(access)
+  refresh = localStorage.getItem("refresh")
+  payload = localStorage.getItem("payload")
+  console.log(payload)
+
+  if(access == null || payload == null || refresh == null){
+      alert("로그인 후 이용해주세요")
+      location.href = "../user/signup.html"
+  }
+}
+
+const urlStr = window.location.href;
+const url = new URL(urlStr);
+const urlParms = url.searchParams;
+const search = urlParms.get('search')
+const category = urlParms.get('category')
+console.log(category)
+
 async function allbuttonclick(){
   all_button = document.getElementById('all_button')
   all_button.classList.toggle("button-wrap-after")
+  location.href = `${frontend_base_url}/templates/board/board.html`
 }
 
 async function fanbuttonclick(){
   fan_button = document.getElementById('fan_button')
   fan_button.classList.toggle("button-wrap-after")
+    location.href = `${frontend_base_url}/templates/board/board.html?category=1`
 }
 
 async function debatebuttonclick(){
   debate_button = document.getElementById('debate_button')
   debate_button.classList.toggle("button-wrap-after")
+      location.href = `${frontend_base_url}/templates/board/board.html?category=2`
 }
 
 async function getBoard() {
-  const urlParameter = window.location.search;
-  console.log(urlParameter)
-
-  if(urlParameter == ""){
+  if(search == null && category == null){
     const response = await fetch(`${backend_base_url}/board/all/`,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
       }
     })
+    all_button = document.getElementById('all_button')
+    all_button.classList.toggle("button-wrap-after")
     response_json = await response.json()
     board_list = response_json["results"]
     const list_html = document.getElementById("boardgetlist")
@@ -42,15 +64,17 @@ async function getBoard() {
       const list = `
       <tr>
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">${element.title}</a></th>
+          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
       list_html.insertAdjacentHTML("afterbegin",list)
     })
   }
-  else {
-    const response = await fetch(`${backend_base_url}/board/all${urlParameter}` ,{
+
+  else if(search == null && category == "1"){
+    const response = await fetch(`${backend_base_url}/board/discussion/`,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -65,7 +89,62 @@ async function getBoard() {
       const list = `
       <tr>
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">${element.title}</a></th>
+          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <td id="board_webtoon">${element.webtoon_title}</td>
+          <td id="board_created_at">${today.toLocaleDateString()}</td>
+      </tr>`
+      count += 1
+      list_html.insertAdjacentHTML("afterbegin",list)
+      fan_button = document.getElementById('fan_button')
+      fan_button.classList.toggle("button-wrap-after")
+    })
+  }
+
+  else if(search == null && category == "2"){
+    const response = await fetch(`${backend_base_url}/board/fanboard/`,{
+      method: 'GET',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+    })
+    response_json = await response.json()
+    board_list = response_json["results"]
+    const list_html = document.getElementById("boardgetlist")
+    var count = 1
+    board_list.forEach(element => {
+      const today = new Date(element.created_at);
+      const list = `
+      <tr>
+          <td id="board_number">${count}</td>
+          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <td id="board_webtoon">${element.webtoon_title}</td>
+          <td id="board_created_at">${today.toLocaleDateString()}</td>
+      </tr>`
+      count += 1
+      list_html.insertAdjacentHTML("afterbegin",list)
+      debate_button = document.getElementById('debate_button')
+      debate_button.classList.toggle("button-wrap-after")
+    })
+  }
+
+  else {
+    const response = await fetch(`${backend_base_url}/board/all?search=${search}` ,{
+      method: 'GET',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+    })
+    response_json = await response.json()
+    board_list = response_json["results"]
+    const list_html = document.getElementById("boardgetlist")
+    var count = 1
+    board_list.forEach(element => {
+      const today = new Date(element.created_at);
+      const list = `
+      <tr>
+          <td id="board_number">${count}</td>
+          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
@@ -74,6 +153,32 @@ async function getBoard() {
   }
 }
 
+async function getDiscussion() {
+  if(urlParameter == ""){
+    const response = await fetch(`${backend_base_url}/board/discussion/`,{
+      method: 'GET',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+    })
+      response_json = await response.json()
+      board_list = response_json["results"]
+      const list_html = document.getElementById("boardgetlist")
+      var count = 1
+      board_list.forEach(element => {
+        const today = new Date(element.created_at);
+        const list = `
+        <tr>
+            <td id="board_number">${count}</td>
+            <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+            <td id="board_webtoon">${element.webtoon_title}</td>
+            <td id="board_created_at">${today.toLocaleDateString()}</td>
+        </tr>`
+        count += 1
+        list_html.insertAdjacentHTML("afterbegin",list)
+    })
+  }
+}
 
 
 function boardSearch(){
@@ -128,3 +233,28 @@ $(document).ready(function () {
   });
 })
 
+async function Pagination(){
+  var paginationPage = parseInt($('.cdp').attr('actpage'), 10);
+  $('.cdp_i').on('click', function(){
+    var go = $(this).attr('href').replace('#!', '');
+    if (go === '+1') {
+      paginationPage++;
+    } else if (go === '-1') {
+      paginationPage--;
+    }else{
+      paginationPage = parseInt(go, 10);
+    }
+    $('.cdp').attr('actpage', paginationPage);
+  });
+};
+Pagination()
+
+
+function movePaginaion() {
+  const urlStr = window.location.href;
+  const url = new URL(urlStr);
+  const urlParms = url.searchParams;
+  const search = urlParms.get('search')
+  const next = document.getElementById('next')
+  location.href = `${backend_base_url}/board/all/?page=${next}search=${search}`
+}

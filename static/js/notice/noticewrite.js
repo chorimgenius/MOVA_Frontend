@@ -6,9 +6,23 @@ const urlParms = url.searchParams;
 const id = urlParms.get('id')
 
 window.onload = () => {
+    Validator()
     putNoticeDetail()
     Profile()
 }
+
+async function Validator(){
+    access = localStorage.getItem("access")
+    console.log(access)
+    refresh = localStorage.getItem("refresh")
+    payload = localStorage.getItem("payload")
+    console.log(payload)
+  
+    if(access == null || payload == null || refresh == null){
+        alert("로그인 후 이용해주세요")
+        location.href = "../user/signup.html"
+    }
+  }
 
 async function putNoticeDetail() {
     const get_response = await fetch(`${backend_base_url}/notice/${id}/`,{

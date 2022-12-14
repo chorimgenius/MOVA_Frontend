@@ -93,6 +93,7 @@
                     <tr>
                       <th scope="col" class="th-num">번호</th>
                       <th scope="col" class="th-title">제목</th>
+                      <th scope="col" class="th-webtoon">웹툰</th>
                       <th scope="col" class="th-date">등록일</th>
                     </tr>
                   </thead>
@@ -103,11 +104,21 @@
               </div>
             </div>
           </div>
+          <div class="content_detail__pagination cdp" id="pagination_list" actpage="1">
+            <a href="#!-1" class="cdp_i">prev</a>
+            <a href="#!1" class="cdp_i">1</a>
+            <a href="#!2" class="cdp_i">2</a>
+            <a href="#!3" class="cdp_i">3</a>
+            <a href="#!4" class="cdp_i">4</a>
+            <a href="#!5" class="cdp_i">5</a>
+            <a href="#!6" class="cdp_i">6</a>
+            <a href="#!7" class="cdp_i">7</a>
+            <a onclick="movePaginaion()" id="next" class="cdp_i">next</a>
+          </div>
+          </div>
+          <button type="button" onclick="moveWrite()" class="btn btn-dark-write"
+            style="margin-top: 50px; float: right; margin-right: 100px; width: 100px; height: 30px;">작성</button>
         </div>
-        <button type="button" onclick="moveWrite()" class="btn btn-dark-write"
-          style="margin-top: 10px; float: right; margin-right: 100px;">작성</button>
-          
-      </div>
     </div>
   </div>
   </div>

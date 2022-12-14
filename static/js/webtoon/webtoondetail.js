@@ -2,10 +2,25 @@ const backend_base_url = "http://127.0.0.1:8000";
 
 // webtoon 상세 페이지 내용 가져와서 띄우기
 window.onload = function () {
+  Validator();
   loadArticles();
   webtooncomment_read();
   Profile();
 };
+
+async function Validator(){
+  access = localStorage.getItem("access")
+  console.log(access)
+  refresh = localStorage.getItem("refresh")
+  payload = localStorage.getItem("payload")
+  console.log(payload)
+
+  if(access == null || payload == null || refresh == null){
+      alert("로그인 후 이용해주세요")
+      location.href = "../user/signup.html"
+  }
+}
+
 async function loadArticles() {
   const payload = localStorage.getItem("payload");
   const payload_parse = JSON.parse(payload);
@@ -390,3 +405,8 @@ $(document).ready(function () {
     },
   });
 });
+
+//fanart 페이지로 이동
+function move_fanart(){
+  location.href="../colorization/fanart-write.html"
+}

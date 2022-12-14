@@ -412,6 +412,7 @@ input[type=text] {
 .page-right-content {
   flex: 1;
   overflow: auto;
+  padding: 20px
 }
 
 .content-line {
@@ -847,4 +848,50 @@ section.notice {
   height: 1px;
 }
 
+.button-wrap {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
+.all_button {
+  border-radius: 2px;
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  margin-right: 100px;
+  color: #51a380;
+  background-color: #e6f1ed;
+}
+
+.notice_button {
+  border-radius: 2px;
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  margin-right: 100px;
+  color: #51a380;
+  background-color: #e6f1ed;
+}
+
+.event_button{
+  border-radius: 2px;
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  margin-right: 100px;
+  color: #51a380;
+  background-color: #e6f1ed;
+}
+
+.button-wrap-after{
+  border-radius: 2px;
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  margin-right: 100px;
+  color: #e6f1ed;
+  background-color:#51a380;
+}

@@ -9,9 +9,23 @@ const payload_parse = JSON.parse(payload)
 const payload_username= payload_parse.username
 
 window.onload = () => {
+  Validator()
   getBoardDetail()
   webtooncomment_read()
   Profile()
+}
+
+async function Validator(){
+  access = localStorage.getItem("access")
+  console.log(access)
+  refresh = localStorage.getItem("refresh")
+  payload = localStorage.getItem("payload")
+  console.log(payload)
+
+  if(access == null || payload == null || refresh == null){
+      alert("로그인 후 이용해주세요")
+      location.href = "../user/signup.html"
+  }
 }
 
 async function getBoardDetail() {
@@ -20,6 +34,7 @@ async function getBoardDetail() {
   })
   response_json = await response.json()
   console.log(response_json)
+
   const board_title = document.getElementById('board_title')
   board_title.innerText = response_json.title
 
@@ -44,6 +59,9 @@ async function getBoardDetail() {
   const board_created_at = document.getElementById('board_created_at')
   const today = new Date(response_json.created_at)
   board_created_at.innerText = today.toLocaleDateString()
+
+  const board_webtoon_name = document.getElementById('board_webtoon_name')
+  board_webtoon_name.innerText = response_json.webtoon_title
 
   const footnote = document.getElementById('board_title')
   console.log(response_json.board_user)

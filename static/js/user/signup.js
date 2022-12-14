@@ -37,7 +37,9 @@ async function handleSignup(){
 			"email":email
 		})
 	})
-	location.href = "signup.html";
+  response_json = await response.json()
+  alert(response_json.message)
+  location.href = "signup.html";
 }
 //Signin
 async function handleSignin(){
@@ -52,23 +54,27 @@ async function handleSignin(){
             "email":email,
             "password":password
         })
-           
     })
 	const response_json = await response.json()
-
-
-	localStorage.setItem("access", "Bearer "+response_json.access);
-	localStorage.setItem("refresh", response_json.refresh);
-
-    const base64Url = response_json.access.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    localStorage.setItem("payload", jsonPayload);
-    location.href = "../../templates/webtoon/main.html";
+  if(response_json.detail == undefined){
+    localStorage.setItem("access", "Bearer "+response_json.access);
+    localStorage.setItem("refresh", response_json.refresh);
+  
+      const base64Url = response_json.access.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+  
+      localStorage.setItem("payload", jsonPayload);
+      alert("MOVA에 오신걸 환영 합니다.")
+      location.href = "../webtoon/main.html";
+  }
+  else{
+    alert("가입된 정보를 확인해주세요")
+  }
 }
+
 // 회원가입, 로그인페이지 넘어가는 코드
 $('.message a').click(function(){
   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");

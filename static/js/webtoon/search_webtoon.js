@@ -1,8 +1,22 @@
 const backend_base_url = "http://127.0.0.1:8000"
 
 window.onload= () => {
+    Validator()
     SearchPage()
     Profile()
+}
+
+async function Validator(){
+    access = localStorage.getItem("access")
+    console.log(access)
+    refresh = localStorage.getItem("refresh")
+    payload = localStorage.getItem("payload")
+    console.log(payload)
+
+    if(access == null || payload == null || refresh == null){
+        alert("로그인 후 이용해주세요")
+        location.href = "../user/signup.html"
+    }
 }
 
 const urlParams = new URL(location.href).searchParams;

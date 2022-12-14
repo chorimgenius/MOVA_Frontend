@@ -1,5 +1,49 @@
+const backend_base_url = "http://127.0.0.1:8000"
 
+window.onload = () => {
+  Validator()
+  loadDesign()
+  Profile()
+}
 
+async function Validator(){
+  access = localStorage.getItem("access")
+  console.log(access)
+  refresh = localStorage.getItem("refresh")
+  payload = localStorage.getItem("payload")
+  console.log(payload)
+
+  if(access == null || payload == null || refresh == null){
+      alert("로그인 후 이용해주세요")
+      location.href = "../user/signup.html"
+  }
+}
+
+async function Profile(){
+  const response = await fetch(`${backend_base_url}/user/`, {
+      method: 'GET',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+  })
+  response_json = await response.json()
+  document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
+  document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
+}
+
+async function handleLogout(){
+	localStorage.removeItem("access")
+	localStorage.removeItem("refresh")
+	localStorage.removeItem("payload")
+	alert("로그아웃되었습니다.")
+    location.href="../user/signup.html"
+}
+
+async function Search(){
+  const search = document.getElementById("search").value
+  console.log(search)
+  location.href= "../webtoon/search_webtoon.html?search=" + search;
+}
 
 var radius = 240; // how big of the radius
 var autoRotate = true; // auto rotate or not
@@ -243,7 +287,7 @@ modal_close.addEventListener("click", e => {
   
 });
 
-window.onload = async function loadDesign(){
+async function loadDesign(){
   let url = `http://127.0.0.1:8000/fanart/`
   console.log(111,search_id)
   console.log(222,search)
@@ -3774,3 +3818,7 @@ window.onload = async function loadDesign(){
   })(window.Zepto || window.jQuery, window, document);
   }
   
+  //fanart 페이지로 이동
+function move_fanart(){
+  location.href="../colorization/fanart-write.html"
+}

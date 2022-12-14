@@ -4,19 +4,31 @@ const urlStr = window.location.href;
 const url = new URL(urlStr);
 const urlParms = url.searchParams;
 const id = urlParms.get('id')
-const search = urlParms.get('search')
-console.log(search)
 
 
 let webtoon_id = 0
 
 window.onload = () => {
+  Validator()
   const payload = localStorage.getItem("payload");
   const payload_parse = JSON.parse(payload)
   const payload_username= payload_parse.username
   document.getElementById("board-author").innerHTML = payload_username
   putBoardDetail()
   Profile()
+}
+
+async function Validator(){
+  access = localStorage.getItem("access")
+  console.log(access)
+  refresh = localStorage.getItem("refresh")
+  payload = localStorage.getItem("payload")
+  console.log(payload)
+
+  if(access == null || payload == null || refresh == null){
+      alert("로그인 후 이용해주세요")
+      location.href = "../user/signup.html"
+  }
 }
 
 async function putBoardDetail() {
@@ -96,10 +108,7 @@ async function getBoardWebtoon() {
 }
 
 async function getwebtoon_name(id,title) {
-    console.log("함수실행맨")
-    console.log(id)
     webtoon_id = id
-    console.log(title)
     document.getElementById('webtoon_name').innerHTML = title
     modal.style.display = "none"
     const webtoonlist = document.querySelectorAll(".modal-webtoonlist")
