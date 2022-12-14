@@ -1,5 +1,53 @@
+const backend_base_url = "http://127.0.0.1:8000"
+
+window.onload = () => {
+  Validator()
+  loadBoard()
+  Profile()
+}
+
+async function Validator(){
+  access = localStorage.getItem("access")
+  console.log(access)
+  refresh = localStorage.getItem("refresh")
+  payload = localStorage.getItem("payload")
+  console.log(payload)
+
+  if(access == null || payload == null || refresh == null){
+      alert("로그인 후 이용해주세요")
+      location.href = "../user/signup.html"
+  }
+}
+
+async function Profile(){
+  console.log("함수실행맨")
+  const response = await fetch(`${backend_base_url}/user/`, {
+      method: 'GET',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+  })
+  response_json = await response.json()
+  document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
+  document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
+}
+
+async function handleLogout(){
+	localStorage.removeItem("access")
+	localStorage.removeItem("refresh")
+	localStorage.removeItem("payload")
+	alert("로그아웃되었습니다.")
+    location.href="../user/signup.html"
+}
+
+async function Search(){
+  const search = document.getElementById("search").value
+  console.log(search)
+  location.href= "../webtoon/search_webtoon.html?search=" + search;
+}
+
 var id = 0 // 게시글 아이디
-window.onload = async function loadBoard(){
+async function loadBoard(){
   const urlStr = window.location.href;
   const url = new URL(urlStr);
   const urlParms = url.searchParams;
@@ -8,7 +56,7 @@ window.onload = async function loadBoard(){
 
   const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/`,{
       headers: {
-        "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjExMzcyLCJpYXQiOjE2NzA4NTEzNzIsImp0aSI6Ijg1MWE2M2QzODY1MTQxZDk5MDhkZmUzZWY2NzAxNThlIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.yOYjlhvpo2t5tpReAtJ1i9HY2P9OrkPqkNV8jVPbPRY",
+        "Authorization": localStorage.getItem("access"),
       },
       method:'GET',
   })
@@ -21,7 +69,9 @@ window.onload = async function loadBoard(){
   var date = new Date(response_json.created_at)
   console.log(date)
   console.log(1000,date.toLocaleDateString())
-
+  const payload = localStorage.getItem("payload")
+  const payload_parse = JSON.parse(payload)
+  const payload_userid = payload_parse.user_id
   const comments = response_json.comment_set
   console.log(comments)
   const comment_element = document.querySelector(".comment-list")
@@ -29,7 +79,7 @@ window.onload = async function loadBoard(){
     const write_time = timeForToday(element.created_at)
     let delete_button = ""
     console.log(element.user.id)
-    if(element.user.id==1){
+    if(element.user.id== payload_userid){
       delete_button = `&nbsp&nbsp<a onclick='delete_comment(${element.id})' style='color:black;'>|&nbsp삭제</a>`
     }
 
@@ -73,7 +123,7 @@ async function write_comment(){
   console.log(100,id)
   const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/`,{
     headers: {
-      "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMDMzNzMwLCJpYXQiOjE2NzA2NzM3MzAsImp0aSI6IjAxNzc1MmVlNDg1MTQwNDBhYTZkZDlmODhhMWE4MjEyIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.MGn3HnrFALPT8cIBhXcaj10b1T8uiL8IhSwYCu8DEB8",
+      "Authorization": localStorage.getItem("access"),
       "content-type" : 'application/json',
     },
     method:'POST',
@@ -98,12 +148,10 @@ async function delete_comment(id){
   console.log(id)
   const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/${id}`,{
     headers: {
-      "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMDMzNzMwLCJpYXQiOjE2NzA2NzM3MzAsImp0aSI6IjAxNzc1MmVlNDg1MTQwNDBhYTZkZDlmODhhMWE4MjEyIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.MGn3HnrFALPT8cIBhXcaj10b1T8uiL8IhSwYCu8DEB8",
+      "Authorization": localStorage.getItem("access"),
     },
     method:'DELETE',
   })
   const comment = document.getElementById(`comment-id${id}`)
   comment.style.display = "none"
 }
-
-

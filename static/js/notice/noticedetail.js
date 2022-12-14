@@ -5,8 +5,22 @@ const urlParms = url.searchParams;
 const id = urlParms.get('id')
 console.log(id)
 window.onload = () => {
+  Validator()
   getNoticeDetail()
   Profile()
+}
+
+async function Validator(){
+  access = localStorage.getItem("access")
+  console.log(access)
+  refresh = localStorage.getItem("refresh")
+  payload = localStorage.getItem("payload")
+  console.log(payload)
+
+  if(access == null || payload == null || refresh == null){
+      alert("로그인 후 이용해주세요")
+      location.href = "../user/signup.html"
+  }
 }
 
 async function getNoticeDetail() {
