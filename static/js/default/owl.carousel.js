@@ -17,7 +17,7 @@
  * @todo stagePadding calculate wrong active classes
  */
  // 1 second wait
-export function owl_carousel(){
+function owl_carousel(){
 ;(function($, window, document, undefined) {
 
 	/**

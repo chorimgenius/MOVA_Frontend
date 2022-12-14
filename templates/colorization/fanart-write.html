@@ -247,7 +247,12 @@
                         </dl>
                         <dl>
                           <dt>웹툰 선택</dt>
-                          <dd><input type="text" id="fanart-content" placeholder="간단한 소개를 해주세요!"><button id="select-webtoon">sdklfj<button></dd>
+                          <dd><input style="width:300px" type="text" id="board-webtoon" placeholder="웹툰을 입력해주세요!"><button
+                                  id="select-webtoon" onclick="getBoardWebtoon()">검색<button></dd>
+                        </dl>
+                        <dl>
+                            <dt>웹툰명</dt>
+                            <dd><span id="webtoon_name"></span></dd>
                         </dl>
                       </div>
                       <div>
@@ -279,108 +284,22 @@
         </div>
     </div>
   </div>
-  <div id="modal_add_feed" class="modal modal_overlay">
-    <div class="modal_window" >
-        <div class="modal_title">
-            <div class="modal_title_side"></div>
-            <div> 웹툰 리스트</div>
-            <div class="modal_title_side">
-                <span id="close_modal" class="close_modal material-icons-outlined" style="font-size: 30px">
-                    close
-                </span>
-            </div>
-        </div>
-        <div style="display: flex;flex-wrap: nowrap; padding:10px; overflow-y:scroll;">
-          <div class="item video-box-wrapper" style="width: 175px">
-            <div class="img-preview">
-              <img src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG06_794bcc1e-23aa-4c35-a335-b5d21b4bc2ab.jpg" alt="">
-            </div>
-            <div class="video-description-wrapper">
-              <p class="video-description-header">Minimal Photography</p>
-              <p class="video-description-subheader">By July</p>
-              <p class="video-description-info">116K views <span>1 hour ago</span></p>
-            </div>
+</div>
+<div id="modal_add_feed" class="modal modal_overlay">
+  <div class="modal_window" >
+      <div class="modal_title">
+          <div class="modal_title_side"></div>
+          <div> 웹툰 리스트</div>
+          <div class="modal_title_side">
+              <span id="close_modal" class="close_modal material-icons-outlined" style="font-size: 30px">
+                  close
+              </span>
           </div>
-          <div class="item video-box-wrapper" style="width: 175px">
-            <div class="img-preview">
-              <img src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG06_794bcc1e-23aa-4c35-a335-b5d21b4bc2ab.jpg" alt="">
-            </div>
-            <div class="video-description-wrapper">
-              <p class="video-description-header">Minimal Photography</p>
-              <p class="video-description-subheader">By July</p>
-              <p class="video-description-info">116K views <span>1 hour ago</span></p>
-            </div>
-          </div>
-          <div class="item video-box-wrapper" style="width: 175px">
-            <div class="img-preview">
-              <img src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG06_794bcc1e-23aa-4c35-a335-b5d21b4bc2ab.jpg" alt="">
-            </div>
-            <div class="video-description-wrapper">
-              <p class="video-description-header">Minimal Photography</p>
-              <p class="video-description-subheader">By July</p>
-              <p class="video-description-info">116K views <span>1 hour ago</span></p>
-            </div>
-          </div>
-          <div class="item video-box-wrapper" style="width: 175px">
-            <div class="img-preview">
-              <img src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG06_794bcc1e-23aa-4c35-a335-b5d21b4bc2ab.jpg" alt="">
-            </div>
-            <div class="video-description-wrapper">
-              <p class="video-description-header">Minimal Photography</p>
-              <p class="video-description-subheader">By July</p>
-              <p class="video-description-info">116K views <span>1 hour ago</span></p>
-            </div>
-          </div>
-          <div class="item video-box-wrapper" style="width: 175px">
-            <div class="img-preview">
-              <img src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG06_794bcc1e-23aa-4c35-a335-b5d21b4bc2ab.jpg" alt="">
-            </div>
-            <div class="video-description-wrapper">
-              <p class="video-description-header">Minimal Photography</p>
-              <p class="video-description-subheader">By July</p>
-              <p class="video-description-info">116K views <span>1 hour ago</span></p>
-            </div>
-          </div>
-          <div class="item video-box-wrapper" style="width: 175px">
-            <div class="img-preview">
-              <img src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG06_794bcc1e-23aa-4c35-a335-b5d21b4bc2ab.jpg" alt="">
-            </div>
-            <div class="video-description-wrapper">
-              <p class="video-description-header">Minimal Photography</p>
-              <p class="video-description-subheader">By July</p>
-              <p class="video-description-info">116K views <span>1 hour ago</span></p>
-            </div>
-          </div>
-          <div class="item video-box-wrapper" style="width: 175px">
-            <div class="img-preview">
-              <img src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG06_794bcc1e-23aa-4c35-a335-b5d21b4bc2ab.jpg" alt="">
-            </div>
-            <div class="video-description-wrapper">
-              <p class="video-description-header">Minimal Photography</p>
-              <p class="video-description-subheader">By July</p>
-              <p class="video-description-info">116K views <span>1 hour ago</span></p>
-            </div>
-          </div>
-          <div class="item video-box-wrapper" style="width: 175px">
-            <div class="img-preview">
-              <img src="https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG06_794bcc1e-23aa-4c35-a335-b5d21b4bc2ab.jpg" alt="">
-            </div>
-            <div class="video-description-wrapper">
-              <p class="video-description-header">Minimal Photography</p>
-              <p class="video-description-subheader">By July</p>
-              <p class="video-description-info">116K views <span>1 hour ago</span></p>
-            </div>
-          </div>
-         
-          
-          
-          
-        </div>
-        
-        
-        
-    </div>
+      </div>
+      <div id="webtoon_box" style="display: flex;flex-wrap: nowrap; padding:10px; overflow-y:scroll;">
+      </div>
   </div>
+</div>
 </body>
 </html>
 <script src="../../static/js/webtoon/main.js"></script>
@@ -491,41 +410,89 @@
 
 
   }
-  async function fanart_write(){
-    let title = document.getElementById("fanart-title").value
-    let content = document.getElementById("fanart-content").value
-    let webtoon = 1 // 임시
+let webtoon_id = 0
+async function fanart_write(){
+  let title = document.getElementById("fanart-title").value
+  let content = document.getElementById("fanart-content").value
 
-    console.log("title : "+title)
-    console.log("content : " +content)
-    console.log("image : " + image_id)
+  console.log("title : "+title)
+  console.log("content : " +content)
+  console.log("image : " + image_id)
+  console.log(webtoon_id)
 
-    const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
-      headers: {
-        "Authorization" : localStorage.getItem("access"),
-        "content-type" : 'application/json',
-      },
-      method:'POST',
-      body: JSON.stringify({
-          "title": title,
-          "content": content,
-          "webtoon": webtoon,
-          "image": image_id
-        })
-    })
+  const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
+    headers: {
+      "Authorization" : localStorage.getItem("access"),
+      "content-type" : 'application/json',
+    },
+    method:'POST',
+    body: JSON.stringify({
+        "title": title,
+        "content": content,
+        "webtoon": webtoon_id,
+        "image": image_id
+      })
+  })
 
-    const response_json = await response.json()
-    console.log(response_json)
-  }
-  const modal = document.getElementById("modal_add_feed");
-  const buttonAddFeed = document.getElementById("select-webtoon");
-  buttonAddFeed.addEventListener("click", e => {
-      modal.style.top = window.pageYOffset + 'px'; // top을 이용해 시작 y위치를 바꿔줌
-      modal.style.display = "flex";
-      document.body.style.overflowY = "hidden"; // 스크롤 없애기
-  });
-  const modal_close = document.getElementById("close_modal");
-  modal_close.addEventListener("click", e => {
+  const response_json = await response.json()
+  console.log(response_json)
+  location.href = 'fanart-detail.html?id='+response_json.id
+}
+
+async function getBoardWebtoon() {
+  console.log(1,"dd")
+  const webtoon = document.getElementById("board-webtoon").value
+  console.log(2,"dd")
+  const response = await fetch(`http://127.0.0.1:8000/board/webtoonall?search=${webtoon}`, {
+    method: 'GET',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+  })
+  response_json = await response.json()
+  console.log(3,response_json)
+  search_webtoon = response_json["results"]
+  const modal_html = document.getElementById("webtoon_box")
+  search_webtoon.forEach(element => {
+    const modal = ` <button class="modal-webtoonlist" onclick="getwebtoon_name(${element.id},'${element.title}')"><div class="item video-box-wrapper" style="width: 175px">
+                      <div class="img-preview">
+                        <img src="${element.image_url}" alt="">
+                      </div>
+                      <div class="video-description-wrapper">
+                        <p class="video-description-header">${element.title}</p>
+                        <p class="video-description-subheader">${element.author}</p>
+                      </div>
+                    </div></button> `
+    modal_html.insertAdjacentHTML("beforeend",modal)
+  })
+}
+async function getwebtoon_name(id,title) {
+    console.log("함수실행맨")
+    console.log(id)
+    webtoon_id = id
+    console.log(title)
+    document.getElementById('webtoon_name').innerHTML = title
     modal.style.display = "none"
-  });
+    const webtoonlist = document.querySelectorAll(".modal-webtoonlist")
+    webtoonlist.forEach(element=>{
+    element.remove()
+  })
+}
+const modal = document.getElementById("modal_add_feed");
+const buttonAddFeed = document.getElementById("select-webtoon");
+buttonAddFeed.addEventListener("click", e => {
+    modal.style.top = window.pageYOffset + 'px'; // top을 이용해 시작 y위치를 바꿔줌
+    modal.style.display = "flex";
+    document.body.style.overflowY = "hidden"; // 스크롤 없애기
+});
+const modal_close = document.getElementById("close_modal");
+modal_close.addEventListener("click", e => {
+  modal.style.display = "none"
+  const modal_html = document.getElementById("webtoon_box")
+  const webtoonlist = document.querySelectorAll(".modal-webtoonlist")
+  webtoonlist.forEach(element=>{
+    element.remove()
+  })
+  
+});
 </script>

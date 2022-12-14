@@ -133,9 +133,12 @@
         </div>
         <div id="music-container"></div>
       </div>
+      
       <div class="content-line content-line-list">
+        <div><input style="width:150px;margin-left: 10px;margin-top: 10px;" type="text" id="board-webtoon" placeholder="웹툰을 입력해주세요!"><button
+          id="select-webtoon" onclick="getBoardWebtoon()">검색<button></div>
         <div class="line-header">
-          <span class="header-text">Trending</span>
+          <span class="header-text">Trending&nbsp;</span>
         </div>
         <div id="owl-slider-2" class="slider-wrapper owl-carousel">
           
@@ -146,108 +149,25 @@
           <span class="header-text">Public</span>
         </div>
         <div id="owl-slider-3" class="slider-wrapper owl-carousel">
-          <div class="item video-box-wrapper">
-            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
-                <div class="title">
-                  <div>
-                    <h2>Ingredia</h2>
-                    <h4>Nutrisha</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
-                </figcaption>
-                <a href="#"></a>
-              </figure>
-          </div>
-          <div class="item video-box-wrapper">
-            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
-                <div class="title">
-                  <div>
-                    <h2>Ingredia</h2>
-                    <h4>Nutrisha</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
-                </figcaption>
-                <a href="#"></a>
-              </figure>
-          </div>
-          <div class="item video-box-wrapper">
-            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
-                <div class="title">
-                  <div>
-                    <h2>Ingredia</h2>
-                    <h4>Nutrisha</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
-                </figcaption>
-                <a href="#"></a>
-              </figure>
-          </div>
-          <div class="item video-box-wrapper">
-            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
-                <div class="title">
-                  <div>
-                    <h2>Ingredia</h2>
-                    <h4>Nutrisha</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
-                </figcaption>
-                <a href="#"></a>
-              </figure>
-          </div>
-          <div class="item video-box-wrapper">
-            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
-                <div class="title">
-                  <div>
-                    <h2>Ingredia</h2>
-                    <h4>Nutrisha</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
-                </figcaption>
-                <a href="#"></a>
-              </figure>
-          </div>
-          <div class="item video-box-wrapper">
-            <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
-                <div class="title">
-                  <div>
-                    <h2>Ingredia</h2>
-                    <h4>Nutrisha</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
-                </figcaption>
-                <a href="#"></a>
-              </figure>
-            </div>
-            <div class="item video-box-wrapper">
-              <figure class="snip1477"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample91.jpg" alt="sample91" />
-                <div class="title">
-                  <div>
-                    <h2>Ingredia</h2>
-                    <h4>Nutrisha</h4>
-                  </div>
-                </div>
-                <figcaption>
-                  <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
-                </figcaption>
-                <a href="#"></a>
-              </figure>
-            </div>
-          </div>
+          
         </div>
+      </div>
+    </div>
+    <div id="modal_add_feed" class="modal modal_overlay">
+      <div class="modal_window" >
+          <div class="modal_title">
+              <div class="modal_title_side"></div>
+              <div> 웹툰 리스트</div>
+              <div class="modal_title_side">
+                  <span id="close_modal" class="close_modal material-icons-outlined" style="font-size: 30px">
+                      close
+                  </span>
+              </div>
+          </div>
+          <div id="webtoon_box" style="display: flex;flex-wrap: nowrap; padding:10px; overflow-y:scroll;">
+          </div>
       </div>
     </div>
   </body>
 </html>
-<script defer type="module" src="../../static/js/colorization/fanartboard.js"></script>
+<script defer src="../../static/js/colorization/fanartboard.js"></script>
