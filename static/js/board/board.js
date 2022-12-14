@@ -7,6 +7,21 @@ window.onload = () => {
   Profile()
 }
 
+async function allbuttonclick(){
+  all_button = document.getElementById('all_button')
+  all_button.classList.toggle("button-wrap-after")
+}
+
+async function fanbuttonclick(){
+  fan_button = document.getElementById('fan_button')
+  fan_button.classList.toggle("button-wrap-after")
+}
+
+async function debatebuttonclick(){
+  debate_button = document.getElementById('debate_button')
+  debate_button.classList.toggle("button-wrap-after")
+}
+
 async function getBoard() {
   const urlParameter = window.location.search;
   console.log(urlParameter)
@@ -59,6 +74,8 @@ async function getBoard() {
   }
 }
 
+
+
 function boardSearch(){
   var board_search = document.getElementById("board_search").value;
   console.log(board_search)
@@ -110,3 +127,4 @@ $(document).ready(function () {
     $(".more-menu-list").toggle("hide");
   });
 })
+

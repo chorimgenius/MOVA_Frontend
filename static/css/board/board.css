@@ -380,7 +380,7 @@
   
   .btn-upload {
     color: #e6f1ed;
-  background-color: #51a380;
+    background-color: #51a380;
   }
   .btn-upload:hover {
     background-color: #62b18f;
@@ -831,4 +831,51 @@ section.notice {
   height: 1px;
 }
 
+.button-wrap {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
+.all_button {
+  border-radius: 2px;
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  margin-right: 100px;
+  color: #51a380;
+  background-color: #e6f1ed;
+}
+
+.fan_button {
+  border-radius: 2px;
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  margin-right: 100px;
+  color: #51a380;
+  background-color: #e6f1ed;
+}
+
+.debate_button{
+  border-radius: 2px;
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  margin-right: 100px;
+  color: #51a380;
+  background-color: #e6f1ed;
+}
+
+.button-wrap-after{
+  border-radius: 2px;
+  font-size: 12px;
+  width: 100px;
+  height: 30px;
+  margin-right: 100px;
+  color: #e6f1ed;
+  background-color:#51a380;
+  
+}

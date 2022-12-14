@@ -22,7 +22,7 @@
   <div class="app-wrapper">
     <div class="app-wrapper">
       <div class="left-area hide-on-mobile">
-        <a href="main.html">
+        <a href="../webtoon/main.html">
           <div class="app-header">
           </div>
         </a>
@@ -72,14 +72,18 @@
               <div class="container">
                 <div class="search-window">
                   <form action="">
-                    <div class="search-wrap">
-                      <label for="search" class="blind">공지사항 내용 검색</label>
+                    <div class="search-wrap" style="display: flex;">
                       <input id="board_search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
                       <button type="button" onclick="boardSearch()" class="btn btn-dark">검색</button>
                     </div>
                   </form>
                 </div>
               </div>
+            </div>
+            <div class="button-wrap">
+              <button type="button"  class ="all_button" id="all_button" onclick="allbuttonclick()">전체</button>
+              <button type="button"  class="fan_button" id="fan_button" onclick="fanbuttonclick()">팬게시판</button>
+              <button type="button" class="debate_button" id ="debate_button" onclick ="debatebuttonclick()">토론방</button>
             </div>
             <!-- board list area -->
             <div id="board-list">
@@ -102,6 +106,7 @@
         </div>
         <button type="button" onclick="moveWrite()" class="btn btn-dark-write"
           style="margin-top: 10px; float: right; margin-right: 100px;">작성</button>
+          
       </div>
     </div>
   </div>

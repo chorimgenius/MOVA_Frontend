@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
     <div class="app-wrapper">
       <div class="left-area hide-on-mobile">
-        <a href="main.html">
+        <a href="../webtoon/main.html">
           <div class="app-header">
           </div>
         </a>
@@ -29,7 +29,7 @@
             </div>
           </a>
           <div class="page-link-list">
-            <a href="main.html" class="item-link active" id="pageLink">
+            <a href="../webtoon/main.html" class="item-link" id="pageLink">
               <img class="link-icon" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FwF2Ek%2FbtrTANzhM94%2FlkcFJMgCKyVvsoo2wUxuK0%2Fimg.png" alt="">
               홈</a>  
             <a href="../notice/notice.html" class="item-link" id="pageLink">
@@ -41,21 +41,19 @@
             <a href="../colorization/fanartboard.html" class="item-link" id="pageLink">
               <img class="link-icon" src="https://velog.velcdn.com/images/marinred/post/d5b2113f-20d3-42e7-b804-49ac64fa4b9e/image.png" alt="">
               팬아트 만들기</a>
-            </div>
+          </div>
         </div>
-    </div>
-    <button class="btn-invite">Invite Team</button>
-  </div>
-  <div class="right-area">
-    <div class="right-area-upper">
-      <div class="search-part-wrapper">
-        <input class="search-input" type="text" id="search" placeholder="Search Webtoons...">
-        <button class="action-buttons btn-record" onclick="Search()">Seacrh</button>
       </div>
-      <div class="action-buttons-wrapper">
-        <button class="action-buttons btn-upload" onclick="handleLogout()">Log out</button>
+    <div class="right-area">
+      <div class="right-area-upper">
+        <div class="search-part-wrapper">
+          <input class="search-input" type="text" id="search" placeholder="Search Webtoons...">
+          <button class="action-buttons btn-record" onclick="Search()">Seacrh</button>
+        </div>
+        <div class="action-buttons-wrapper">
+          <button class="action-buttons btn-upload" onclick="handleLogout()">Log out</button>
+        </div>
       </div>
-    </div>
     <header>
 
 	<div class="container" id="profile">
@@ -70,17 +68,14 @@
           <div class="profile-bio" id="bio">
       </div>
       </div> 
-        <button class="btn profile-edit-btn" onclick="move_profileedit()">프로필 수정</button>
-        <button class="btn profile-edit-btn" onclick="ProfileDelete()">회원 탈퇴</button>
+        <button class="btn profile-edit-btn" onclick="move_profileedit()">Edit Profile</button>
+        <button class="btn profile-edit-btn" onclick="ProfileDelete()">Delete</button>
     
     </div>
 		<!-- End of profile section -->
     <h1>좋아요 목록</h1>
     <div id="owl-slider-2" class="slider-wrapper owl-carousel">
     </div>
-</div>
-</div>
-</div>
 </body>
 </html>
 <script src="../../static/js/user/profile.js"></script>
