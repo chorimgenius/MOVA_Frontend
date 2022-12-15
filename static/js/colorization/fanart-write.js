@@ -20,8 +20,6 @@ const response = await fetch(`http://127.0.0.1:8000/fanart/baseimage/`,{
     body: form_data
 })
 response_json = await response.json()
-console.log(response_json)
-console.log(response_json.image)
 resize_image_id = response_json.id
 
 const imgElem = new Image();
@@ -58,7 +56,6 @@ function setColor(이벤트) {
 brush = 이벤트.target.getAttribute('data-type');
 colorVal = 이벤트.target.getAttribute('data-color');
 context.fillStyle = colorVal;
-console.log(brush);
 }
 
 function createImage() {
@@ -94,12 +91,10 @@ const response = await fetch(`http://127.0.0.1:8000/fanart/colorization/`,{
     body: form_data
 })
 response_json = await response.json()
-console.log(response_json)
 
 let result_box = document.getElementById('result_image_box')
 result_box.src = "http://127.0.0.1:8000"+response_json.result_image
 image_id = response_json.id
-console.log("image_id = "+image_id)
 
 
 }
@@ -108,9 +103,6 @@ async function fanart_write(){
     let content = document.getElementById("fanart-content").value
     let webtoon = 1 // 임시
 
-    console.log("title : "+title)
-    console.log("content : " +content)
-    console.log("image : " + image_id)
 
     const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
         headers: {
@@ -127,7 +119,6 @@ async function fanart_write(){
     })
 
     const response_json = await response.json()
-    console.log(response_json)
 }
 const modal = document.getElementById("modal_add_feed");
 const buttonAddFeed = document.getElementById("select-webtoon");
@@ -143,7 +134,6 @@ modal_close.addEventListener("click", e => {
 
 // async function search_webtoon(){
 //   const name = document.getElementById('webtoon-name').value
-//   console.log(1,name)
 //   const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
 //     headers: {
 //       "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwOTI1Njc5LCJpYXQiOjE2NzA1NjU2NzksImp0aSI6IjlhM2ViYTE3YWNiZDRiZDZhZTE0NGI4ZDQyY2I1NmM4IiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.JyYhMKHQ7CzXDsZnlO_Tfpn6Ygx6Fc2d239u9__Wt8U",

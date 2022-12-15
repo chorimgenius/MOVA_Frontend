@@ -8,10 +8,8 @@ window.onload = () => {
 
 async function Validator(){
   access = localStorage.getItem("access")
-  console.log(access)
   refresh = localStorage.getItem("refresh")
   payload = localStorage.getItem("payload")
-  console.log(payload)
 
   if(access == null || payload == null || refresh == null){
       alert("로그인 후 이용해주세요")
@@ -41,7 +39,6 @@ async function handleLogout(){
 
 async function Search(){
   const search = document.getElementById("search").value
-  console.log(search)
   location.href= "../webtoon/search_webtoon.html?search=" + search;
 }
 
@@ -225,7 +222,6 @@ function owl_slider(){
 }
 
 function fanart_detail(id){
-  console.log(id)
 }
 
 async function fanart_board_select(id){
@@ -240,9 +236,7 @@ const search = urlParams.get('search');
 const search_id = urlParams.get('search_id');
 
 async function getBoardWebtoon() {
-  console.log(1,"dd")
   const webtoon = document.getElementById("board-webtoon").value
-  console.log(2,"dd")
   const response = await fetch(`http://127.0.0.1:8000/board/webtoonall?search=${webtoon}`, {
     method: 'GET',
       headers:{
@@ -250,7 +244,6 @@ async function getBoardWebtoon() {
       }
   })
   const response_json = await response.json()
-  console.log(3,response_json)
   const search_webtoon = response_json["results"]
   const modal_html = document.getElementById("webtoon_box")
   search_webtoon.forEach(element => {
@@ -289,8 +282,6 @@ modal_close.addEventListener("click", e => {
 
 async function loadDesign(){
   let url = `http://127.0.0.1:8000/fanart/`
-  console.log(111,search_id)
-  console.log(222,search)
   if(search_id == null){
 
   }else{
@@ -303,7 +294,6 @@ async function loadDesign(){
     method:'GET',
   })
   const response_json = await response.json()
-  console.log(response_json)
 
   const list_box = document.getElementById('owl-slider-2')
 
@@ -353,7 +343,7 @@ async function loadDesign(){
   });
 
   
-  console.log(1,"첫번째")
+
   owl_carousel()
   owl_slider()
   // const select_webtoon = document.getElementById('select-webtoon')

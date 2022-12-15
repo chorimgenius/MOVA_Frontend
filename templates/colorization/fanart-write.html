@@ -262,10 +262,8 @@
 
   async function Validator(){
     access = localStorage.getItem("access")
-    console.log(access)
     refresh = localStorage.getItem("refresh")
     payload = localStorage.getItem("payload")
-    console.log(payload)
   
     if(access == null || payload == null || refresh == null){
         alert("로그인 후 이용해주세요")
@@ -295,7 +293,6 @@
 
   async function Search(){
   const search = document.getElementById("search").value
-  console.log(search)
   location.href= "../webtoon/search_webtoon.html?search=" + search;
   }
 
@@ -321,8 +318,6 @@
       body: form_data
     })
     response_json = await response.json()
-    console.log(response_json)
-    console.log(response_json.image)
     resize_image_id = response_json.id
 
     const imgElem = new Image();
@@ -359,7 +354,6 @@
     brush = 이벤트.target.getAttribute('data-type');
     colorVal = 이벤트.target.getAttribute('data-color');
     context.fillStyle = colorVal;
-    console.log(brush);
   }
 
   function createImage() {
@@ -395,12 +389,10 @@
       body: form_data
     })
     response_json = await response.json()
-    console.log(response_json)
     
     let result_box = document.getElementById('result_image_box')
     result_box.src = "http://127.0.0.1:8000"+response_json.result_image
     image_id = response_json.id
-    console.log("image_id = "+image_id)
 
 
   }
@@ -409,10 +401,6 @@ async function fanart_write(){
   let title = document.getElementById("fanart-title").value
   let content = document.getElementById("fanart-content").value
 
-  console.log("title : "+title)
-  console.log("content : " +content)
-  console.log("image : " + image_id)
-  console.log(webtoon_id)
 
   const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
     headers: {
@@ -429,14 +417,11 @@ async function fanart_write(){
   })
 
   const response_json = await response.json()
-  console.log(response_json)
   location.href = 'fanart-detail.html?id='+response_json.id
 }
 
 async function getBoardWebtoon() {
-  console.log(1,"dd")
   const webtoon = document.getElementById("board-webtoon").value
-  console.log(2,"dd")
   const response = await fetch(`http://127.0.0.1:8000/board/webtoonall?search=${webtoon}`, {
     method: 'GET',
       headers:{
@@ -444,7 +429,6 @@ async function getBoardWebtoon() {
       }
   })
   response_json = await response.json()
-  console.log(3,response_json)
   search_webtoon = response_json["results"]
   const modal_html = document.getElementById("webtoon_box")
   search_webtoon.forEach(element => {
@@ -461,10 +445,7 @@ async function getBoardWebtoon() {
   })
 }
 async function getwebtoon_name(id,title) {
-    console.log("함수실행맨")
-    console.log(id)
     webtoon_id = id
-    console.log(title)
     document.getElementById('webtoon_name').innerHTML = title
     modal.style.display = "none"
     const webtoonlist = document.querySelectorAll(".modal-webtoonlist")

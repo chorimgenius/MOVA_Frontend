@@ -10,10 +10,8 @@ window.onload = function () {
 
 async function Validator(){
   access = localStorage.getItem("access")
-  console.log(access)
   refresh = localStorage.getItem("refresh")
   payload = localStorage.getItem("payload")
-  console.log(payload)
 
   if(access == null || payload == null || refresh == null){
       alert("로그인 후 이용해주세요")
@@ -33,7 +31,6 @@ async function loadArticles() {
     method: "GET",
   });
   response_json = await response.json();
-  console.log(response_json);
   const title = document.getElementById("content_title");
   title.innerText = response_json.title;
   const platform = document.getElementById("platform");
@@ -48,7 +45,6 @@ async function loadArticles() {
   webtoon_pic.src = response_json.image_url;
   const likeButton = document.getElementById("like_button");
   const webtoon_likes = response_json.webtoon_likes;
-  console.log(webtoon_likes);
   if (webtoon_likes.includes(payload_userid)) {
     likeButton.classList.toggle("like_button_click");
   } else {
@@ -161,7 +157,6 @@ async function webtooncomment_read() {
 // 댓글 작성
 async function webtooncomment_write() {
   const urlStr = window.location.href;
-  console.log(urlStr);
   const url = new URL(urlStr);
   const urlParams = url.searchParams;
   const id = urlParams.get("id");
@@ -193,7 +188,6 @@ function closeModal() {
 
 //수정을 위한 댓글 다시 가져오기
 async function webtooncomment_update_read(comment_id) {
-  console.log(comment_id);
   const urlStr = window.location.href;
   const url = new URL(urlStr);
   const urlParms = url.searchParams;
@@ -254,7 +248,6 @@ async function handleDeleteComment(commentId) {
       body: {},
     }
   );
-  window.console.log("delete");
   location.reload();
 }
 
@@ -272,7 +265,6 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       method: "POST",
     });
-    console.log("like 실행");
     likeButton.classList.toggle("like_button_click");
   });
 });
@@ -291,7 +283,6 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       method: "POST",
     });
-    console.log("bookmark 실행");
     bookmarkButton.classList.toggle("bookmark_button_click");
   });
 });
@@ -322,7 +313,7 @@ async function handleLogout() {
 
 async function Search() {
   const search = document.getElementById("search").value;
-  console.log(search);
+
   location.href = "../webtoon/search_webtoon.html?search=" + search;
 }
 

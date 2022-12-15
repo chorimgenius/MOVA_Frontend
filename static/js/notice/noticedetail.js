@@ -3,7 +3,6 @@ const urlStr = window.location.href;
 const url = new URL(urlStr);
 const urlParms = url.searchParams;
 const id = urlParms.get('id')
-console.log(id)
 window.onload = () => {
   Validator()
   getNoticeDetail()
@@ -12,10 +11,8 @@ window.onload = () => {
 
 async function Validator(){
   access = localStorage.getItem("access")
-  console.log(access)
   refresh = localStorage.getItem("refresh")
   payload = localStorage.getItem("payload")
-  console.log(payload)
 
   if(access == null || payload == null || refresh == null){
       alert("로그인 후 이용해주세요")
@@ -24,7 +21,6 @@ async function Validator(){
 }
 
 async function getNoticeDetail() {
-  console.log("함수실행맨")
   const response = await fetch(`${backend_base_url}/notice/${id}/`, {
     method: 'GET',
   })
@@ -46,7 +42,6 @@ async function getNoticeDetail() {
   notice_created_at.innerText = today.toLocaleDateString()
 
   const footnote = document.getElementById('article-footnote')
-  console.log(response_json.notice_user)
   if(response_json.notice_user=="qwe"){
     del_put_button = `<button style="float: right;" onclick="deleteNotice()">삭제</button>
     <button style="float: right;" onclick="putNotice()">수정</button>`
@@ -78,7 +73,6 @@ async function handleLogout(){
 
 async function Search(){
   const search = document.getElementById("search").value
-  console.log(search)
   location.href= "../webtoon/search_webtoon.html?search=" + search;
 }
 

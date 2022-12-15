@@ -8,10 +8,8 @@ window.onload = () => {
 
 async function Validator(){
   access = localStorage.getItem("access")
-  console.log(access)
   refresh = localStorage.getItem("refresh")
   payload = localStorage.getItem("payload")
-  console.log(payload)
 
   if(access == null || payload == null || refresh == null){
       alert("로그인 후 이용해주세요")
@@ -20,7 +18,6 @@ async function Validator(){
 }
 
 async function Profile(){
-  console.log("함수실행맨")
   const response = await fetch(`${backend_base_url}/user/`, {
       method: 'GET',
       headers:{
@@ -42,7 +39,6 @@ async function handleLogout(){
 
 async function Search(){
   const search = document.getElementById("search").value
-  console.log(search)
   location.href= "../webtoon/search_webtoon.html?search=" + search;
 }
 
@@ -52,7 +48,6 @@ async function loadBoard(){
   const url = new URL(urlStr);
   const urlParms = url.searchParams;
   id = urlParms.get('id')
-  console.log(100,id)
 
   const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/`,{
       headers: {
@@ -61,24 +56,18 @@ async function loadBoard(){
       method:'GET',
   })
   const response_json = await response.json()
-  console.log(response_json)
-  console.log(response_json.likes.length)
   const fanart_image = document.getElementById('fanart-image')
   fanart_image.src = "http://127.0.0.1:8000"+response_json.image
 
   var date = new Date(response_json.created_at)
-  console.log(date)
-  console.log(1000,date.toLocaleDateString())
   const payload = localStorage.getItem("payload")
   const payload_parse = JSON.parse(payload)
   const payload_userid = payload_parse.user_id
   const comments = response_json.comment_set
-  console.log(comments)
   const comment_element = document.querySelector(".comment-list")
   comments.forEach(element => {
     const write_time = timeForToday(element.created_at)
     let delete_button = ""
-    console.log(element.user.id)
     if(element.user.id== payload_userid){
       delete_button = `&nbsp&nbsp<a onclick='delete_comment(${element.id})' style='color:black;'>|&nbsp삭제</a>`
     }
@@ -97,7 +86,7 @@ async function loadBoard(){
 
   const likeButton = document.getElementById('like_button')
   const webtoon_likes = response_json.likes
-  console.log(webtoon_likes)
+
   if (webtoon_likes.includes(payload_userid)){
       likeButton.classList.toggle('like_button_click')
   }
@@ -117,7 +106,6 @@ async function fanart_like(){
     method:'POST',
   })
   response_json = await response.json()
-  console.log(response_json)
   likeButton = document.getElementById('like_button')
   likeButton.classList.toggle('like_button_click')
   const likes_count = document.getElementById('likes-count')
@@ -152,8 +140,6 @@ function timeForToday(value) {
 }
 async function write_comment(){
   const comment = document.getElementById("write-comment")
-  console.log(comment)
-  console.log(100,id)
   const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/`,{
     headers: {
       "Authorization": localStorage.getItem("access"),
@@ -165,7 +151,6 @@ async function write_comment(){
     })
   })
   const response_json = await response.json()
-  console.log(response_json)
   const comment_element = document.querySelector(".comment-list")
   const write_time = timeForToday(response_json.created_at)
   const add_comment = `<div class='comment-node'id='comment-id${response_json.id}'>
@@ -178,7 +163,6 @@ async function write_comment(){
   comment.value = null
 }
 async function delete_comment(id){
-  console.log(id)
   const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/${id}`,{
     headers: {
       "Authorization": localStorage.getItem("access"),

@@ -9,10 +9,8 @@ window.onload= () => {
 
 async function Validator(){
     access = localStorage.getItem("access")
-    console.log(access)
     refresh = localStorage.getItem("refresh")
     payload = localStorage.getItem("payload")
-    console.log(payload)
 
     if(access == null || payload == null || refresh == null){
         alert("로그인 후 이용해주세요")
@@ -110,7 +108,6 @@ async function handleLogout(){
 
 async function Search(){
     const search = document.getElementById("search").value
-    console.log(search)
     location.href= "search_webtoon.html?search=" + search;
 }
 

@@ -14,15 +14,12 @@ async function ProfileChange(){
         }
     })
     response_json = await response.json()
-    console.log(response_json)
 
     document.getElementById("usernamechange").value = `${response_json.username}`
     document.getElementById("email").innerText = `${response_json.email}`
     a=document.getElementById("email")
-    console.log(a)
     document.getElementById("biochange").value = `${response_json.bio}`
     b=document.getElementById("biochange")
-    console.log(b)
     document.getElementById("profile_img").src = `http://127.0.0.1:8000${response_json.image}`
 }
 
@@ -122,6 +119,6 @@ async function Profile(){
   
   async function Search(){
     const search = document.getElementById("search").value
-    console.log(search)
+
     location.href= "../webtoon/search_webtoon.html?search=" + search;
   }

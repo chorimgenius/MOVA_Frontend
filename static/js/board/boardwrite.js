@@ -20,10 +20,8 @@ window.onload = () => {
 
 async function Validator(){
   access = localStorage.getItem("access")
-  console.log(access)
   refresh = localStorage.getItem("refresh")
   payload = localStorage.getItem("payload")
-  console.log(payload)
 
   if(access == null || payload == null || refresh == null){
       alert("로그인 후 이용해주세요")
@@ -40,15 +38,12 @@ async function putBoardDetail() {
   })
 
   response_json = await get_response.json()
-  console.log(response_json)
   document.getElementById('title').value =response_json.title
   document.getElementsByClassName('ProseMirror')[1].innerHTML = response_json.content
   document.getElementById('dropdown_category').value = response_json.board_category_name
   document.getElementById('board-author').innerText = response_json.board_user
   document.getElementById('webtoon_name').innerText = response_json.webtoon_title
   webtoon_id = response_json.webtoon
-  
-  console.log()
 }
 
 const { Editor } = toastui;
@@ -127,7 +122,6 @@ async function writeBoard() {
       var cate_notice = "2"
   }
   if(id==null) {
-    console.log(cate_notice)
     const response = await fetch(`${backend_base_url}/board/`, {
       method: 'POST',
       headers:{
@@ -183,6 +177,5 @@ async function handleLogout(){
 
 async function Search(){
   const search = document.getElementById("search").value
-  console.log(search)
   location.href= "../webtoon/search_webtoon.html?search=" + search;
 }
