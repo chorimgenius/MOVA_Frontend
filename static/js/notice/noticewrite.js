@@ -13,10 +13,8 @@ window.onload = () => {
 
 async function Validator(){
     access = localStorage.getItem("access")
-    console.log(access)
     refresh = localStorage.getItem("refresh")
     payload = localStorage.getItem("payload")
-    console.log(payload)
   
     if(access == null || payload == null || refresh == null){
         alert("로그인 후 이용해주세요")
@@ -32,10 +30,8 @@ async function putNoticeDetail() {
         }
     })
     response_json = await get_response.json()
-    console.log(document.getElementById('title').placeholder)
     document.getElementById('title').value =`${response_json.title}`
     document.getElementsByClassName('ProseMirror')[1].innerHTML = `${response_json.content}`
-    console.log(response_json.notice_category_name)
     document.getElementById('dropdown_category').value = `${response_json.notice_category_name}`
     document.getElementById('notice-author').innerText = `${response_json.notice_user}`
 }
@@ -75,7 +71,7 @@ async function Profile(){
   
   async function Search(){
     const search = document.getElementById("search").value
-    console.log(search)
+
     location.href= "../webtoon/search_webtoon.html?search=" + search;
   }
 

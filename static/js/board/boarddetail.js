@@ -17,10 +17,8 @@ window.onload = () => {
 
 async function Validator(){
   access = localStorage.getItem("access")
-  console.log(access)
   refresh = localStorage.getItem("refresh")
   payload = localStorage.getItem("payload")
-  console.log(payload)
 
   if(access == null || payload == null || refresh == null){
       alert("로그인 후 이용해주세요")
@@ -33,7 +31,6 @@ async function getBoardDetail() {
     method: 'GET',
   })
   response_json = await response.json()
-  console.log(response_json)
 
   const board_title = document.getElementById('board_title')
   board_title.innerText = response_json.title
@@ -64,7 +61,6 @@ async function getBoardDetail() {
   board_webtoon_name.innerText = response_json.webtoon_title
 
   const footnote = document.getElementById('board_title')
-  console.log(response_json.board_user)
   
   if(response_json.board_user == payload_username){
     del_put_button = `<button style="float: right; font-size: 16px;" onclick="deleteBoard()">삭제</button>
@@ -109,7 +105,6 @@ async function handleLogout(){
 
 async function Search(){
   const search = document.getElementById("search").value
-  console.log(search)
   location.href= "../webtoon/search_webtoon.html?search=" + search;
 }
 
@@ -199,7 +194,6 @@ function closeModal(){
 
 async function webtooncomment_write(){
   const urlStr = window.location.href
-  console.log(urlStr)
   const url = new URL(urlStr)
   const urlParams = url.searchParams
   const id = urlParams.get('id')
@@ -219,7 +213,6 @@ async function webtooncomment_write(){
 }
 
 async function webtooncomment_update_read(comment_id) {
-  console.log(comment_id)
   const urlStr = window.location.href;
   const url = new URL(urlStr);
   const urlParms = url.searchParams;
@@ -229,7 +222,6 @@ async function webtooncomment_update_read(comment_id) {
       method: 'GET'
   })
   response_json = await response.json()
-  console.log(response_json)
   const modal_comment_id = document.getElementById('modal_comment_id')
   modal_comment_id.innerText = response_json.id
   const modal_comment = document.getElementById('comment_update')
@@ -271,6 +263,5 @@ async function handleDeleteComment(comment_id){
       method : 'DELETE',
       body : {}
   })
-  window.console.log('delete')
   location.reload()
 }

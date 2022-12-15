@@ -99,7 +99,6 @@ async function ProfileDelete(){
 
 async function Search(){
     const search = document.getElementById("search").value
-    console.log(search)
     location.href= "http://127.0.0.1:5500/templates/webtoon/search_webtoon.html?search=" + search;
 }
 

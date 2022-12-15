@@ -10,10 +10,8 @@ window.onload = () => {
 
 async function Validator(){
   access = localStorage.getItem("access")
-  console.log(access)
   refresh = localStorage.getItem("refresh")
   payload = localStorage.getItem("payload")
-  console.log(payload)
 
   if(access == null || payload == null || refresh == null){
       alert("로그인 후 이용해주세요")
@@ -49,16 +47,13 @@ async function pagination(num){
   if(search==null){
     search=""
   }
-  console.log(search)
   const response = await fetch(`${backend_base_url}/notice/all?page=${num}&search=${search}`,{
     method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
       }
   })
-  console.log(1,search)
   response_json = await response.json()
-  console.log(100,response_json)
   notice_list = response_json["results"]
 
   //초기화
@@ -193,7 +188,6 @@ async function getNotice() {
   const item_prev = `<a href="#!-1" class="cdp_i">prev</a>`
   pagination_list.insertAdjacentHTML("afterbegin",item_prev)
   for(i=1;i<=page_size;i++){
-    console.log(i)
     const item = `<a href="#!${i}" onclick="pagination(${i})" class="cdp_i">${i}</a>`
     pagination_list.insertAdjacentHTML("beforeend",item)
     
@@ -215,7 +209,6 @@ async function Profile(){
   document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
   document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
   const footnotice = document.getElementById('footnotice')
-  console.log(response_json)
   if(response_json.is_admin==true){
     del_put_button = `<button type="submit" onclick="postNotice()" class="btn btn-dark-write" style="margin-top: 10px; float: right; margin-right: 100px;">작성</button>`
     footnotice.insertAdjacentHTML("beforeend", del_put_button)
@@ -231,13 +224,11 @@ async function handleLogout(){
 
 async function Search(){
   const search = document.getElementById("search").value
-  console.log(search)
   location.href= "../webtoon/search_webtoon.html?search=" + search;
 }
 
 function noticeSearch(){
   var notice_search = document.getElementById("notice_search").value;
-  console.log(notice_search)
   location.href = `${frontend_base_url}/templates/notice/notice.html?search=${notice_search}`
 }
 
