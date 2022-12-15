@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../static/css/board/boardwrite.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui-color-picker/latest/tui-color-picker.min.css" />
+    <script src="https://uicdn.toast.com/tui-color-picker/latest/tui-color-picker.min.js"></script>
+    <link rel="stylesheet"
+        href="https://uicdn.toast.com/editor-plugin-color-syntax/latest/toastui-editor-plugin-color-syntax.min.css" />
+    <script
+        src="https://uicdn.toast.com/editor-plugin-color-syntax/latest/toastui-editor-plugin-color-syntax.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>게시판</title>
+</head>
+
+<body>
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+    <div class="app-wrapper">
+        <div class="left-area hide-on-mobile">
+          <a href="../webtoon/main.html">
+            <div class="app-header">
+            </div>
+          </a>
+          <div class="left-area-content">
+            <a href="../user/profile.html">
+              <div class="profile">
+                <img id="movaprofile_img"src="" alt="">
+                <div class="profile-info">
+                  <span id="movaprofile_username" class="profile-name"></span>
+                  <span class="country">환영합니다!</span>
+                </div>
+              </div>
+            </a>
+            <div class="page-link-list">
+              <a href="../webtoon/main.html" class="item-link" id="pageLink">
+                <img class="link-icon" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FwF2Ek%2FbtrTANzhM94%2FlkcFJMgCKyVvsoo2wUxuK0%2Fimg.png" alt="">
+                홈</a>  
+              <a href="../notice/notice.html" class="item-link" id="pageLink">
+                <img class="link-icon" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbcaVPw%2FbtrSJY3Q2Wg%2F2sJIM6o7QrWKmcPVxnqC91%2Fimg.png" alt="">
+                공지사항</a>
+              <a href="../board/board.html" class="item-link active" id="pageLink">
+                <img class="link-icon" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FevMDjT%2FbtrSTxcsPrC%2Fa8F9jEV08Kcq1gXMhQYXVk%2Fimg.png" alt="">
+                게시판</a>
+              <a href="../colorization/fanartboard.html" class="item-link" id="pageLink">
+                <img class="link-icon" src="https://velog.velcdn.com/images/marinred/post/d5b2113f-20d3-42e7-b804-49ac64fa4b9e/image.png" alt="">
+                팬아트 만들기</a>
+            </div>
+          </div>
+        </div>
+      <div class="right-area">
+        <div class="right-area-upper">
+          <div class="search-part-wrapper">
+            <input class="search-input" type="text" id="search" placeholder="Search Webtoons...">
+            <button class="action-buttons btn-record" onclick="Search()">Seacrh</button>
+          </div>
+          <div class="action-buttons-wrapper">
+            <button class="action-buttons btn-upload" onclick="handleLogout()">Log out</button>
+          </div>
+        </div>
+            <div class="page-right-content" style="margin: 0px;">
+                <div class="detail_contatner" style="display:flex; margin: auto;">
+                    <div class="board_wrap" style="margin: 0px; margin: auto;">
+                        <div class="board_title">
+                            <strong>팬 게시판</strong>
+                            <p>웹툰의 애정을 나타내주세요!</p>
+                        </div>
+                        <div class="board_write_wrap">
+                            <div class="board_write">
+                                <div class="title">
+                                    <dl>
+                                        <dt>제목</dt>
+                                        <dd><input type="text" id="title" placeholder="제목 입력"></dd>
+                                    </dl>
+                                </div>
+                                <div class="info">
+                                    <dl>
+                                        <dt>글쓴이</dt>
+                                        <dd><span id="board-author"></span></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>카테고리</dt>
+                                        <div class="dropdown">
+                                            <select id="dropdown_category" name="dropdown_category">
+                                                <option>팬게시판</option>
+                                                <option>토론방</option>
+                                            </select>
+                                        </div>
+                                    </dl>
+                                    <dl>
+                                        <dt>웹툰 선택</dt>
+                                        <dd><input type="text" id="board-webtoon" placeholder="웹툰을 입력해주세요!"><button
+                                                id="select-webtoon" onclick="getBoardWebtoon()">검색<button></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>웹툰명</dt>
+                                        <dd><span id="webtoon_name"></span></dd>
+                                    </dl>
+                                </div>
+                                <div id="editor"></div>
+                            </div>
+                            <div class="bt_wrap">
+                                <a href="#" class="on" onclick="writeBoard()">등록</a>
+                                <a href="../board/board.html">취소</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal_add_feed" class="modal modal_overlay">
+        <div class="modal_window" >
+            <div class="modal_title">
+                <div class="modal_title_side"></div>
+                <div> 웹툰 리스트</div>
+                <div class="modal_title_side">
+                    <span id="close_modal" class="close_modal material-icons-outlined" style="font-size: 30px">
+                        close
+                    </span>
+                </div>
+            </div>
+            <div id="webtoon_box" style="display: flex;flex-wrap: nowrap; padding:10px; overflow-y:scroll;">
+            </div>
+        </div>
+    
+</body>
+<script src="../../static/js/board/boardwrite.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>

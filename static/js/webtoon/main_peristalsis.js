@@ -2,28 +2,23 @@ const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
 
 window.onload= () => {
-    UserProfile()
+    Validator()
+    MainPage()
     Profile()
-    Likeslist()
 }
 
-// 프로필 페이지
-async function Profile(){
-    const response = await fetch(`${backend_base_url}/user/`, {
-        method: 'GET',
-        headers:{
-          "Authorization": localStorage.getItem("access"),
-        }
-    })
-    response_json = await response.json()
+async function Validator(){
+    access = localStorage.getItem("access")
+    refresh = localStorage.getItem("refresh")
+    payload = localStorage.getItem("payload")
 
-    document.getElementById("profile_img").src = `${backend_base_url}${response_json.image}`
-    document.getElementById("username").innerText = `${response_json.username}`
-    document.getElementById("email").innerText = `${response_json.email}`
-    document.getElementById("bio").innerText = `${response_json.bio}`
+    if(access == null || payload == null || refresh == null){
+        alert("로그인 후 이용해주세요")
+        location.href = "../user/signup.html"
+    }
 }
 
-async function Likeslist(){
+async function MainPage(){
     const response = await fetch(`${backend_base_url}/`, {
         method: 'GET',
         headers:{
@@ -31,11 +26,13 @@ async function Likeslist(){
         }
     })
     response_json = await response.json()
-    likes_list = response_json[3]
+    naver_list = response_json[0]
+    kakao_list = response_json[1]
+    bookmark_list = response_json[2]
 
-    const like = document.getElementById("owl-slider-2")
-    likes_list.forEach(element => {
-        const like_box = ` <a class="a_box" href='../webtoon/webtoondetail.html?id=${element.id}'">
+    const naver = document.getElementById("owl-slider-2")
+    naver_list.forEach(element => {
+        const naver_web = ` <a class="a_box" href='webtoondetail.html?id=${element.id}'">
                                 <div class="item video-box-wrapper">
                                     <div class="img-preview">
                                         <img src="${element.image_url}" alt="">
@@ -47,62 +44,48 @@ async function Likeslist(){
                                     </div>
                                 </div>
                             </a>`
-            like.insertAdjacentHTML("beforeend", like_box)
-    })
-    a()
+        naver.insertAdjacentHTML("beforeend",naver_web)
+    });
+
+    const kakao = document.getElementById("owl-slider-3")
+    kakao_list.forEach(element => {
+        const kakao_web = ` <a class="a_box" href='webtoondetail.html?id=${element.id}'">
+                                <div class="item video-box-wrapper">
+                                    <div class="img-preview">
+                                        <img src="${element.image_url}" alt="">
+                                    </div>
+                                    <div class="video-description-wrapper">
+                                        <p class="video-description-header">${element.title}</p>
+                                        <p class="video-description-subheader">By ${element.author}</p>
+                                        <p class="video-description-info">${element.genre} <span>${element.likes_count} likes</span></p>
+                                    </div>
+                                </div>
+                            </a>`
+        kakao.insertAdjacentHTML("beforeend",kakao_web)
+    });
+
+    const mark = document.getElementById("owl-slider-4")
+    bookmark_list.forEach(element => {
+        const mark_web = `  <a class="a_box" href='webtoondetail.html?id=${element.id}'">
+                                <div class="item video-box-wrapper">
+                                    <div class="img-preview">
+                                        <img src="${element.image_url}" alt="">
+                                    </div>
+                                    <div class="video-description-wrapper">
+                                        <p class="video-description-header">${element.title}</p>
+                                        <p class="video-description-subheader">By ${element.author}</p>
+                                        <p class="video-description-info">${element.genre} <span>${element.likes_count} likes</span></p>
+                                    </div>
+                                </div>
+                            </a>`
+        mark.insertAdjacentHTML("beforeend",mark_web)
+    });
+
     b()
+    a()
 }
 
-function handleHome(){
-    location.href="main.html"
-}
-
-function move_profileedit(){
-  location.href="userchange.html"
-}
-
-
-// 로그아웃
-async function handleLogout(){
-    localStorage.removeItem("access")
-    localStorage.removeItem("refresh")
-    localStorage.removeItem("payload")
-    alert("로그아웃되었습니다.")
-    location.href = "signup.html"
-}
-
-//회원탈퇴
-async function ProfileDelete(){
-  if (confirm("정말 삭제하시겠습니까??") == true){
-    const payload = localStorage.getItem("payload")
-    const payload_parse = JSON.parse(payload)
-    const email= payload_parse.email
-    const response = await fetch(`${backend_base_url}/user/`, {
-        method: 'DELETE',
-        headers:{
-            'content-type' : 'application/json',
-            "Authorization": localStorage.getItem("access"),
-        },
-        body: JSON.stringify({
-            "email": email,
-        })
-    })
-    localStorage.removeItem("access")
-    localStorage.removeItem("refresh")
-    localStorage.removeItem("payload")    
-    location.href="signup.html";
-  }
-  else{   
-    return false;
-  }
-}
-
-async function Search(){
-    const search = document.getElementById("search").value
-    location.href= "http://127.0.0.1:5500/templates/webtoon/search_webtoon.html?search=" + search;
-}
-
-async function UserProfile(){
+async function Profile(){
     const response = await fetch(`${backend_base_url}/user/`, {
         method: 'GET',
         headers:{
@@ -112,7 +95,21 @@ async function UserProfile(){
     response_json = await response.json()
     document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
     document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
-  }
+}
+
+// 로그아웃
+async function handleLogout(){
+	localStorage.removeItem("access")
+	localStorage.removeItem("refresh")
+	localStorage.removeItem("payload")
+	alert("로그아웃되었습니다.")
+    location.href="../user/signup.html"
+}
+
+async function Search(){
+    const search = document.getElementById("search").value
+    location.href= "search_webtoon.html?search=" + search;
+}
 
 function a(){
     $(document).ready(function () {
@@ -144,6 +141,42 @@ function a(){
         });
       
         var owl = $("#owl-slider-2");
+        owl.owlCarousel({
+          navigation: true,
+          slideSpeed: 400,
+          paginationSpeed: 400,
+          responsive: {
+            0: {
+              items: 2
+            },
+            600: {
+              items: 4
+            },
+            1000: {
+              items: 8
+            }
+          }
+        });
+      
+        var owl = $("#owl-slider-3");
+        owl.owlCarousel({
+          navigation: true,
+          slideSpeed: 400,
+          paginationSpeed: 400,
+          responsive: {
+            0: {
+              items: 2
+            },
+            600: {
+              items: 4
+            },
+            1000: {
+              items: 8
+            }
+          }
+        });
+
+        var owl = $("#owl-slider-4");
         owl.owlCarousel({
           navigation: true,
           slideSpeed: 400,
