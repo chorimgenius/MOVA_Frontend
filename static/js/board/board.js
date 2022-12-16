@@ -45,7 +45,7 @@ async function pagination(num){
   if(search==null){
     search=""
   }
-  const response = await fetch(`${backend_base_url}/board/all?page=${num}&search=${search}`,{
+  const response = await fetch(`${backend_base_url}/board/all/?ordering=-id&page=${num}&search=${search}`,{
     method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -73,13 +73,13 @@ async function pagination(num){
         <td id="board_created_at">${today.toLocaleDateString()}</td>
     </tr>`
     count += 1
-    list_html.insertAdjacentHTML("afterbegin",list)
+    list_html.insertAdjacentHTML("beforeend",list)
   })
 }
 
 async function getBoard() {
   if(search == null && category == null){
-    const response = await fetch(`${backend_base_url}/board/all/`,{
+    const response = await fetch(`${backend_base_url}/board/all/?ordering=-id`,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -101,12 +101,12 @@ async function getBoard() {
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
-      list_html.insertAdjacentHTML("afterbegin",list)
+      list_html.insertAdjacentHTML("beforeend",list)
     })
   }
 
   else if(search == null && category == "1"){
-    const response = await fetch(`${backend_base_url}/board/discussion/`,{
+    const response = await fetch(`${backend_base_url}/board/discussion/?ordering=-id`,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -128,12 +128,12 @@ async function getBoard() {
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
-      list_html.insertAdjacentHTML("afterbegin",list)
+      list_html.insertAdjacentHTML("beforeend",list)
     })
   }
 
   else if(search == null && category == "2"){
-    const response = await fetch(`${backend_base_url}/board/fanboard/`,{
+    const response = await fetch(`${backend_base_url}/board/fanboard/?ordering=-id`,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -155,13 +155,13 @@ async function getBoard() {
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
-      list_html.insertAdjacentHTML("afterbegin",list)
+      list_html.insertAdjacentHTML("beforeend",list)
       
     })
   }
 
   else {
-    const response = await fetch(`${backend_base_url}/board/all?search=${search}` ,{
+    const response = await fetch(`${backend_base_url}/board/all/?ordering=-id&search=${search}` ,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -181,7 +181,7 @@ async function getBoard() {
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
-      list_html.insertAdjacentHTML("afterbegin",list)
+      list_html.insertAdjacentHTML("beforeend",list)
       }) 
   }
 

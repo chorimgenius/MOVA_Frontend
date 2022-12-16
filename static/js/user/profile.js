@@ -73,28 +73,7 @@ async function handleLogout(){
 
 //회원탈퇴
 async function ProfileDelete(){
-  if (confirm("정말 삭제하시겠습니까??") == true){
-    const payload = localStorage.getItem("payload")
-    const payload_parse = JSON.parse(payload)
-    const email= payload_parse.email
-    const response = await fetch(`${backend_base_url}/user/`, {
-        method: 'DELETE',
-        headers:{
-            'content-type' : 'application/json',
-            "Authorization": localStorage.getItem("access"),
-        },
-        body: JSON.stringify({
-            "email": email,
-        })
-    })
-    localStorage.removeItem("access")
-    localStorage.removeItem("refresh")
-    localStorage.removeItem("payload")    
-    location.href="signup.html";
-  }
-  else{   
-    return false;
-  }
+  location.href = "withdrawal.html"
 }
 
 async function Search(){
