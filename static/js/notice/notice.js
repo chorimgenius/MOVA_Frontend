@@ -47,7 +47,7 @@ async function pagination(num){
   if(search==null){
     search=""
   }
-  const response = await fetch(`${backend_base_url}/notice/all?page=${num}&search=${search}`,{
+  const response = await fetch(`${backend_base_url}/notice/all/?ordering=-id&page=${num}&search=${search}`,{
     method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -74,7 +74,7 @@ async function pagination(num){
         <td id="notice_created_at">${today.toLocaleDateString()}</td>
     </tr>`
     count += 1
-    list_html.insertAdjacentHTML("afterbegin",list)
+    list_html.insertAdjacentHTML("beforeend",list)
   })
 }
 
@@ -82,7 +82,7 @@ async function pagination(num){
 
 async function getNotice() {
   if(search == null && category == null){
-    const response = await fetch(`${backend_base_url}/notice/all/`,{
+    const response = await fetch(`${backend_base_url}/notice/all/?ordering=-id`,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -103,12 +103,12 @@ async function getNotice() {
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
-      list_html.insertAdjacentHTML("afterbegin",list)
+      list_html.insertAdjacentHTML("beforeend",list)
     })
   }
 
   else if(search == null && category == "1"){
-    const response = await fetch(`${backend_base_url}/notice/notice/`,{
+    const response = await fetch(`${backend_base_url}/notice/notice/?ordering=-id`,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -129,12 +129,12 @@ async function getNotice() {
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
-      list_html.insertAdjacentHTML("afterbegin",list)
+      list_html.insertAdjacentHTML("beforeend",list)
     })
   }
 
   else if(search == null && category == "2"){
-    const response = await fetch(`${backend_base_url}/notice/event/`,{
+    const response = await fetch(`${backend_base_url}/notice/event/?ordering=-id`,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -155,12 +155,12 @@ async function getNotice() {
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
-      list_html.insertAdjacentHTML("afterbegin",list)
+      list_html.insertAdjacentHTML("beforeend",list)
     })
   }
 
   else {
-    const response = await fetch(`${backend_base_url}/notice/all?search=${search}` ,{
+    const response = await fetch(`${backend_base_url}/notice/all/?ordering=-id&search=${search}` ,{
       method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -179,7 +179,7 @@ async function getNotice() {
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
-      list_html.insertAdjacentHTML("afterbegin",list)
+      list_html.insertAdjacentHTML("beforeend",list)
       })
   }
 
@@ -210,7 +210,7 @@ async function Profile(){
   document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
   const footnotice = document.getElementById('footnotice')
   if(response_json.is_admin==true){
-    del_put_button = `<button type="submit" onclick="postNotice()" class="btn btn-dark-write" style="margin-top: 10px; float: right; margin-right: 100px;">작성</button>`
+    del_put_button = `<button type="submit" onclick="postNotice()" class="btn btn-dark-write" style="margin-top: 30px; float: right; margin-right: 100px;">작성</button>`
     footnotice.insertAdjacentHTML("beforeend", del_put_button)
 }}
 
