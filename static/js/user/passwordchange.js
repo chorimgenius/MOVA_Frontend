@@ -13,5 +13,5 @@ async function PasswordChangeput(){
         method: 'PUT',
         body: form_data
     })
-    location.href="../../templates/webtoon/main.html"
+    location.href="main.html"
 }
