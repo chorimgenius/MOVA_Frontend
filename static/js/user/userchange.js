@@ -114,11 +114,11 @@ async function Profile(){
       localStorage.removeItem("refresh")
       localStorage.removeItem("payload")
       alert("로그아웃되었습니다.")
-      location.href="../user/signup.html"
+      location.href="signup.html"
   }
   
   async function Search(){
     const search = document.getElementById("search").value
 
-    location.href= "../webtoon/search_webtoon.html?search=" + search;
+    location.href= "search_webtoon.html?search=" + search;
   }

@@ -35,7 +35,7 @@ async function Likeslist(){
 
     const like = document.getElementById("owl-slider-2")
     likes_list.forEach(element => {
-        const like_box = ` <a class="a_box" href='../webtoon/webtoondetail.html?id=${element.id}'">
+        const like_box = ` <a class="a_box" href='webtoondetail.html?id=${element.id}'">
                                 <div class="item video-box-wrapper">
                                     <div class="img-preview">
                                         <img src="${element.image_url}" alt="">
@@ -78,7 +78,7 @@ async function ProfileDelete(){
 
 async function Search(){
     const search = document.getElementById("search").value
-    location.href= "http://127.0.0.1:5500/templates/webtoon/search_webtoon.html?search=" + search;
+    location.href= "http://127.0.0.1:5500/search_webtoon.html?search=" + search;
 }
 
 async function UserProfile(){

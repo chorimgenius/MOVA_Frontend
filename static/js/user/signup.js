@@ -68,7 +68,7 @@ async function handleSignin(){
   
       localStorage.setItem("payload", jsonPayload);
       alert("MOVA에 오신걸 환영 합니다.")
-      location.href = "../webtoon/main.html";
+      location.href = "main.html";
   }
   else{
     alert("가입된 정보를 확인해주세요")
