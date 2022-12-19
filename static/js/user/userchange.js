@@ -65,26 +65,9 @@ async function handleLogout(){
 
 //회원탈퇴
 async function ProfileDelete(){
-    const payload = localStorage.getItem("payload")
-    const payload_parse = JSON.parse(payload)
-    const email= payload_parse.email
-    const response = await fetch(`${backend_base_url}/user/`, {
-        method: 'DELETE',
-        headers:{
-            'content-type' : 'application/json',
-            "Authorization": localStorage.getItem("access"),
-        },
-        body: JSON.stringify({
-            "email": email,
-        })
-        
-    })
-    localStorage.removeItem("access")
-	localStorage.removeItem("refresh")
-	localStorage.removeItem("payload")
-    alert("회원탈퇴되었습니다.")
-    location.href="signup.html"
-}
+    location.href = "withdrawal.html"
+  }
+
 
 //비밀번호 변경 링크 보내기
 async function move_passwordchange(){

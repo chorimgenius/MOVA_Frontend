@@ -310,7 +310,7 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://127.0.0.1:5500/templates/colorization/fanart-detail.html?id=${element.id}"></a>
+                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
     // list_box.forEach(element => {
@@ -332,7 +332,7 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://127.0.0.1:5500/templates/colorization/fanart-detail.html?id=${element.id}"></a>
+                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
     // list_box.forEach(element => {
@@ -3810,5 +3810,5 @@ async function loadDesign(){
   
   //fanart 페이지로 이동
 function move_fanart(){
-  location.href="../colorization/fanart-write.html"
+  location.href="fanart-write.html"
 }

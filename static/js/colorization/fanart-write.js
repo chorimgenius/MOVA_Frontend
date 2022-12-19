@@ -9,25 +9,27 @@ let colorVal = 'black'; // 색상
 let resize_image_id = 0
 let image_id = 0
 async function resize_image(e){
-let file = e.currentTarget.files[0];
-const form_data = new FormData();
-form_data.append('image',file)
-const response = await fetch(`https://www.chorim.shop/fanart/baseimage/`,{
-    headers: {
-    "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwNzUyNzE1LCJpYXQiOjE2NzAzOTI3MTUsImp0aSI6IjJiZTMzMTQxNzUxNDQxMzI4ZGE3ZDY1MDNlMGI4ZGNmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.1B6_uDlW_8i7becxZVPSXl_cN6jaF1edhX_rLHVeSw8",
-    },
-    method:'POST',
-    body: form_data
-})
-response_json = await response.json()
-resize_image_id = response_json.id
+    let file = e.currentTarget.files[0];
+    const form_data = new FormData();
+    form_data.append('image',file)
+    const response = await fetch(`https://www.chorim.shop/fanart/baseimage/`,{
+        headers: {
+        "Authorization": localStorage.getItem("access"),
+        },
+        method:'POST',
+        body: form_data
+    })
+    response_json = await response.json()
+    resize_image_id = response_json.id
 
-const imgElem = new Image();
-imgElem.src = `https://www.chorim.shop${response_json.image}`;
-imgElem.crossOrigin = 'Anonymous';
-imgElem.addEventListener('load', () => {
-    context.drawImage(imgElem, 0, 0, 480, 480);
-});
+    const imgElem = new Image();
+    imgElem.src = `https://www.chorim.shop${response_json.image}`;
+    imgElem.crossOrigin = 'Anonymous';
+    console.log(11,canvas.toDataURL("image/png"))
+    localStorage.setItem("saved-image-example", canvas.toDataURL("image/png"));
+    imgElem.addEventListener('load', () => {
+        context.drawImage(imgElem, 0, 0, 480, 480);
+    });
 }
 function downHandler() {
     drawingMode = true;
@@ -85,7 +87,7 @@ form_data.append("hint_image", file,file_name);	// file data 추가
 
 const response = await fetch(`https://www.chorim.shop/fanart/colorization/`,{
     headers: {
-    "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwNzUyNzE1LCJpYXQiOjE2NzAzOTI3MTUsImp0aSI6IjJiZTMzMTQxNzUxNDQxMzI4ZGE3ZDY1MDNlMGI4ZGNmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.1B6_uDlW_8i7becxZVPSXl_cN6jaF1edhX_rLHVeSw8",
+    "Authorization": localStorage.getItem("access"),
     },
     method:'POST',
     body: form_data
@@ -106,7 +108,7 @@ async function fanart_write(){
 
     const response = await fetch(`https://www.chorim.shop/fanart/`,{
         headers: {
-        "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwOTI1Njc5LCJpYXQiOjE2NzA1NjU2NzksImp0aSI6IjlhM2ViYTE3YWNiZDRiZDZhZTE0NGI4ZDQyY2I1NmM4IiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.JyYhMKHQ7CzXDsZnlO_Tfpn6Ygx6Fc2d239u9__Wt8U",
+        "Authorization": localStorage.getItem("access"),
         "content-type" : 'application/json',
         },
         method:'POST',
