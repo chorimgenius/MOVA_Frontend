@@ -1,4 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000"
+const backend_base_url = "https://www.chorim.shop"
 const frontend_base_url = "http://127.0.0.1:5500"
 const urlStr = window.location.href;
 const url = new URL(urlStr);
@@ -66,7 +66,7 @@ async function Profile(){
       localStorage.removeItem("refresh")
       localStorage.removeItem("payload")
       alert("로그아웃되었습니다.")
-      location.href="../user/signup.html"
+      location.href="signup.html"
   }
   
   async function Search(){
@@ -131,6 +131,6 @@ async function writeNotice() {
                 "content":content
             })
         })
-        location.href = `${frontend_base_url}/templates/notice/noticedetail.html?id=${id}`    
+        location.href = `${frontend_base_url}/noticedetail.html?id=${id}`    
     }
 }

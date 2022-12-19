@@ -12,7 +12,7 @@ async function resize_image(e){
 let file = e.currentTarget.files[0];
 const form_data = new FormData();
 form_data.append('image',file)
-const response = await fetch(`http://127.0.0.1:8000/fanart/baseimage/`,{
+const response = await fetch(`https://www.chorim.shop/fanart/baseimage/`,{
     headers: {
     "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwNzUyNzE1LCJpYXQiOjE2NzAzOTI3MTUsImp0aSI6IjJiZTMzMTQxNzUxNDQxMzI4ZGE3ZDY1MDNlMGI4ZGNmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.1B6_uDlW_8i7becxZVPSXl_cN6jaF1edhX_rLHVeSw8",
     },
@@ -23,7 +23,7 @@ response_json = await response.json()
 resize_image_id = response_json.id
 
 const imgElem = new Image();
-imgElem.src = `http://127.0.0.1:8000${response_json.image}`;
+imgElem.src = `https://www.chorim.shop${response_json.image}`;
 imgElem.crossOrigin = 'Anonymous';
 imgElem.addEventListener('load', () => {
     context.drawImage(imgElem, 0, 0, 480, 480);
@@ -83,7 +83,7 @@ var form_data = new FormData();	// formData 생성
 form_data.append("resize_image",resize_image_id)
 form_data.append("hint_image", file,file_name);	// file data 추가
 
-const response = await fetch(`http://127.0.0.1:8000/fanart/colorization/`,{
+const response = await fetch(`https://www.chorim.shop/fanart/colorization/`,{
     headers: {
     "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwNzUyNzE1LCJpYXQiOjE2NzAzOTI3MTUsImp0aSI6IjJiZTMzMTQxNzUxNDQxMzI4ZGE3ZDY1MDNlMGI4ZGNmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.1B6_uDlW_8i7becxZVPSXl_cN6jaF1edhX_rLHVeSw8",
     },
@@ -93,7 +93,7 @@ const response = await fetch(`http://127.0.0.1:8000/fanart/colorization/`,{
 response_json = await response.json()
 
 let result_box = document.getElementById('result_image_box')
-result_box.src = "http://127.0.0.1:8000"+response_json.result_image
+result_box.src = "https://www.chorim.shop"+response_json.result_image
 image_id = response_json.id
 
 
@@ -104,7 +104,7 @@ async function fanart_write(){
     let webtoon = 1 // 임시
 
 
-    const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
+    const response = await fetch(`https://www.chorim.shop/fanart/`,{
         headers: {
         "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwOTI1Njc5LCJpYXQiOjE2NzA1NjU2NzksImp0aSI6IjlhM2ViYTE3YWNiZDRiZDZhZTE0NGI4ZDQyY2I1NmM4IiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.JyYhMKHQ7CzXDsZnlO_Tfpn6Ygx6Fc2d239u9__Wt8U",
         "content-type" : 'application/json',
@@ -134,7 +134,7 @@ modal_close.addEventListener("click", e => {
 
 // async function search_webtoon(){
 //   const name = document.getElementById('webtoon-name').value
-//   const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
+//   const response = await fetch(`https://www.chorim.shop/fanart/`,{
 //     headers: {
 //       "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwOTI1Njc5LCJpYXQiOjE2NzA1NjU2NzksImp0aSI6IjlhM2ViYTE3YWNiZDRiZDZhZTE0NGI4ZDQyY2I1NmM4IiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.JyYhMKHQ7CzXDsZnlO_Tfpn6Ygx6Fc2d239u9__Wt8U",
 //       "content-type" : 'application/json',

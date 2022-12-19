@@ -1,4 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000";
+const backend_base_url = "https://www.chorim.shop";
 
 // webtoon 상세 페이지 내용 가져와서 띄우기
 window.onload = function () {
