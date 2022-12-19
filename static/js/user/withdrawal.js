@@ -1,4 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000"
+const backend_base_url = "https://www.chorim.shop"
 
 //회원탈퇴
 async function ProfileDelete(){
