@@ -15,7 +15,7 @@ async function Validator(){
 
   if(access == null || payload == null || refresh == null){
       alert("로그인 후 이용해주세요")
-      location.href = "../user/signup.html"
+      location.href = "signup.html"
   }
 }
 
@@ -308,13 +308,13 @@ async function handleLogout() {
   localStorage.removeItem("refresh");
   localStorage.removeItem("payload");
   alert("로그아웃되었습니다.");
-  location.href = "../user/signup.html";
+  location.href = "signup.html";
 }
 
 async function Search() {
   const search = document.getElementById("search").value;
 
-  location.href = "../webtoon/search_webtoon.html?search=" + search;
+  location.href = "search_webtoon.html?search=" + search;
 }
 
 // 기본 페이지에 쓰이는 javascript
@@ -399,5 +399,5 @@ $(document).ready(function () {
 
 //fanart 페이지로 이동
 function move_fanart(){
-  location.href="../colorization/fanartboard.html"
+  location.href="fanartboard.html"
 }
