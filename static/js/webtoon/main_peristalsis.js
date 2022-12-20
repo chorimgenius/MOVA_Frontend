@@ -1,5 +1,5 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const backend_base_url = "https://www.chorim.shop"
+const frontend_base_url = "https://www.mo-va.site"
 
 window.onload= () => {
     Validator()
@@ -13,8 +13,8 @@ async function Validator(){
     payload = localStorage.getItem("payload")
 
     if(access == null || payload == null || refresh == null){
-        alert("로그인 후 이용해주세요")
-        location.href = "../user/signup.html"
+        swal("로그인 후 이용해주세요")
+        location.href = "signup.html"
     }
 }
 
@@ -102,8 +102,8 @@ async function handleLogout(){
 	localStorage.removeItem("access")
 	localStorage.removeItem("refresh")
 	localStorage.removeItem("payload")
-	alert("로그아웃되었습니다.")
-    location.href="../user/signup.html"
+	swal("로그아웃되었습니다.")
+    location.href="signup.html"
 }
 
 async function Search(){

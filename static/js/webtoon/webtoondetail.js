@@ -1,4 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000";
+const backend_base_url = "https://www.chorim.shop";
 
 // webtoon 상세 페이지 내용 가져와서 띄우기
 window.onload = function () {
@@ -14,8 +14,8 @@ async function Validator(){
   payload = localStorage.getItem("payload")
 
   if(access == null || payload == null || refresh == null){
-      alert("로그인 후 이용해주세요")
-      location.href = "../user/signup.html"
+      swal("로그인 후 이용해주세요")
+      location.href = "signup.html"
   }
 }
 
@@ -307,14 +307,14 @@ async function handleLogout() {
   localStorage.removeItem("access");
   localStorage.removeItem("refresh");
   localStorage.removeItem("payload");
-  alert("로그아웃되었습니다.");
-  location.href = "../user/signup.html";
+  swal("로그아웃되었습니다.");
+  location.href = "signup.html";
 }
 
 async function Search() {
   const search = document.getElementById("search").value;
 
-  location.href = "../webtoon/search_webtoon.html?search=" + search;
+  location.href = "search_webtoon.html?search=" + search;
 }
 
 // 기본 페이지에 쓰이는 javascript
@@ -399,5 +399,5 @@ $(document).ready(function () {
 
 //fanart 페이지로 이동
 function move_fanart(){
-  location.href="../colorization/fanartboard.html"
+  location.href="fanartboard.html"
 }

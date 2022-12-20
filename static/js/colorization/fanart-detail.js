@@ -1,4 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000"
+const backend_base_url = "https://www.chorim.shop"
 
 window.onload = () => {
   Validator()
@@ -12,7 +12,7 @@ async function Validator(){
   payload = localStorage.getItem("payload")
 
   if(access == null || payload == null || refresh == null){
-      alert("로그인 후 이용해주세요")
+      swal("로그인 후 이용해주세요")
       location.href = "../user/signup.html"
   }
 }
@@ -33,7 +33,7 @@ async function handleLogout(){
 	localStorage.removeItem("access")
 	localStorage.removeItem("refresh")
 	localStorage.removeItem("payload")
-	alert("로그아웃되었습니다.")
+	swal("로그아웃되었습니다.")
     location.href="../user/signup.html"
 }
 
@@ -49,7 +49,7 @@ async function loadBoard(){
   const urlParms = url.searchParams;
   id = urlParms.get('id')
 
-  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/`,{
+  const response = await fetch(`https://www.chorim.shop/fanart/${id}/`,{
       headers: {
         "Authorization": localStorage.getItem("access"),
       },
@@ -57,7 +57,7 @@ async function loadBoard(){
   })
   const response_json = await response.json()
   const fanart_image = document.getElementById('fanart-image')
-  fanart_image.src = "http://127.0.0.1:8000"+response_json.image
+  fanart_image.src = "https://www.chorim.shop"+response_json.image
 
   var date = new Date(response_json.created_at)
   const payload = localStorage.getItem("payload")
@@ -98,7 +98,7 @@ async function loadBoard(){
 
 //likes
 async function fanart_like(){
-  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/like/`,{
+  const response = await fetch(`https://www.chorim.shop/fanart/${id}/like/`,{
     headers: {
       "Authorization" : localStorage.getItem("access"),
       "content-type" : 'application/json',
@@ -140,7 +140,7 @@ function timeForToday(value) {
 }
 async function write_comment(){
   const comment = document.getElementById("write-comment")
-  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/`,{
+  const response = await fetch(`https://www.chorim.shop/fanart/${id}/comment/`,{
     headers: {
       "Authorization": localStorage.getItem("access"),
       "content-type" : 'application/json',
@@ -163,7 +163,7 @@ async function write_comment(){
   comment.value = null
 }
 async function delete_comment(id){
-  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/${id}`,{
+  const response = await fetch(`https://www.chorim.shop/fanart/${id}/comment/${id}`,{
     headers: {
       "Authorization": localStorage.getItem("access"),
     },

@@ -1,5 +1,5 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const backend_base_url = "https://www.chorim.shop"
+const frontend_base_url = "https://www.mo-va.site"
 
 window.onload= () => {
     UserProfile()
@@ -35,7 +35,7 @@ async function Likeslist(){
 
     const like = document.getElementById("owl-slider-2")
     likes_list.forEach(element => {
-        const like_box = ` <a class="a_box" href='../webtoon/webtoondetail.html?id=${element.id}'">
+        const like_box = ` <a class="a_box" href='webtoondetail.html?id=${element.id}'">
                                 <div class="item video-box-wrapper">
                                     <div class="img-preview">
                                         <img src="${element.image_url}" alt="">
@@ -67,7 +67,7 @@ async function handleLogout(){
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
-    alert("로그아웃되었습니다.")
+    swal("로그아웃되었습니다.")
     location.href = "signup.html"
 }
 
@@ -78,7 +78,7 @@ async function ProfileDelete(){
 
 async function Search(){
     const search = document.getElementById("search").value
-    location.href= "http://127.0.0.1:5500/templates/webtoon/search_webtoon.html?search=" + search;
+    location.href= "https://www.mo-va.site/search_webtoon.html?search=" + search;
 }
 
 async function UserProfile(){

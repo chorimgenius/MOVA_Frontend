@@ -1,4 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000"
+const backend_base_url = "https://www.chorim.shop"
 
 window.onload = () => {
   Validator()
@@ -12,7 +12,7 @@ async function Validator(){
   payload = localStorage.getItem("payload")
 
   if(access == null || payload == null || refresh == null){
-      alert("로그인 후 이용해주세요")
+      swal("로그인 후 이용해주세요")
       location.href = "../user/signup.html"
   }
 }
@@ -33,7 +33,7 @@ async function handleLogout(){
 	localStorage.removeItem("access")
 	localStorage.removeItem("refresh")
 	localStorage.removeItem("payload")
-	alert("로그아웃되었습니다.")
+	swal("로그아웃되었습니다.")
     location.href="../user/signup.html"
 }
 
@@ -221,11 +221,9 @@ function owl_slider(){
   });
 }
 
-function fanart_detail(id){
-}
 
 async function fanart_board_select(id){
-  const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
+  const response = await fetch(`https://www.chorim.shop/fanart/`,{
     method: 'GET',
   })
   const response_json = await response.json()
@@ -237,7 +235,7 @@ const search_id = urlParams.get('search_id');
 
 async function getBoardWebtoon() {
   const webtoon = document.getElementById("board-webtoon").value
-  const response = await fetch(`http://127.0.0.1:8000/board/webtoonall?search=${webtoon}`, {
+  const response = await fetch(`https://www.chorim.shop/board/webtoonall?search=${webtoon}`, {
     method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -281,11 +279,11 @@ modal_close.addEventListener("click", e => {
 });
 
 async function loadDesign(){
-  let url = `http://127.0.0.1:8000/fanart/`
+  let url = `https://www.chorim.shop/fanart/`
   if(search_id == null){
 
   }else{
-    url = `http://127.0.0.1:8000/fanart/search/${search_id}`
+    url = `https://www.chorim.shop/fanart/search/${search_id}`
   }
   const response = await fetch(url,{
     headers: {
@@ -300,7 +298,7 @@ async function loadDesign(){
   await response_json[0].forEach(element => {
     const content = `<div class="item video-box-wrapper" style="background-color:black;" onclick="fanart_detail(1)">
                 <figure class="snip1477">
-                    <img src="http://127.0.0.1:8000${element.image.result_image}" alt="sample38"/>
+                    <img src="https://www.chorim.shop${element.image.result_image}" alt="sample38"/>
                     <div class="title">
                       <div>
                         <h2>${element.webtoon}</h2>
@@ -310,19 +308,16 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://127.0.0.1:5500/templates/colorization/fanart-detail.html?id=${element.id}"></a>
+                    <a href="https://www.mo-va.site/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
-    // list_box.forEach(element => {
-    //   element.insertAdjacentHTML("beforeend",content)
-    // })
     list_box.insertAdjacentHTML("beforeend",content)
   });
   const list_box2 = document.getElementById('owl-slider-3')
   await response_json[1].forEach(element => {
     const content = `<div class="item video-box-wrapper" style="background-color:black;" onclick="fanart_detail(1)">
                 <figure class="snip1477">
-                    <img src="http://127.0.0.1:8000${element.image.result_image}" alt="sample38"/>
+                    <img src="https://www.chorim.shop${element.image.result_image}" alt="sample38"/>
                     <div class="title">
                       <div>
                         <h2>${element.user.username}</h2>
@@ -332,12 +327,9 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://127.0.0.1:5500/templates/colorization/fanart-detail.html?id=${element.id}"></a>
+                    <a href="https://www.mo-va.site/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
-    // list_box.forEach(element => {
-    //   element.insertAdjacentHTML("beforeend",content)
-    // })
     list_box2.insertAdjacentHTML("beforeend",content)
     
   });
@@ -346,10 +338,6 @@ async function loadDesign(){
 
   owl_carousel()
   owl_slider()
-  // const select_webtoon = document.getElementById('select-webtoon')
-  // select_webtoon.addEventListener("click", e => {
-  //   getBoardWebtoon()
-  // })
 
 }
 
@@ -3810,5 +3798,5 @@ async function loadDesign(){
   
   //fanart 페이지로 이동
 function move_fanart(){
-  location.href="../colorization/fanart-write.html"
+  location.href="fanart-write.html"
 }

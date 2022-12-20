@@ -1,5 +1,5 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const backend_base_url = "https://www.chorim.shop"
+const frontend_base_url = "https://www.mo-va.site"
 
 
 window.onload = () => {
@@ -14,8 +14,8 @@ async function Validator(){
   payload = localStorage.getItem("payload")
 
   if(access == null || payload == null || refresh == null){
-      alert("로그인 후 이용해주세요")
-      location.href = "../user/signup.html"
+      swal("로그인 후 이용해주세요")
+      location.href = "signup.html"
   }
 }
 
@@ -28,19 +28,19 @@ const category = urlParms.get('category')
 async function allbuttonclick(){
   all_button = document.getElementById('all_button')
   all_button.classList.toggle("button-wrap-after")
-  location.href = `${frontend_base_url}/templates/notice/notice.html`
+  location.href = `${frontend_base_url}/notice.html`
 }
 
 async function noticebuttonclick(){
   fan_button = document.getElementById('notice_button')
   fan_button.classList.toggle("button-wrap-after")
-    location.href = `${frontend_base_url}/templates/notice/notice.html?category=1`
+    location.href = `${frontend_base_url}/notice.html?category=1`
 }
 
 async function eventbuttonclick(){
   debate_button = document.getElementById('event_button')
   debate_button.classList.toggle("button-wrap-after")
-      location.href = `${frontend_base_url}/templates/notice/notice.html?category=2`
+      location.href = `${frontend_base_url}/notice.html?category=2`
 }
 
 async function pagination(num){
@@ -70,7 +70,7 @@ async function pagination(num){
     const list = `
     <tr class="notice-list">
         <td id="notice_number">${count}</td>
-        <th id="notice_title"><a href="http://127.0.0.1:5500/templates/notice/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+        <th id="notice_title"><a href="https://www.mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
         <td id="notice_created_at">${today.toLocaleDateString()}</td>
     </tr>`
     count += 1
@@ -99,7 +99,7 @@ async function getNotice() {
       const list = `
       <tr class="notice-list">
           <td id="notice_number">${count}</td>
-          <th id="notice_title"><a href="http://127.0.0.1:5500/templates/notice/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+          <th id="notice_title"><a href="https://www.mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
@@ -125,7 +125,7 @@ async function getNotice() {
       const list = `
       <tr class="notice-list">
           <td id="notice_number">${count}</td>
-          <th id="notice_title"><a href="http://127.0.0.1:5500/templates/notice/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+          <th id="notice_title"><a href="https://www.mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
@@ -151,7 +151,7 @@ async function getNotice() {
       const list = `
       <tr class="notice-list">
           <td id="notice_number">${count}</td>
-          <th id="notice_title"><a href="http://127.0.0.1:5500/templates/notice/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+          <th id="notice_title"><a href="https://www.mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
@@ -175,7 +175,7 @@ async function getNotice() {
       const list = `
       <tr class="notice-list">
           <td id="notice_number">${count}</td>
-          <th id="notice_title"><a href="http://127.0.0.1:5500/templates/notice/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+          <th id="notice_title"><a href="https://www.mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
@@ -218,8 +218,8 @@ async function handleLogout(){
 	localStorage.removeItem("access")
 	localStorage.removeItem("refresh")
 	localStorage.removeItem("payload")
-	alert("로그아웃되었습니다.")
-    location.href="../user/signup.html"
+	swal("로그아웃되었습니다.")
+    location.href="signup.html"
 }
 
 async function Search(){
@@ -229,7 +229,7 @@ async function Search(){
 
 function noticeSearch(){
   var notice_search = document.getElementById("notice_search").value;
-  location.href = `${frontend_base_url}/templates/notice/notice.html?search=${notice_search}`
+  location.href = `${frontend_base_url}/notice.html?search=${notice_search}`
 }
 
 

@@ -1,5 +1,5 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+const backend_base_url = "https://www.chorim.shop"
+const frontend_base_url = "https://www.mo-va.site"
 
 window.onload = () => {
   Validator()
@@ -13,8 +13,8 @@ async function Validator(){
   payload = localStorage.getItem("payload")
 
   if(access == null || payload == null || refresh == null){
-      alert("로그인 후 이용해주세요")
-      location.href = "../user/signup.html"
+      swal("로그인 후 이용해주세요")
+      location.href = "signup.html"
   }
 }
 const urlStr = window.location.href;
@@ -26,19 +26,19 @@ const category = urlParms.get('category')
 async function allbuttonclick(){
   all_button = document.getElementById('all_button')
   all_button.classList.toggle("button-wrap-after")
-  location.href = `${frontend_base_url}/templates/board/board.html`
+  location.href = `${frontend_base_url}/board.html`
 }
 
 async function fanbuttonclick(){
   fan_button = document.getElementById('fan_button')
   fan_button.classList.toggle("button-wrap-after")
-    location.href = `${frontend_base_url}/templates/board/board.html?category=1`
+    location.href = `${frontend_base_url}/board.html?category=1`
 }
 
 async function debatebuttonclick(){
   debate_button = document.getElementById('debate_button')
   debate_button.classList.toggle("button-wrap-after")
-      location.href = `${frontend_base_url}/templates/board/board.html?category=2`
+      location.href = `${frontend_base_url}/board.html?category=2`
 }
 
 async function pagination(num){
@@ -68,7 +68,7 @@ async function pagination(num){
     const list = `
     <tr class="board-list">
         <td id="board_number">${count}</td>
-        <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+        <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
         <td id="board_webtoon">${element.webtoon_title}</td>
         <td id="board_created_at">${today.toLocaleDateString()}</td>
     </tr>`
@@ -96,7 +96,7 @@ async function getBoard() {
       const list = `
       <tr class="board-list">
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
@@ -123,7 +123,7 @@ async function getBoard() {
       const list = `
       <tr class="board-list">
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
@@ -150,7 +150,7 @@ async function getBoard() {
       const list = `
       <tr class="board-list">
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
@@ -176,7 +176,7 @@ async function getBoard() {
       const list = `
       <tr class="board-list">
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
@@ -217,7 +217,7 @@ async function getDiscussion() {
         const list = `
         <tr class="board-list">
             <td id="board_number">${count}</td>
-            <th id="board_title"><a href="http://127.0.0.1:5500/templates/board/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+            <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
             <td id="board_webtoon">${element.webtoon_title}</td>
             <td id="board_created_at">${today.toLocaleDateString()}</td>
         </tr>`
@@ -230,7 +230,7 @@ async function getDiscussion() {
 
 function boardSearch(){
   var board_search = document.getElementById("board_search").value;
-  location.href = `${frontend_base_url}/templates/board/board.html?search=${board_search}`
+  location.href = `${frontend_base_url}/board.html?search=${board_search}`
 }
 
 function postBoard() {
@@ -253,8 +253,8 @@ async function handleLogout(){
 	localStorage.removeItem("access")
 	localStorage.removeItem("refresh")
 	localStorage.removeItem("payload")
-	alert("로그아웃되었습니다.")
-    location.href="../user/signup.html"
+	swal("로그아웃되었습니다.")
+    location.href="signup.html"
 }
 
 async function Search(){

@@ -1,4 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000"
+const backend_base_url = "https://www.chorim.shop"
 
 window.onload= () => {
     ProfileChange()
@@ -20,7 +20,7 @@ async function ProfileChange(){
     a=document.getElementById("email")
     document.getElementById("biochange").value = `${response_json.bio}`
     b=document.getElementById("biochange")
-    document.getElementById("profile_img").src = `http://127.0.0.1:8000${response_json.image}`
+    document.getElementById("profile_img").src = `https://www.chorim.shop${response_json.image}`
 }
 
 //내용 바꿔주는 put
@@ -59,32 +59,15 @@ async function handleLogout(){
 	localStorage.removeItem("access")
 	localStorage.removeItem("refresh")
 	localStorage.removeItem("payload")
-	alert("로그아웃되었습니다.")
+	swal("로그아웃되었습니다.")
     location.href="signup.html"
 }
 
 //회원탈퇴
 async function ProfileDelete(){
-    const payload = localStorage.getItem("payload")
-    const payload_parse = JSON.parse(payload)
-    const email= payload_parse.email
-    const response = await fetch(`${backend_base_url}/user/`, {
-        method: 'DELETE',
-        headers:{
-            'content-type' : 'application/json',
-            "Authorization": localStorage.getItem("access"),
-        },
-        body: JSON.stringify({
-            "email": email,
-        })
-        
-    })
-    localStorage.removeItem("access")
-	localStorage.removeItem("refresh")
-	localStorage.removeItem("payload")
-    alert("회원탈퇴되었습니다.")
-    location.href="signup.html"
-}
+    location.href = "withdrawal.html"
+  }
+
 
 //비밀번호 변경 링크 보내기
 async function move_passwordchange(){
@@ -94,7 +77,7 @@ async function move_passwordchange(){
             "Authorization": localStorage.getItem("access"),
         }
     })
-    location.href="http://127.0.0.1:8000/user/password_reset/"
+    location.href="https://www.chorim.shop/user/password_reset/"
 }
 
 async function Profile(){
@@ -113,12 +96,12 @@ async function Profile(){
       localStorage.removeItem("access")
       localStorage.removeItem("refresh")
       localStorage.removeItem("payload")
-      alert("로그아웃되었습니다.")
-      location.href="../user/signup.html"
+      swal("로그아웃되었습니다.")
+      location.href="signup.html"
   }
   
   async function Search(){
     const search = document.getElementById("search").value
 
-    location.href= "../webtoon/search_webtoon.html?search=" + search;
+    location.href= "search_webtoon.html?search=" + search;
   }
