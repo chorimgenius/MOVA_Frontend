@@ -20,10 +20,10 @@ async function ProfileDelete(){
   localStorage.removeItem("access")
   localStorage.removeItem("refresh")
   localStorage.removeItem("payload")
-  swal("회원탈퇴가 완료되었습니다. 다음에 또 뵐께요!")
+  alert("회원탈퇴가 완료되었습니다. 다음에 또 뵐께요!")
   location.href="signup.html";
   }
   else{
-    swal ("사용중인 이메일이 아닙니다. 다시 입력해주세요")
+    alert ("사용중인 이메일이 아닙니다. 다시 입력해주세요")
   }
 }

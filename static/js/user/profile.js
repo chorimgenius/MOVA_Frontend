@@ -67,7 +67,7 @@ async function handleLogout(){
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
-    swal("로그아웃되었습니다.")
+    alert("로그아웃되었습니다.")
     location.href = "signup.html"
 }
 

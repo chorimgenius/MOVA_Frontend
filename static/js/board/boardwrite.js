@@ -24,7 +24,7 @@ async function Validator(){
   payload = localStorage.getItem("payload")
 
   if(access == null || payload == null || refresh == null){
-      swal("로그인 후 이용해주세요")
+      alert("로그인 후 이용해주세요")
       location.href = "signup.html"
   }
 }
@@ -171,11 +171,11 @@ async function handleLogout(){
 	localStorage.removeItem("access")
 	localStorage.removeItem("refresh")
 	localStorage.removeItem("payload")
-	swal("로그아웃되었습니다.")
+	alert("로그아웃되었습니다.")
     location.href="signup.html"
 }
 
 async function Search(){
   const search = document.getElementById("search").value
-  location.href= "../webtoon/search_webtoon.html?search=" + search;
+  location.href= "search_webtoon.html?search=" + search;
 }
