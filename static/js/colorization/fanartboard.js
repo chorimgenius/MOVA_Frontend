@@ -12,7 +12,7 @@ async function Validator(){
   payload = localStorage.getItem("payload")
 
   if(access == null || payload == null || refresh == null){
-      alert("로그인 후 이용해주세요")
+      swal("로그인 후 이용해주세요")
       location.href = "../user/signup.html"
   }
 }
@@ -33,7 +33,7 @@ async function handleLogout(){
 	localStorage.removeItem("access")
 	localStorage.removeItem("refresh")
 	localStorage.removeItem("payload")
-	alert("로그아웃되었습니다.")
+	swal("로그아웃되었습니다.")
     location.href="../user/signup.html"
 }
 
@@ -221,8 +221,6 @@ function owl_slider(){
   });
 }
 
-function fanart_detail(id){
-}
 
 async function fanart_board_select(id){
   const response = await fetch(`https://www.chorim.shop/fanart/`,{
@@ -310,12 +308,9 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
+                    <a href="https://www.mo-va.site/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
-    // list_box.forEach(element => {
-    //   element.insertAdjacentHTML("beforeend",content)
-    // })
     list_box.insertAdjacentHTML("beforeend",content)
   });
   const list_box2 = document.getElementById('owl-slider-3')
@@ -332,12 +327,9 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
+                    <a href="https://www.mo-va.site/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
-    // list_box.forEach(element => {
-    //   element.insertAdjacentHTML("beforeend",content)
-    // })
     list_box2.insertAdjacentHTML("beforeend",content)
     
   });
@@ -346,10 +338,6 @@ async function loadDesign(){
 
   owl_carousel()
   owl_slider()
-  // const select_webtoon = document.getElementById('select-webtoon')
-  // select_webtoon.addEventListener("click", e => {
-  //   getBoardWebtoon()
-  // })
 
 }
 

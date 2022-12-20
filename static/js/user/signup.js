@@ -10,19 +10,19 @@ async function handleSignup(){
 	const password2 = document.getElementById("sign-confirm").value
 
   if (username == '') {
-    alert("아이디를 입력해주세요!");
+    swal("아이디를 입력해주세요!");
     return 0;
   }
   else if (password == '' || password2 == '') {
-    alert("비밀번호를 입력해주세요!");
+    swal("비밀번호를 입력해주세요!");
     return 0;
   }
   else if (password != password2) {
-    alert("비밀번호를 확인해주세요!");
+    swal("비밀번호를 확인해주세요!");
     return 0;
   }
   else if (email == '') {
-  alert("이메일을 입력해주세요!");
+  swal("이메일을 입력해주세요!");
   return 0;
   }
   
@@ -38,7 +38,7 @@ async function handleSignup(){
 		})
 	})
   response_json = await response.json()
-  alert(response_json.message)
+  swal(response_json.message)
   location.href = "signup.html";
 }
 //Signin
@@ -67,11 +67,11 @@ async function handleSignin(){
       }).join(''));
   
       localStorage.setItem("payload", jsonPayload);
-      alert("MOVA에 오신걸 환영 합니다.")
+      swal("MOVA에 오신걸 환영 합니다.")
       location.href = "main.html";
   }
   else{
-    alert("가입된 정보를 확인해주세요")
+    swal("가입된 정보를 확인해주세요")
   }
 }
 
