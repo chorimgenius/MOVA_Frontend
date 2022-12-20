@@ -287,7 +287,7 @@ async function loadDesign(){
   }
   const response = await fetch(url,{
     headers: {
-      "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxMjExMzcyLCJpYXQiOjE2NzA4NTEzNzIsImp0aSI6Ijg1MWE2M2QzODY1MTQxZDk5MDhkZmUzZWY2NzAxNThlIiwidXNlcl9pZCI6MSwiZW1haWwiOiJ0YWVreXUzMkBnbWFpbC5jb20ifQ.yOYjlhvpo2t5tpReAtJ1i9HY2P9OrkPqkNV8jVPbPRY",
+      "Authorization": localStorage.getItem("access"),
     },
     method:'GET',
   })
