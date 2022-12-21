@@ -801,6 +801,16 @@ a {
     font-size: 0;
 }
 
+.bt_wrap a {
+    display: inline-block;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 1.4rem;
+}
+
 .button-register {
     display: inline-block;
     min-width: 80px;
