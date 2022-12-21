@@ -1,4 +1,4 @@
-const backend_base_url = "https://www.chorim.shop"
+const backend_base_url = "http://127.0.0.1:8000"
 
 window.onload = () => {
   Validator()
@@ -223,7 +223,7 @@ function owl_slider(){
 
 
 async function fanart_board_select(id){
-  const response = await fetch(`https://www.chorim.shop/fanart/`,{
+  const response = await fetch(`http://127.0.0.1:8000/fanart/`,{
     method: 'GET',
   })
   const response_json = await response.json()
@@ -235,7 +235,7 @@ const search_id = urlParams.get('search_id');
 
 async function getBoardWebtoon() {
   const webtoon = document.getElementById("board-webtoon").value
-  const response = await fetch(`https://www.chorim.shop/board/webtoonall?search=${webtoon}`, {
+  const response = await fetch(`http://127.0.0.1:8000/board/webtoonall?search=${webtoon}`, {
     method: 'GET',
       headers:{
         "Authorization": localStorage.getItem("access"),
@@ -279,11 +279,11 @@ modal_close.addEventListener("click", e => {
 });
 
 async function loadDesign(){
-  let url = `https://www.chorim.shop/fanart/`
+  let url = `http://127.0.0.1:8000/fanart/`
   if(search_id == null){
 
   }else{
-    url = `https://www.chorim.shop/fanart/search/${search_id}`
+    url = `http://127.0.0.1:8000/fanart/search/${search_id}`
   }
   const response = await fetch(url,{
     headers: {
@@ -298,7 +298,7 @@ async function loadDesign(){
   await response_json[0].forEach(element => {
     const content = `<div class="item video-box-wrapper" style="background-color:black;" onclick="fanart_detail(1)">
                 <figure class="snip1477">
-                    <img src="https://www.chorim.shop${element.image.result_image}" alt="sample38"/>
+                    <img src="http://127.0.0.1:8000${element.image.result_image}" alt="sample38"/>
                     <div class="title">
                       <div>
                         <h2>${element.webtoon}</h2>
@@ -308,7 +308,7 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="https://www.mo-va.site/fanart-detail.html?id=${element.id}"></a>
+                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
     list_box.insertAdjacentHTML("beforeend",content)
@@ -317,7 +317,7 @@ async function loadDesign(){
   await response_json[1].forEach(element => {
     const content = `<div class="item video-box-wrapper" style="background-color:black;" onclick="fanart_detail(1)">
                 <figure class="snip1477">
-                    <img src="https://www.chorim.shop${element.image.result_image}" alt="sample38"/>
+                    <img src="http://127.0.0.1:8000${element.image.result_image}" alt="sample38"/>
                     <div class="title">
                       <div>
                         <h2>${element.user.username}</h2>
@@ -327,7 +327,7 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="https://www.mo-va.site/fanart-detail.html?id=${element.id}"></a>
+                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
     list_box2.insertAdjacentHTML("beforeend",content)

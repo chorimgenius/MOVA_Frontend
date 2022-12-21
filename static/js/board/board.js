@@ -1,5 +1,5 @@
-const backend_base_url = "https://www.chorim.shop"
-const frontend_base_url = "https://www.mo-va.site"
+const backend_base_url = "http://127.0.0.1:8000"
+const frontend_base_url = "http://127.0.0.1:5500"
 
 window.onload = () => {
   Validator()
@@ -68,7 +68,7 @@ async function pagination(num){
     const list = `
     <tr class="board-list">
         <td id="board_number">${count}</td>
-        <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+        <th id="board_title"><a href="http://127.0.0.1:5500/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
         <td id="board_webtoon">${element.webtoon_title}</td>
         <td id="board_created_at">${today.toLocaleDateString()}</td>
     </tr>`
@@ -96,7 +96,7 @@ async function getBoard() {
       const list = `
       <tr class="board-list">
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <th id="board_title"><a href="http://127.0.0.1:5500/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
@@ -123,7 +123,7 @@ async function getBoard() {
       const list = `
       <tr class="board-list">
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <th id="board_title"><a href="http://127.0.0.1:5500/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
@@ -150,7 +150,7 @@ async function getBoard() {
       const list = `
       <tr class="board-list">
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <th id="board_title"><a href="http://127.0.0.1:5500/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
@@ -176,7 +176,7 @@ async function getBoard() {
       const list = `
       <tr class="board-list">
           <td id="board_number">${count}</td>
-          <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+          <th id="board_title"><a href="http://127.0.0.1:5500/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
           <td id="board_webtoon">${element.webtoon_title}</td>
           <td id="board_created_at">${today.toLocaleDateString()}</td>
       </tr>`
@@ -217,7 +217,7 @@ async function getDiscussion() {
         const list = `
         <tr class="board-list">
             <td id="board_number">${count}</td>
-            <th id="board_title"><a href="https://www.mo-va.site/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
+            <th id="board_title"><a href="http://127.0.0.1:5500/boarddetail.html?id=${element.id}">[${element.board_category_name}] &nbsp ${element.title}</a></th>
             <td id="board_webtoon">${element.webtoon_title}</td>
             <td id="board_created_at">${today.toLocaleDateString()}</td>
         </tr>`
