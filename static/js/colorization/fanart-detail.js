@@ -6,69 +6,72 @@ window.onload = () => {
   Profile()
 }
 
-async function Validator(){
+async function Validator() {
   access = localStorage.getItem("access")
   refresh = localStorage.getItem("refresh")
   payload = localStorage.getItem("payload")
 
-  if(access == null || payload == null || refresh == null){
-      alert("로그인 후 이용해주세요")
-      location.href = "signup.html"
+  if (access == null || payload == null || refresh == null) {
+    alert("로그인 후 이용해주세요")
+    location.href = "signup.html"
   }
 }
 
-async function Profile(){
+async function Profile() {
   const response = await fetch(`${backend_base_url}/user/`, {
-      method: 'GET',
-      headers:{
-        "Authorization": localStorage.getItem("access"),
-      }
+    method: 'GET',
+    headers: {
+      "Authorization": localStorage.getItem("access"),
+    }
   })
   response_json = await response.json()
   document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
   document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
 }
 
-async function handleLogout(){
-	localStorage.removeItem("access")
-	localStorage.removeItem("refresh")
-	localStorage.removeItem("payload")
-	alert("로그아웃되었습니다.")
-    location.href="signup.html"
+async function handleLogout() {
+  localStorage.removeItem("access")
+  localStorage.removeItem("refresh")
+  localStorage.removeItem("payload")
+  alert("로그아웃되었습니다.")
+  location.href = "signup.html"
 }
 
-async function Search(){
+async function Search() {
   const search = document.getElementById("search").value
-  location.href= "search_webtoon.html?search=" + search;
+  location.href = "search_webtoon.html?search=" + search;
 }
 
 var id = 0 // 게시글 아이디
-async function loadBoard(){
+async function loadBoard() {
   const urlStr = window.location.href;
   const url = new URL(urlStr);
   const urlParms = url.searchParams;
   id = urlParms.get('id')
 
-  const response = await fetch(`https://www.chorim.shop/fanart/${id}/`,{
-      headers: {
-        "Authorization": localStorage.getItem("access"),
-      },
-      method:'GET',
+  const response = await fetch(`https://www.chorim.shop/fanart/${id}/`, {
+    headers: {
+      "Authorization": localStorage.getItem("access"),
+    },
+    method: 'GET',
   })
   const response_json = await response.json()
   const fanart_image = document.getElementById('fanart-image')
-  fanart_image.src = "https://www.chorim.shop"+response_json.image
-
+  fanart_image.src = "https://www.chorim.shop" + response_json.image
   var date = new Date(response_json.created_at)
   const payload = localStorage.getItem("payload")
   const payload_parse = JSON.parse(payload)
   const payload_userid = payload_parse.user_id
   const comments = response_json.comment_set
   const comment_element = document.querySelector(".comment-list")
+  if (response_json.user.id == payload_userid) {
+    const delete_fanart_button = document.getElementById('delete-fanart')
+    delete_fanart_button.style.display = 'block'
+  }
   comments.forEach(element => {
     const write_time = timeForToday(element.created_at)
     let delete_button = ""
-    if(element.user.id== payload_userid){
+    if (element.user.id == payload_userid) {
       delete_button = `&nbsp&nbsp<a onclick='delete_comment(${element.id})' style='color:black;'>|&nbsp삭제</a>`
     }
 
@@ -78,41 +81,51 @@ async function loadBoard(){
                         </div> 
                         ${element.content}
                     </div>`
-    comment_element.insertAdjacentHTML("beforeend",comment)
+    comment_element.insertAdjacentHTML("beforeend", comment)
   });
-  
+
   const likes_count = document.getElementById('likes-count')
   likes_count.textContent = response_json.likes.length
 
   const likeButton = document.getElementById('like_button')
   const webtoon_likes = response_json.likes
 
-  if (webtoon_likes.includes(payload_userid)){
-      likeButton.classList.toggle('like_button_click')
+  if (webtoon_likes.includes(payload_userid)) {
+    likeButton.classList.toggle('like_button_click')
   }
-  else{
-      likeButton.classList.toggle('like_button_click')
-      likeButton.classList.toggle('like_button_click')
+  else {
+    likeButton.classList.toggle('like_button_click')
+    likeButton.classList.toggle('like_button_click')
   }
 }
 
-//likes
-async function fanart_like(){
-  const response = await fetch(`https://www.chorim.shop/fanart/${id}/like/`,{
+async function delete_fanart() {
+  const response = await fetch(`https://www.chorim.shop/fanart/${id}/`, {
     headers: {
-      "Authorization" : localStorage.getItem("access"),
-      "content-type" : 'application/json',
+      "Authorization": localStorage.getItem("access"),
     },
-    method:'POST',
+    method: 'DELETE',
+  })
+  location.href = 'fanartboard.html'
+}
+
+//likes
+async function fanart_like() {
+  const response = await fetch(`https://www.chorim.shop/fanart/${id}/like/`, {
+    headers: {
+      "Authorization": localStorage.getItem("access"),
+      "content-type": 'application/json',
+    },
+    method: 'POST',
   })
   response_json = await response.json()
   likeButton = document.getElementById('like_button')
   likeButton.classList.toggle('like_button_click')
   const likes_count = document.getElementById('likes-count')
-  if(response_json == "좋아요 등록 완료!"){
-    likes_count.textContent = parseInt(likes_count.textContent)+1
-  }else{
-    likes_count.textContent = parseInt(likes_count.textContent)-1
+  if (response_json == "좋아요 등록 완료!") {
+    likes_count.textContent = parseInt(likes_count.textContent) + 1
+  } else {
+    likes_count.textContent = parseInt(likes_count.textContent) - 1
   }
 }
 
@@ -123,31 +136,31 @@ function timeForToday(value) {
   const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
   if (betweenTime < 1) return '방금전';
   if (betweenTime < 60) {
-      return `${betweenTime}분전`;
+    return `${betweenTime}분전`;
   }
 
   const betweenTimeHour = Math.floor(betweenTime / 60);
   if (betweenTimeHour < 24) {
-      return `${betweenTimeHour}시간전`;
+    return `${betweenTimeHour}시간전`;
   }
 
   const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
   if (betweenTimeDay < 365) {
-      return `${betweenTimeDay}일전`;
+    return `${betweenTimeDay}일전`;
   }
 
   return `${Math.floor(betweenTimeDay / 365)}년전`;
 }
-async function write_comment(){
+async function write_comment() {
   const comment = document.getElementById("write-comment")
-  const response = await fetch(`https://www.chorim.shop/fanart/${id}/comment/`,{
+  const response = await fetch(`https://www.chorim.shop/fanart/${id}/comment/`, {
     headers: {
       "Authorization": localStorage.getItem("access"),
-      "content-type" : 'application/json',
+      "content-type": 'application/json',
     },
-    method:'POST',
+    method: 'POST',
     body: JSON.stringify({
-        "content": comment.value,
+      "content": comment.value,
     })
   })
   const response_json = await response.json()
@@ -159,15 +172,15 @@ async function write_comment(){
                         </div> 
                         ${response_json.content}
                     </div>`
-  comment_element.insertAdjacentHTML("afterbegin",add_comment)
+  comment_element.insertAdjacentHTML("afterbegin", add_comment)
   comment.value = null
 }
-async function delete_comment(id){
-  const response = await fetch(`https://www.chorim.shop/fanart/${id}/comment/${id}`,{
+async function delete_comment(id) {
+  const response = await fetch(`https://www.chorim.shop/fanart/${id}/comment/${id}`, {
     headers: {
       "Authorization": localStorage.getItem("access"),
     },
-    method:'DELETE',
+    method: 'DELETE',
   })
   const comment = document.getElementById(`comment-id${id}`)
   comment.style.display = "none"

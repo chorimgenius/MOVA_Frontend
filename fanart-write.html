@@ -96,11 +96,12 @@
                             <img src="" id="result_image_box" style="width:480px; height:480px; object-fit: contain;">
                           </div>
                       </div>
-                      <div class="control">
-                        <button class="color-btn" data-type="color" data-color="black"></button>
-                        <button class="color-btn" data-type="color" data-color="red"></button>
-                        <button class="color-btn" data-type="color" data-color="green"></button>
-                        <button class="color-btn" data-type="color" data-color="blue"></button>
+                      <div style="display:flex; align-items: flex-start;">
+                        <div id="color-label" style="width:50px; height:30px; background-color:black; margin-right: 5px;"></div>
+                        <div id="color-palette" style="display: none;">
+                            <canvas id="color-block" height="150" width="150"></canvas>
+                            <canvas id="color-strip" height="150" width="30"></canvas>
+                        </div>
                         <button type="button" onclick="colorization()">채색하기</button>
                       </div>
                   </div>

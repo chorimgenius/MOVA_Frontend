@@ -9,10 +9,14 @@ window.onload = () => {
   Profile()
 }
 
+const access = localStorage.getItem("access")
+const refresh = localStorage.getItem("refresh")
+const payload = localStorage.getItem("payload")
+const payload_parse = JSON.parse(payload)
+const is_admin = payload_parse.is_admin
+
 async function Validator(){
-  access = localStorage.getItem("access")
-  refresh = localStorage.getItem("refresh")
-  payload = localStorage.getItem("payload")
+
 
   if(access == null || payload == null || refresh == null){
       alert("로그인 후 이용해주세요")
@@ -41,8 +45,8 @@ async function getNoticeDetail() {
   const today = new Date(response_json.created_at)
   notice_created_at.innerText = today.toLocaleDateString()
 
-  const footnote = document.getElementById('article-footnote')
-  if(response_json.notice_user=="qwe"){
+  const footnote = document.getElementById('notice_title')
+  if(is_admin==true){
     del_put_button = `<button style="float: right;" onclick="deleteNotice()">삭제</button>
     <button style="float: right;" onclick="putNotice()">수정</button>`
     footnote.insertAdjacentHTML("beforeend", del_put_button)

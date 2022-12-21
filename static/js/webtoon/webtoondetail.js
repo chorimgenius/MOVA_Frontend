@@ -19,14 +19,15 @@ async function Validator(){
   }
 }
 
+const payload = localStorage.getItem("payload");
+const payload_parse = JSON.parse(payload);
+const payload_userid = payload_parse.user_id;
+const urlStr = window.location.href;
+const url = new URL(urlStr);
+const urlParms = url.searchParams;
+const id = urlParms.get("id");
+
 async function loadArticles() {
-  const payload = localStorage.getItem("payload");
-  const payload_parse = JSON.parse(payload);
-  const payload_userid = payload_parse.user_id;
-  const urlStr = window.location.href;
-  const url = new URL(urlStr);
-  const urlParms = url.searchParams;
-  const id = urlParms.get("id");
   const response = await fetch(`${backend_base_url}/` + parseInt(id) + "/", {
     method: "GET",
   });
@@ -287,6 +288,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//fanart 페이지로 이동
+function move_fanart(){
+  location.href=`fanartboard.html?search_id=${id}`
+}
+
 async function Profile() {
   const response = await fetch(`${backend_base_url}/user/`, {
     method: "GET",
@@ -397,7 +403,3 @@ $(document).ready(function () {
   });
 });
 
-//fanart 페이지로 이동
-function move_fanart(){
-  location.href="fanartboard.html"
-}
