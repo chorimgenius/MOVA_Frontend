@@ -1,5 +1,5 @@
-const backend_base_url = "https://www.chorim.shop"
-const frontend_base_url = "https://www.mo-va.site"
+const backend_base_url = "http://127.0.0.1:8000"
+const frontend_base_url = "http://www.127.0.0.1:5500"
 
 window.onload= () => {
     Validator()
@@ -200,7 +200,7 @@ function b(){
     /**
      * Owl Carousel v2.3.4
      * Copyright 2013-2018 David Deutsch
-     * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+     * Licensed under: SEE LICENSE IN http://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
      */
     /**
      * Owl carousel
@@ -2471,17 +2471,17 @@ function b(){
     
                 /*
                         Parses the id's out of the following urls (and probably more):
-                        https://www.youtube.com/watch?v=:id
-                        https://youtu.be/:id
-                        https://vimeo.com/:id
-                        https://vimeo.com/channels/:channel/:id
-                        https://vimeo.com/groups/:group/videos/:id
-                        https://app.vzaar.com/videos/:id
+                        http://www.youtube.com/watch?v=:id
+                        http://youtu.be/:id
+                        http://vimeo.com/:id
+                        http://vimeo.com/channels/:channel/:id
+                        http://vimeo.com/groups/:group/videos/:id
+                        http://app.vzaar.com/videos/:id
     
-                        Visual example: https://regexper.com/#(http%3A%7Chttps%3A%7C)%5C%2F%5C%2F(player.%7Cwww.%7Capp.)%3F(vimeo%5C.com%7Cyoutu(be%5C.com%7C%5C.be%7Cbe%5C.googleapis%5C.com)%7Cvzaar%5C.com)%5C%2F(video%5C%2F%7Cvideos%5C%2F%7Cembed%5C%2F%7Cchannels%5C%2F.%2B%5C%2F%7Cgroups%5C%2F.%2B%5C%2F%7Cwatch%5C%3Fv%3D%7Cv%5C%2F)%3F(%5BA-Za-z0-9._%25-%5D*)(%5C%26%5CS%2B)%3F
+                        Visual example: http://regexper.com/#(http%3A%7Chttp%3A%7C)%5C%2F%5C%2F(player.%7Cwww.%7Capp.)%3F(vimeo%5C.com%7Cyoutu(be%5C.com%7C%5C.be%7Cbe%5C.googleapis%5C.com)%7Cvzaar%5C.com)%5C%2F(video%5C%2F%7Cvideos%5C%2F%7Cembed%5C%2F%7Cchannels%5C%2F.%2B%5C%2F%7Cgroups%5C%2F.%2B%5C%2F%7Cwatch%5C%3Fv%3D%7Cv%5C%2F)%3F(%5BA-Za-z0-9._%25-%5D*)(%5C%26%5CS%2B)%3F
                 */
     
-                id = url.match(/(http:|https:|)\/\/(player.|www.|app.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com|be\-nocookie\.com)|vzaar\.com)\/(video\/|videos\/|embed\/|channels\/.+\/|groups\/.+\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/);
+                id = url.match(/(http:|http:|)\/\/(player.|www.|app.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com|be\-nocookie\.com)|vzaar\.com)\/(video\/|videos\/|embed\/|channels\/.+\/|groups\/.+\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/);
     
                 if (id[3].indexOf('youtu') > -1) {
                     type = 'youtube';

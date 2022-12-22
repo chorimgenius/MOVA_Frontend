@@ -1,4 +1,4 @@
-const backend_base_url = "https://www.chorim.shop"
+const backend_base_url = "http://127.0.0.1:8000"
 const urlStr = window.location.href;
 const url = new URL(urlStr);
 const urlParms = url.searchParams;
@@ -64,7 +64,7 @@ async function deleteNotice() {
 }
 
 async function putNotice() {
-  location.href = `https://www.mo-va.site/noticewrite.html?id=${id}`
+  location.href = `http://www.127.0.0.1:5500/noticewrite.html?id=${id}`
 }
 
 async function handleLogout(){

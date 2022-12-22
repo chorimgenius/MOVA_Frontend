@@ -1,5 +1,5 @@
-const backend_base_url = "https://www.chorim.shop"
-const frontend_base_url = "https://mo-va.site"
+const backend_base_url = "http://127.0.0.1:8000"
+const frontend_base_url = "http://127.0.0.1:5500"
 
 
 window.onload = () => {
@@ -70,7 +70,7 @@ async function pagination(num){
     const list = `
     <tr class="notice-list">
         <td id="notice_number">${count}</td>
-        <th id="notice_title"><a href="https://mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+        <th id="notice_title"><a href="http://127.0.0.1:5500/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
         <td id="notice_created_at">${today.toLocaleDateString()}</td>
     </tr>`
     count += 1
@@ -99,7 +99,7 @@ async function getNotice() {
       const list = `
       <tr class="notice-list">
           <td id="notice_number">${count}</td>
-          <th id="notice_title"><a href="https://mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+          <th id="notice_title"><a href="http://127.0.0.1:5500/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
@@ -125,7 +125,7 @@ async function getNotice() {
       const list = `
       <tr class="notice-list">
           <td id="notice_number">${count}</td>
-          <th id="notice_title"><a href="https://mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+          <th id="notice_title"><a href="http://127.0.0.1:5500/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
@@ -151,7 +151,7 @@ async function getNotice() {
       const list = `
       <tr class="notice-list">
           <td id="notice_number">${count}</td>
-          <th id="notice_title"><a href="https://mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+          <th id="notice_title"><a href="http://127.0.0.1:5500/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
@@ -175,7 +175,7 @@ async function getNotice() {
       const list = `
       <tr class="notice-list">
           <td id="notice_number">${count}</td>
-          <th id="notice_title"><a href="https://mo-va.site/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
+          <th id="notice_title"><a href="http://127.0.0.1:5500/noticedetail.html?id=${element.id}">[${element.notice_category_name}] &nbsp ${element.title}</a></th>
           <td id="notice_created_at">${today.toLocaleDateString()}</td>
       </tr>`
       count += 1
