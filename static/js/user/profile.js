@@ -1,5 +1,4 @@
 const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
 
 window.onload= () => {
     UserProfile()
@@ -20,7 +19,7 @@ async function Profile(){
     document.getElementById("profile_img").src = `${backend_base_url}${response_json.image}`
     document.getElementById("username").innerText = `${response_json.username}`
     document.getElementById("email").innerText = `${response_json.email}`
-    document.getElementById("bio").innerText = `${response_json.bio}`
+    document.getElementById("bio").innerText = response_json.bio.replace("null","");
 }
 
 async function Likeslist(){
@@ -78,7 +77,7 @@ async function ProfileDelete(){
 
 async function Search(){
     const search = document.getElementById("search").value
-    location.href= "http://127.0.0.1:5500/search_webtoon.html?search=" + search;
+    location.href= "search_webtoon.html?search=" + search;
 }
 
 async function UserProfile(){

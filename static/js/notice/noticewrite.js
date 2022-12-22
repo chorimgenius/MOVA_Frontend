@@ -1,5 +1,4 @@
 const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
 
 const urlStr = window.location.href;
 const url = new URL(urlStr);
@@ -95,7 +94,10 @@ async function writeNotice() {
     const title = document.getElementById('title').value
     const content = editor.getHTML()
     const category = document.getElementById('dropdown_category').value
-
+    if (title == "" || content == "<p><br></p>"){
+        alert("제목, 웹툰, 내용이 입력되지 않았습니다.")
+        return 0;
+    }
     if (category == "\uacf5\uc9c0\uc0ac\ud56d") {
         var cate_notice = "1"
     }
@@ -115,7 +117,7 @@ async function writeNotice() {
                 "content": content
             })
         })
-        location.href = "notice.html"
+        // location.href = "notice.html"
     }
     else {
         const put_response = await fetch(`${backend_base_url}/notice/${id}/`, {
@@ -130,6 +132,6 @@ async function writeNotice() {
                 "content": content
             })
         })
-        location.href = `${frontend_base_url}/noticedetail.html?id=${id}`
+        location.href = `noticedetail.html?id=${id}`
     }
 }

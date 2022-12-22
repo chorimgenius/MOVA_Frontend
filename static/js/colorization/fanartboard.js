@@ -308,10 +308,10 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
+                    <a href="fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
-    list_box.insertAdjacentHTML("beforeend",content)
+    list_box.insertAdjacentHTML("afterbegin",content)
   });
   const list_box2 = document.getElementById('owl-slider-3')
   await response_json[1].forEach(element => {
@@ -327,7 +327,7 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
+                    <a href="fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
     list_box2.insertAdjacentHTML("beforeend",content)

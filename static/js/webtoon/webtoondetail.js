@@ -110,9 +110,10 @@ async function webtooncomment_read() {
     }
   );
   response_json = await response.json();
+  console.log(1, response_json)
   const payload = localStorage.getItem("payload");
   const payload_parse = JSON.parse(payload);
-  const payload_username = payload_parse.username;
+  const payload_id = payload_parse.user_id;
   const comment_container = document.getElementById("comment-contatiner");
   for (let i = 0; i < response_json.length; i++) {
     let comment_id = response_json[i]["id"];
@@ -120,8 +121,9 @@ async function webtooncomment_read() {
     let image = response_json[i]["image"];
     let content = response_json[i]["content"];
     let created_at = response_json[i]["created_at"];
+    let user_id = response_json[i]["user_id"];
     let time_before = time2str(created_at);
-    if (username == payload_username) {
+    if (user_id == payload_id) {
       let comment_html1 = `<div class="comment">
                                     <div class="comment_user">
                                         <img class="user_image" style="width: 50px; height: 50px; border-radius: 70%; margin-top: 20px;" src="${backend_base_url}${image}">
@@ -242,16 +244,23 @@ async function handleDeleteComment(commentId) {
   const url = new URL(urlStr);
   const urlParms = url.searchParams;
   const id = urlParms.get("id");
-  const response = await fetch(
-    `${backend_base_url}/` + parseInt(id) + "/comment/" + `${commentId}` + "/",
-    {
-      headers: {
-        Authorization: localStorage.getItem("access"),
-      },
-      method: "DELETE",
-      body: {},
-    }
-  );
+  var result = confirm("게시글을 삭제하시겠습니까??");
+  if(result == true) {
+    alert("삭제가 완료되었습니다.")
+    const response = await fetch(
+      `${backend_base_url}/` + parseInt(id) + "/comment/" + `${commentId}` + "/",
+      {
+        headers: {
+          Authorization: localStorage.getItem("access"),
+        },
+        method: "DELETE",
+        body: {},
+      }
+    )
+  }
+  else {
+    return 0;
+  }
   location.reload();
 }
 

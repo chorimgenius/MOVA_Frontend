@@ -1,5 +1,4 @@
 const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
 
 const urlStr = window.location.href;
 const url = new URL(urlStr);
@@ -11,10 +10,6 @@ let webtoon_id = 0
 
 window.onload = () => {
   Validator()
-  const payload = localStorage.getItem("payload");
-  const payload_parse = JSON.parse(payload)
-  const payload_username = payload_parse.username
-  document.getElementById("board-author").innerHTML = payload_username
   putBoardDetail()
   Profile()
 }
@@ -114,6 +109,11 @@ async function writeBoard() {
   const title = document.getElementById('title').value
   const content = editor.getHTML()
   const category = document.getElementById('dropdown_category').value
+  if (title == "" || content == "<p><br></p>" || webtoon_id == 0){
+    console.log("함수실행맨")
+    alert("제목, 웹툰, 내용이 입력되지 않았습니다.")
+    return 0;
+  }
   if (category == "\ud32c\uac8c\uc2dc\ud310") {
     var cate_notice = "1"
   }
@@ -150,7 +150,7 @@ async function writeBoard() {
         "webtoon": webtoon_id
       })
     })
-    location.href = `${frontend_base_url}/boarddetail.html?id=${id}`
+    location.href = `boarddetail.html?id=${id}`
   }
 }
 
@@ -164,6 +164,7 @@ async function Profile() {
   response_json = await response.json()
   document.getElementById("movaprofile_img").src = `${backend_base_url}${response_json.image}`
   document.getElementById("movaprofile_username").innerText = `${response_json.username}님`
+  document.getElementById("board-author").innerHTML = response_json.username
 }
 
 async function handleLogout() {

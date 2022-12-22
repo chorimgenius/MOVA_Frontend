@@ -6,7 +6,7 @@ const id = urlParms.get('id')
 
 const payload = localStorage.getItem("payload");
 const payload_parse = JSON.parse(payload)
-const payload_username= payload_parse.username
+const payload_id= payload_parse.user_id
 
 window.onload = () => {
   Validator()
@@ -61,8 +61,9 @@ async function getBoardDetail() {
   board_webtoon_name.innerText = response_json.webtoon_title
 
   const footnote = document.getElementById('board_title')
+  console.log(response_json)
   
-  if(response_json.board_user == payload_username){
+  if(response_json.board_user_id == payload_id){
     del_put_button = `<button style="float: right; font-size: 16px;" onclick="deleteBoard()">삭제</button>
     <button style="float: right; font-size: 16px;" onclick="putBoard()">수정</button>`
     footnote.insertAdjacentHTML("beforeend", del_put_button)
@@ -70,17 +71,24 @@ async function getBoardDetail() {
 }
 
 async function deleteBoard() {
-  const response = await fetch(`${backend_base_url}/board/${id}/`, {
-    method: 'DELETE',
-    headers:{
-      "Authorization": localStorage.getItem("access"),
-    }
-  })
+  var result = confirm("게시글을 삭제하시겠습니까??");
+  if(result == true) {
+    alert("삭제가 완료되었습니다.")
+    const response = await fetch(`${backend_base_url}/board/${id}/`, {
+      method: 'DELETE',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+    })
+  }
+  else{
+    return
+  }
   location.href="board.html"
 }
 
 async function putBoard() {
-  location.href = `http://127.0.0.1:5500/boardwrite.html?id=${id}`
+  location.href = `boardwrite.html?id=${id}`
 }
 
 async function Profile(){
@@ -144,8 +152,9 @@ async function webtooncomment_read() {
       let image = response_json[i]['user_profile_image']
       let content = response_json[i]['comment']
       let created_at = response_json[i]['updated_at']
+      let comments_user_id = response_json[i]['comments_user_id']
       let time_before = time2str(created_at)
-      if (username == payload_username){
+      if (comments_user_id == payload_id){
         let comment_html1 = `<div class="comment">
                                 <div class="comment_user">
                                     <img class="user_image" style="width: 50px; height: 50px; border-radius: 70%; margin-top: 30px;" src="${backend_base_url}${image}">

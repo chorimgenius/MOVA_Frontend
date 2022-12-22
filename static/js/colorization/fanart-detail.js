@@ -100,12 +100,19 @@ async function loadBoard() {
 }
 
 async function delete_fanart() {
+  var result = confirm("게시글을 삭제하시겠습니까??");
+  if(result == true) {
+    alert("삭제가 완료되었습니다.")
   const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/`, {
     headers: {
       "Authorization": localStorage.getItem("access"),
     },
     method: 'DELETE',
   })
+}
+else {
+  return 0;
+}
   location.href = 'fanartboard.html'
 }
 
@@ -176,12 +183,19 @@ async function write_comment() {
   comment.value = null
 }
 async function delete_comment(id) {
-  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/${id}`, {
+  var result = confirm("댓글을 삭제하시겠습니까??");
+  if(result == true) {
+    const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/${id}`, {
     headers: {
       "Authorization": localStorage.getItem("access"),
     },
     method: 'DELETE',
   })
+    alert("삭제가 완료되었습니다.")
+}
+else{
+  return 0;
+}
   const comment = document.getElementById(`comment-id${id}`)
   comment.style.display = "none"
 }

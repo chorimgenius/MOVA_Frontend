@@ -140,7 +140,14 @@ async function fanart_write() {
     let title = document.getElementById("fanart-title").value
     let content = document.getElementById("fanart-content").value
 
-
+    if (title == "" || webtoon_id == 0 || content == ""){
+        alert("제목, 웹툰, 내용이 입력되지 않았습니다.")
+        return 0;
+      }
+    else if (image_id =="") {
+        alert("채색하기 버튼을 눌러주세요.")
+        return 0;
+    }
     const response = await fetch(`http://127.0.0.1:8000/fanart/`, {
         headers: {
             "Authorization": localStorage.getItem("access"),
