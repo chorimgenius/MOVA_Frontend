@@ -1,6 +1,6 @@
 # MOVA_BACKEND
 ## [스파르타코딩클럽 내일배움캠프 AI 3기] A4팀 최종 프로젝트
-![image](https://user-images.githubusercontent.com/112370211/207631093-78907a55-d513-4d50-9513-ed0e79c8104b.png)
+![image](http://user-images.githubusercontent.com/112370211/207631093-78907a55-d513-4d50-9513-ed0e79c8104b.png)
 
 
 ## 프로젝트 소개
@@ -11,15 +11,15 @@
 2022.11.30 - 12.15
 
 ## front-end github-address
-[MOVA_Frontend](https://github.com/marinred/MOVA_Frontend)
+[MOVA_Frontend](http://github.com/marinred/MOVA_Frontend)
 
 ## 기술 스택
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white" align='left'/>
-<img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white" align='left'/>
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white" align='left'>
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" align='left'>
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" align='left'>
-<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white" align='left'><br>
+<img src="http://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white" align='left'/>
+<img src="http://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white" align='left'/>
+<img src="http://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white" align='left'>
+<img src="http://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" align='left'>
+<img src="http://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" align='left'>
+<img src="http://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white" align='left'><br>
 
 
 ## 역할 파트
@@ -89,13 +89,13 @@
     - 스케치 따기 기능
     
 ## 와이어프레임
-[https://www.figma.com/file/PQ2QMjtryocR803csfCQdL/Untitled?node-id=0%3A1&t=lqWiwBzbHidYZDRz-0](https://www.figma.com/file/PQ2QMjtryocR803csfCQdL/Untitled?node-id=0%3A1&t=lqWiwBzbHidYZDRz-0)
-![image](https://user-images.githubusercontent.com/113073174/207761107-4d2305a4-a03b-4f07-922c-accda9b17eef.png)
+[http://www.figma.com/file/PQ2QMjtryocR803csfCQdL/Untitled?node-id=0%3A1&t=lqWiwBzbHidYZDRz-0](http://www.figma.com/file/PQ2QMjtryocR803csfCQdL/Untitled?node-id=0%3A1&t=lqWiwBzbHidYZDRz-0)
+![image](http://user-images.githubusercontent.com/113073174/207761107-4d2305a4-a03b-4f07-922c-accda9b17eef.png)
 
 
 
 ## DB 설계
-![ERD](https://user-images.githubusercontent.com/112370211/207582899-17ae8309-d344-48f9-aff1-990e82e3416d.jpg)
+![ERD](http://user-images.githubusercontent.com/112370211/207582899-17ae8309-d344-48f9-aff1-990e82e3416d.jpg)
 
 ## API 설계
 | App | 기능 | URL | Method | Request | Response |
@@ -149,9 +149,9 @@
 
 
 ## 딥러닝 모델
-[Colorization_Tool_on_Web](https://github.com/yangco-le/Colorization_Tool_on_Web)
+[Colorization_Tool_on_Web](http://github.com/yangco-le/Colorization_Tool_on_Web)
 
 ## 프로젝트 시연영상
-![image](https://user-images.githubusercontent.com/113073174/207761398-d2db14a7-cdb4-4051-b8b0-61065ee06c98.png)
-![프로젝트 시연영상](https://www.youtube.com/watch?v=bVhm_Z2KKZ0)
+![image](http://user-images.githubusercontent.com/113073174/207761398-d2db14a7-cdb4-4051-b8b0-61065ee06c98.png)
+![프로젝트 시연영상](http://www.youtube.com/watch?v=bVhm_Z2KKZ0)
 

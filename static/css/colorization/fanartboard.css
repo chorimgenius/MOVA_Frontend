@@ -107,7 +107,7 @@
     background-size: 150px;
     background-position: center;
     padding: 43px 20px 20px 44px;
-    background-image: url('https://velog.velcdn.com/images/marinred/post/5fe107e4-f7c9-4056-9520-3b664bf8994f/image.png');
+    background-image: url('http://velog.velcdn.com/images/marinred/post/5fe107e4-f7c9-4056-9520-3b664bf8994f/image.png');
     border-bottom: 1px solid #ddd;
     position: relative;
   }
@@ -629,8 +629,8 @@
     display: flex;
   }
 
-  @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
-  @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+  @import url(http://fonts.googleapis.com/css?family=Raleway:400,500,700);
+  @import url(http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
   figure.snip1477 {
     font-family: 'Raleway', Arial, sans-serif;
     position: relative;

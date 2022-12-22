@@ -1,4 +1,4 @@
-const backend_base_url = "https://www.chorim.shop"
+const backend_base_url = "http://127.0.0.1:8000"
 
 window.onload = () => {
   Validator()
@@ -49,7 +49,7 @@ async function loadBoard() {
   const urlParms = url.searchParams;
   id = urlParms.get('id')
 
-  const response = await fetch(`https://www.chorim.shop/fanart/${id}/`, {
+  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/`, {
     headers: {
       "Authorization": localStorage.getItem("access"),
     },
@@ -57,7 +57,7 @@ async function loadBoard() {
   })
   const response_json = await response.json()
   const fanart_image = document.getElementById('fanart-image')
-  fanart_image.src = "https://www.chorim.shop" + response_json.image
+  fanart_image.src = "http://127.0.0.1:8000" + response_json.image
   var date = new Date(response_json.created_at)
   const payload = localStorage.getItem("payload")
   const payload_parse = JSON.parse(payload)
@@ -100,18 +100,25 @@ async function loadBoard() {
 }
 
 async function delete_fanart() {
-  const response = await fetch(`https://www.chorim.shop/fanart/${id}/`, {
+  var result = confirm("게시글을 삭제하시겠습니까??");
+  if(result == true) {
+    alert("삭제가 완료되었습니다.")
+  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/`, {
     headers: {
       "Authorization": localStorage.getItem("access"),
     },
     method: 'DELETE',
   })
+}
+else {
+  return 0;
+}
   location.href = 'fanartboard.html'
 }
 
 //likes
 async function fanart_like() {
-  const response = await fetch(`https://www.chorim.shop/fanart/${id}/like/`, {
+  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/like/`, {
     headers: {
       "Authorization": localStorage.getItem("access"),
       "content-type": 'application/json',
@@ -153,7 +160,7 @@ function timeForToday(value) {
 }
 async function write_comment() {
   const comment = document.getElementById("write-comment")
-  const response = await fetch(`https://www.chorim.shop/fanart/${id}/comment/`, {
+  const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/`, {
     headers: {
       "Authorization": localStorage.getItem("access"),
       "content-type": 'application/json',
@@ -176,12 +183,19 @@ async function write_comment() {
   comment.value = null
 }
 async function delete_comment(id) {
-  const response = await fetch(`https://www.chorim.shop/fanart/${id}/comment/${id}`, {
+  var result = confirm("댓글을 삭제하시겠습니까??");
+  if(result == true) {
+    const response = await fetch(`http://127.0.0.1:8000/fanart/${id}/comment/${id}`, {
     headers: {
       "Authorization": localStorage.getItem("access"),
     },
     method: 'DELETE',
   })
+    alert("삭제가 완료되었습니다.")
+}
+else{
+  return 0;
+}
   const comment = document.getElementById(`comment-id${id}`)
   comment.style.display = "none"
 }

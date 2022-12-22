@@ -1,6 +1,10 @@
 // // html js
 // // javascripts interlock
-const backend_base_url = "https://www.chorim.shop"
+const backend_base_url = "http://127.0.0.1:8000"
+
+window.onload= () => {
+  handleSigninKakao()
+}
 
 //Signup
 async function handleSignup(){
@@ -8,7 +12,10 @@ async function handleSignup(){
 	const email = document.getElementById("sign-email").value
 	const password = document.getElementById("sign-pass").value
 	const password2 = document.getElementById("sign-confirm").value
-
+  
+  const REGEX_EMAIL = '([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'
+  const REGEX_PASSWORD = '^(?=.*[\d])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()])[\w\d!@#$%^&*()]{8,16}$'
+  
   if (username == '') {
     alert("아이디를 입력해주세요!");
     return 0;
@@ -72,6 +79,34 @@ async function handleSignin(){
   }
   else{
     alert("가입된 정보를 확인해주세요")
+  }
+}
+
+async function handleKakao(){
+  KAKAO_CALLBACK_URI = `${backend_base_url}/user/kakao/callback/`
+  const response = await fetch(`${backend_base_url}/user/kakao/login`, {
+  })
+  const response_json = await response.json()
+  location.href = response_json
+}
+
+async function handleSigninKakao(){
+  console.log(1, "함수실행맨")
+  let code = new URL(window.location.href).searchParams.get("code")
+  if (code != null){
+    const response = await fetch(`${backend_base_url}/user/kakao/callback/?code=${code}`)
+    const response_json = await response.json()
+    console.log(response_json)
+    localStorage.setItem("access", "Bearer "+response_json.access_token);
+    localStorage.setItem("refresh", response_json.refresh_token);
+    const base64Url = response_json.access_token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    localStorage.setItem("payload", jsonPayload);
+    alert("MOVA에 오신걸 환영 합니다.")
+    location.href = "main.html";
   }
 }
 

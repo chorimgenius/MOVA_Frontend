@@ -1,12 +1,18 @@
-const backend_base_url = "https://www.chorim.shop"
+const backend_base_url = "http://127.0.0.1:8000"
 
 //회원탈퇴
 async function ProfileDelete(){
-  const payload = localStorage.getItem("payload")
-  const payload_parse = JSON.parse(payload)
-  const email= payload_parse.email
-  const input_email = document.getElementById('log-email').value
-  if(email == input_email){
+  
+  const response_user = await fetch(`${backend_base_url}/user/`, {
+    method: 'GET',
+    headers:{
+      "Authorization": localStorage.getItem("access"),
+    }
+  })
+  const response_user_json = await response_user.json()
+	const input_email = document.getElementById("log-email").value
+  console.log(input_email)
+  if(response_user_json.email == input_email){
     const response = await fetch(`${backend_base_url}/user/`, {
       method: 'DELETE',
       headers:{
@@ -14,7 +20,7 @@ async function ProfileDelete(){
           "Authorization": localStorage.getItem("access"),
       },
       body: JSON.stringify({
-          "email": email,
+          "email": input_email,
       })
   })
   localStorage.removeItem("access")

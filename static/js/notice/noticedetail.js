@@ -1,4 +1,4 @@
-const backend_base_url = "https://www.chorim.shop"
+const backend_base_url = "http://127.0.0.1:8000"
 const urlStr = window.location.href;
 const url = new URL(urlStr);
 const urlParms = url.searchParams;
@@ -13,7 +13,7 @@ const access = localStorage.getItem("access")
 const refresh = localStorage.getItem("refresh")
 const payload = localStorage.getItem("payload")
 const payload_parse = JSON.parse(payload)
-const is_admin = payload_parse.is_admin
+const payload_id = payload_parse.user_id
 
 async function Validator(){
 
@@ -29,6 +29,7 @@ async function getNoticeDetail() {
     method: 'GET',
   })
   response_json = await response.json()
+  console.log(response_json)
   const notice_title = document.getElementById('notice_title')
   notice_title.innerText = response_json.title
 
@@ -44,9 +45,10 @@ async function getNoticeDetail() {
   const notice_created_at = document.getElementById('notice_created_at')
   const today = new Date(response_json.created_at)
   notice_created_at.innerText = today.toLocaleDateString()
+  console.log(response_json)
 
   const footnote = document.getElementById('notice_title')
-  if(is_admin==true){
+  if(payload_id==1){
     del_put_button = `<button style="float: right;" onclick="deleteNotice()">삭제</button>
     <button style="float: right;" onclick="putNotice()">수정</button>`
     footnote.insertAdjacentHTML("beforeend", del_put_button)
@@ -54,17 +56,25 @@ async function getNoticeDetail() {
 }
 
 async function deleteNotice() {
-  const response = await fetch(`${backend_base_url}/notice/${id}/`, {
-    method: 'DELETE',
-    headers:{
-      "Authorization": localStorage.getItem("access"),
-    }
-  })
+  var result = confirm("게시글을 삭제하시겠습니까??");
+  if(result == true) {
+    alert("삭제가 완료되었습니다.")
+    const response = await fetch(`${backend_base_url}/notice/${id}/`, {
+      method: 'DELETE',
+      headers:{
+        "Authorization": localStorage.getItem("access"),
+      }
+    })
+  }
+  else {
+    return 0;
+  }
+  
   location.href="notice.html"
 }
 
 async function putNotice() {
-  location.href = `https://www.mo-va.site/noticewrite.html?id=${id}`
+  location.href = `noticewrite.html?id=${id}`
 }
 
 async function handleLogout(){

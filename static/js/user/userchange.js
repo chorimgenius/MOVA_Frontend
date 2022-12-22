@@ -1,4 +1,4 @@
-const backend_base_url = "https://www.chorim.shop"
+const backend_base_url = "http://127.0.0.1:8000"
 
 window.onload= () => {
     ProfileChange()
@@ -18,9 +18,9 @@ async function ProfileChange(){
     document.getElementById("usernamechange").value = `${response_json.username}`
     document.getElementById("email").innerText = `${response_json.email}`
     a=document.getElementById("email")
-    document.getElementById("biochange").value = `${response_json.bio}`
-    b=document.getElementById("biochange")
-    document.getElementById("profile_img").src = `https://www.chorim.shop${response_json.image}`
+    document.getElementById("biochange").value = response_json.bio.replace("null","");
+    console.log(document.getElementById("biochange").value)
+    document.getElementById("profile_img").src = `http://127.0.0.1:8000${response_json.image}`
 }
 
 //내용 바꿔주는 put
@@ -30,6 +30,7 @@ async function ProfileChangeput(){
     form_data.append('username', username)
     const bio = document.getElementById("biochange").value
     form_data.append('bio', bio)
+    
     
     const image = document.getElementById('file').files[0]
     if (image!=undefined){
@@ -77,7 +78,7 @@ async function move_passwordchange(){
             "Authorization": localStorage.getItem("access"),
         }
     })
-    location.href="https://www.chorim.shop/user/password_reset/"
+    location.href="http://127.0.0.1:8000/user/password_reset/"
 }
 
 async function Profile(){

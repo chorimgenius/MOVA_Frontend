@@ -1,4 +1,4 @@
-const backend_base_url = "https://www.chorim.shop"
+const backend_base_url = "http://127.0.0.1:8000"
 window.onload = () => {
     Validator()
     Profile()
@@ -53,7 +53,7 @@ async function resize_image(e) {
     let file = e.currentTarget.files[0];
     const form_data = new FormData();
     form_data.append('image', file)
-    const response = await fetch(`https://www.chorim.shop/fanart/baseimage/`, {
+    const response = await fetch(`http://127.0.0.1:8000/fanart/baseimage/`, {
         headers: {
             "Authorization": localStorage.getItem("access"),
         },
@@ -122,7 +122,7 @@ async function colorization() {
     form_data.append("resize_image", resize_image_id)
     form_data.append("hint_image", file, file_name);	// file data 추가
 
-    const response = await fetch(`https://www.chorim.shop/fanart/colorization/`, {
+    const response = await fetch(`http://127.0.0.1:8000/fanart/colorization/`, {
         headers: {
             "Authorization": localStorage.getItem("access"),
         },
@@ -132,7 +132,7 @@ async function colorization() {
     response_json = await response.json()
 
     let result_box = document.getElementById('result_image_box')
-    result_box.src = "https://www.chorim.shop" + response_json.result_image
+    result_box.src = "http://127.0.0.1:8000" + response_json.result_image
     image_id = response_json.id
 }
 let webtoon_id = 0
@@ -140,8 +140,15 @@ async function fanart_write() {
     let title = document.getElementById("fanart-title").value
     let content = document.getElementById("fanart-content").value
 
-
-    const response = await fetch(`https://www.chorim.shop/fanart/`, {
+    if (title == "" || webtoon_id == 0 || content == ""){
+        alert("제목, 웹툰, 내용이 입력되지 않았습니다.")
+        return 0;
+      }
+    else if (image_id =="") {
+        alert("채색하기 버튼을 눌러주세요.")
+        return 0;
+    }
+    const response = await fetch(`http://127.0.0.1:8000/fanart/`, {
         headers: {
             "Authorization": localStorage.getItem("access"),
             "content-type": 'application/json',
@@ -161,7 +168,7 @@ async function fanart_write() {
 
 async function getBoardWebtoon() {
     const webtoon = document.getElementById("board-webtoon").value
-    const response = await fetch(`https://www.chorim.shop/board/webtoonall?search=${webtoon}`, {
+    const response = await fetch(`http://127.0.0.1:8000/board/webtoonall?search=${webtoon}`, {
         method: 'GET',
         headers: {
             "Authorization": localStorage.getItem("access"),

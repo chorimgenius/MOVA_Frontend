@@ -1,4 +1,4 @@
-const backend_base_url = "https://www.chorim.shop";
+const backend_base_url = "http://127.0.0.1:8000";
 
 // webtoon 상세 페이지 내용 가져와서 띄우기
 window.onload = function () {
@@ -38,6 +38,9 @@ async function loadArticles() {
   platform.innerText = response_json.platform;
   const author = document.getElementById("author");
   author.innerText = response_json.author;
+  const genre = document.getElementById("genre");
+  genre.innerText = response_json.genre;
+  console.log(response_json.genre)
   const story = document.getElementById("story");
   story.innerText = response_json.summary;
   const day_of_the_weeks = document.getElementById("day_of_the_weeks");
@@ -72,7 +75,7 @@ async function webtoonlink() {
     method: "GET",
   });
   response_json = await response.json();
-  location.href = response_json.webtoon_link;
+  window.open(response_json.webtoon_link)
 }
 
 // 시간 설정을위한 포맷팅
@@ -107,9 +110,10 @@ async function webtooncomment_read() {
     }
   );
   response_json = await response.json();
+  console.log(1, response_json)
   const payload = localStorage.getItem("payload");
   const payload_parse = JSON.parse(payload);
-  const payload_username = payload_parse.username;
+  const payload_id = payload_parse.user_id;
   const comment_container = document.getElementById("comment-contatiner");
   for (let i = 0; i < response_json.length; i++) {
     let comment_id = response_json[i]["id"];
@@ -117,8 +121,9 @@ async function webtooncomment_read() {
     let image = response_json[i]["image"];
     let content = response_json[i]["content"];
     let created_at = response_json[i]["created_at"];
+    let user_id = response_json[i]["user_id"];
     let time_before = time2str(created_at);
-    if (username == payload_username) {
+    if (user_id == payload_id) {
       let comment_html1 = `<div class="comment">
                                     <div class="comment_user">
                                         <img class="user_image" style="width: 50px; height: 50px; border-radius: 70%; margin-top: 20px;" src="${backend_base_url}${image}">
@@ -239,16 +244,23 @@ async function handleDeleteComment(commentId) {
   const url = new URL(urlStr);
   const urlParms = url.searchParams;
   const id = urlParms.get("id");
-  const response = await fetch(
-    `${backend_base_url}/` + parseInt(id) + "/comment/" + `${commentId}` + "/",
-    {
-      headers: {
-        Authorization: localStorage.getItem("access"),
-      },
-      method: "DELETE",
-      body: {},
-    }
-  );
+  var result = confirm("게시글을 삭제하시겠습니까??");
+  if(result == true) {
+    alert("삭제가 완료되었습니다.")
+    const response = await fetch(
+      `${backend_base_url}/` + parseInt(id) + "/comment/" + `${commentId}` + "/",
+      {
+        headers: {
+          Authorization: localStorage.getItem("access"),
+        },
+        method: "DELETE",
+        body: {},
+      }
+    )
+  }
+  else {
+    return 0;
+  }
   location.reload();
 }
 
