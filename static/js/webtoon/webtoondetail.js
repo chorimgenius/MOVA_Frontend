@@ -38,6 +38,9 @@ async function loadArticles() {
   platform.innerText = response_json.platform;
   const author = document.getElementById("author");
   author.innerText = response_json.author;
+  const genre = document.getElementById("genre");
+  genre.innerText = response_json.genre;
+  console.log(response_json.genre)
   const story = document.getElementById("story");
   story.innerText = response_json.summary;
   const day_of_the_weeks = document.getElementById("day_of_the_weeks");
@@ -72,7 +75,7 @@ async function webtoonlink() {
     method: "GET",
   });
   response_json = await response.json();
-  location.href = response_json.webtoon_link;
+  window.open(response_json.webtoon_link)
 }
 
 // 시간 설정을위한 포맷팅
