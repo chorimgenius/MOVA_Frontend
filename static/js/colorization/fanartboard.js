@@ -308,7 +308,7 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://www.127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
+                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
     list_box.insertAdjacentHTML("beforeend",content)
@@ -327,7 +327,7 @@ async function loadDesign(){
                     <figcaption>
                       <p>${element.content}</p>
                     </figcaption>
-                    <a href="http://www.127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
+                    <a href="http://127.0.0.1:5500/fanart-detail.html?id=${element.id}"></a>
                 </figure>
               </div>`
     list_box2.insertAdjacentHTML("beforeend",content)

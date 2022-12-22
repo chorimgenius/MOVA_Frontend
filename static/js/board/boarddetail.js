@@ -80,7 +80,7 @@ async function deleteBoard() {
 }
 
 async function putBoard() {
-  location.href = `http://www.127.0.0.1:5500/boardwrite.html?id=${id}`
+  location.href = `http://127.0.0.1:5500/boardwrite.html?id=${id}`
 }
 
 async function Profile(){
